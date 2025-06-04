@@ -1,6 +1,8 @@
 package jon.db.queue.models;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -27,24 +29,11 @@ public class DeadLetterQueue {
     @Column(columnDefinition = "jsonb", nullable = false)
     private String data;
     private LocalDateTime arrivedAt;
-    private LocalDateTime processedAt;
-
-    public void manuallyProcessed() {
-        this.processedAt = LocalDateTime.now();
-    }
-
-    public void markAsProcessed() {
-        this.processedAt = LocalDateTime.now();
-    }
 
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Factory {
-        public static QueueMessage create(String data, UUID messageId) {
-            Long id = null;
-            var arrivedAt = LocalDateTime.now();
-            var nonTimeoutRetries = 0;
-            LocalDateTime processedAt = null;
-            return new QueueMessage(id, messageId, data, arrivedAt, nonTimeoutRetries, processedAt);
+        public static DeadLetterQueue create(UUID messageId, String data, LocalDateTime arrivedAt) {
+            return new DeadLetterQueue(messageId, data, arrivedAt);
         }
     }
 }

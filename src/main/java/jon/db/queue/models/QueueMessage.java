@@ -26,7 +26,7 @@ public class QueueMessage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long internalId;
 
     @Column(unique = true)
     private UUID messageId;

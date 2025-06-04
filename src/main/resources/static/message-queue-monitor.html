@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queue Messages Real-time Monitor</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .processed { background-color: #dff0d8; }
+        .failed { background-color: #f2dede; }
+        #connection-status { margin-bottom: 10px; }
+        .connected { color: green; }
+        .disconnected { color: red; }
+        .highlight { animation: highlight 2s; }
+        .updated { animation: update-highlight 2s; }
+        @keyframes highlight {
+            0% { background-color: #ffff99; }
+            100% { background-color: transparent; }
+        }
+        @keyframes update-highlight {
+            0% { background-color: #b3e6ff; }
+            100% { background-color: transparent; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Queue Messages Real-time Monitor</h1>
+    <div id="connection-status" class="disconnected">Disconnected</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Internal Id</th>
+                <th>Message Id</th>
+                <th>Data</th>
+                <th>Arrived At</th>
+                <th>Retries</th>
+                <th>Processed At</th>
+            </tr>
+        </thead>
+        <tbody id="messages-table">
+            <!-- Messages will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messagesTable = document.getElementById('messages-table');
+            const connectionStatus = document.getElementById('connection-status');
+            const messages = new Map();
+            const MAX_MESSAGES = 20;
+            let lastUpdatedId = null;
+
+            function updateConnectionStatus(connected) {
+                connectionStatus.textContent = connected ? 'Connected' : 'Disconnected';
+                connectionStatus.className = connected ? 'connected' : 'disconnected';
+            }
+
+            function limitMapSize() {
+                // Si tenemos más mensajes que el límite, eliminamos los más antiguos
+                if (messages.size > MAX_MESSAGES) {
+                    // Ordenar los IDs de menor a mayor (más antiguos primero)
+                    const sortedIds = Array.from(messages.keys()).sort((a, b) => a - b);
+
+                    // Calcular cuántos mensajes hay que eliminar
+                    const deleteCount = messages.size - MAX_MESSAGES;
+
+                    // Eliminar los mensajes más antiguos
+                    for (let i = 0; i < deleteCount; i++) {
+                        messages.delete(sortedIds[i]);
+                    }
+                }
+            }
+
+            function connectEventSource() {
+                updateConnectionStatus(false);
+                
+                const eventSource = new EventSource('/msg-queue/stream');
+
+                eventSource.onopen = function() {
+                    updateConnectionStatus(true);
+                    console.log('SSE connection established');
+                };
+                
+                eventSource.addEventListener('message', function(event) { //Message Event
+                    try {
+                        const message = JSON.parse(event.data);
+                        console.log('Received message:', message);
+                        messages.set(message.internalId, message);
+                        limitMapSize();
+                        renderMessages();
+                    } catch (error) {
+                        console.error('Error processing message:', error);
+                        console.error('Raw message data:', event.data);
+                    }
+                });
+
+                eventSource.addEventListener('update', function(event) { //Update Event
+                    try {
+                        const message = JSON.parse(event.data);
+                        console.log('Actualización de mensaje recibida:', message);
+
+                        lastUpdatedId = message.id;
+
+                         messages.set(message.id, message);
+                         limitMapSize();
+                         renderMessages();
+
+<!--                        if (messages.has(message.id)) {-->
+<!--                           -->
+<!--                        } else { //Old Message-->
+<!--                            if (messages.size < MAX_MESSAGES) {-->
+<!--                                messages.set(message.id, message);-->
+<!--                                renderMessages();-->
+<!--                            }-->
+<!--                        }-->
+                    } catch (error) {
+                        console.error('Error al procesar actualización:', error);
+                        console.error('Datos de la actualización:', event.data);
+                    }
+                });
+                
+                eventSource.onerror = function() {
+                    updateConnectionStatus(false);
+                    console.error('SSE connection error:', err);
+                    console.log('SSE connection error, reconnecting in 5 seconds...');
+                    eventSource.close();
+                    setTimeout(connectEventSource, 5000);
+                };
+            }
+            
+            function renderMessages() {
+                // Sort messages by ID (newest first)
+                const sortedMessages = Array.from(messages.values())
+                    .sort((a, b) => b.internalId - a.internalId)
+                    .slice(0, MAX_MESSAGES);
+                
+                // Clear the table
+                messagesTable.innerHTML = '';
+                
+                // Add messages to the table
+                sortedMessages.forEach((message, index) => {
+                    const row = document.createElement('tr');
+
+                    // Highlight first/updated message
+                    if (index === 0) {
+                        row.classList.add('highlight');
+                    } else if (message.id === lastUpdatedId) {
+                        row.classList.add('updated');
+                        // Reiniciar después de renderizar
+                        lastUpdatedId = null;
+                    }
+
+                    // Set row class based on message status
+                    if (message.processedAt) {
+                        row.className = 'processed';
+                    } else if (message.nonTimeoutRetries > 0) {
+                        row.className = 'failed';
+                    }
+                    
+                    // Format the row content
+                    row.innerHTML = `
+                        <td>${message.internalId}</td>
+                        <td>${message.messageId}</td>
+                        <td>${JSON.stringify(JSON.parse(message.data))}</td>
+                        <td>${new Date(message.arrivedAt).toLocaleString()}</td>
+                        <td>${message.nonTimeoutRetries}</td>
+                        <td>${message.processedAt}</td>
+                    `;
+                    
+                    messagesTable.appendChild(row);
+                });
+            }
+            
+            // Start the connection
+            connectEventSource();
+
+             console.log('JavaScript initialized, waiting for events...');
+        });
+    </script>
+</body>
+</html>
