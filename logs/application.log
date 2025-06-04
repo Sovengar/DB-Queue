@@ -1,0 +1,831 @@
+2025-06-04 09:47:44 [restartedMain] INFO  jon.db.queue.Application - Starting Application using Java 22.0.2 with PID 11104 (C:\Users\buble\OneDrive\Escritorio\DB Queue\target\classes started by buble in C:\Users\buble\OneDrive\Escritorio\DB Queue)
+2025-06-04 09:47:44 [restartedMain] INFO  jon.db.queue.Application - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 09:47:44 [restartedMain] INFO  o.s.b.d.c.l.DockerComposeLifecycleManager - Using Docker Compose file C:\Users\buble\OneDrive\Escritorio\DB Queue\compose.yaml
+2025-06-04 09:47:46 [restartedMain] INFO  o.s.b.d.c.l.DockerComposeLifecycleManager - There are already Docker Compose services running, skipping startup
+2025-06-04 09:47:46 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-04 09:47:46 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-04 09:47:47 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-04 09:47:47 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 82 ms. Found 1 JPA repository interface.
+2025-06-04 09:47:48 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-04 09:47:48 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-04 09:47:48 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 09:47:48 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-04 09:47:48 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 09:47:48 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2557 ms
+2025-06-04 09:47:49 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-04 09:47:49 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-04 09:47:49 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-04 09:47:49 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-04 09:47:49 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-04 09:47:50 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@766e598b
+2025-06-04 09:47:50 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-04 09:47:50 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-04 09:47:51 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-04 09:47:51 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04 09:47:52 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-04 09:47:52 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-04 09:47:53 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-04 09:47:53 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-04 09:47:53 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-04 09:47:53 [restartedMain] INFO  jon.db.queue.Application - Started Application in 10.592 seconds (process running for 11.622)
+2025-06-04 09:47:54 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [558] with data {"gotCharacter":"Layna","lotrCharacter":"Arwen Evenstar"}
+2025-06-04 09:47:54 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:47:54 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 2 messages [557, 558]
+2025-06-04 09:47:54 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [554, 555, 556]
+2025-06-04 09:47:54 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [550, 551, 552]
+2025-06-04 09:47:54 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 554 with data: {"gotCharacter": "Samwell Tarly", "lotrCharacter": "Gollum"}
+2025-06-04 09:47:54 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 557 with data: {"gotCharacter": "Stonehand", "lotrCharacter": "Shelob"}
+2025-06-04 09:47:54 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 550 with data: {"gotCharacter": "Maekar Targaryen", "lotrCharacter": "Sauron"}
+2025-06-04 09:47:54 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 558 with data: {"gotCharacter": "Layna", "lotrCharacter": "Arwen Evenstar"}
+2025-06-04 09:47:54 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 555 with data: {"gotCharacter": "Maekar Targaryen", "lotrCharacter": "Barliman Butterbur"}
+2025-06-04 09:47:56 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [559] with data {"gotCharacter":"Clement Piper","lotrCharacter":"Gandalf the Grey"}
+2025-06-04 09:47:57 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:47:57 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 556 with data: {"gotCharacter": "Rhaelle Targaryen", "lotrCharacter": "Barliman Butterbur"}
+2025-06-04 09:47:57 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 552 with data: {"gotCharacter": "Gorghan of Old Ghis", "lotrCharacter": "Treebeard"}
+2025-06-04 09:47:57 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 551 with data: {"gotCharacter": "Bethany Rosby", "lotrCharacter": "Théoden"}
+2025-06-04 09:47:58 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [560] with data {"gotCharacter":"Lord Staunton","lotrCharacter":"Sauron"}
+2025-06-04 09:48:00 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [561] with data {"gotCharacter":"Rawney","lotrCharacter":"Aragorn"}
+2025-06-04 09:48:00 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:48:00 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:48:02 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:48:02 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 1 messages [561]
+2025-06-04 09:48:02 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 561 with data: {"gotCharacter": "Rawney", "lotrCharacter": "Aragorn"}
+2025-06-04 09:48:02 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [560]
+2025-06-04 09:48:02 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [559]
+2025-06-04 09:48:02 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 560 with data: {"gotCharacter": "Lord Staunton", "lotrCharacter": "Sauron"}
+2025-06-04 09:48:02 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 559 with data: {"gotCharacter": "Clement Piper", "lotrCharacter": "Gandalf the Grey"}
+2025-06-04 09:48:02 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [562] with data {"gotCharacter":"Wate","lotrCharacter":"Faramir"}
+2025-06-04 09:48:04 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [563] with data {"gotCharacter":"Tristifer Botley","lotrCharacter":"Galadriel"}
+2025-06-04 09:48:05 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:48:05 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:48:05 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:48:06 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [564] with data {"gotCharacter":"Stannis Seaworth","lotrCharacter":"Shadowfax"}
+2025-06-04 09:48:08 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [565] with data {"gotCharacter":"Renfred Rykker","lotrCharacter":"Éomer"}
+2025-06-04 09:48:10 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:48:10 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:48:10 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:48:10 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [565]
+2025-06-04 09:48:10 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 565 with data: {"gotCharacter": "Renfred Rykker", "lotrCharacter": "Éomer"}
+2025-06-04 09:48:10 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [562, 563, 564]
+2025-06-04 09:48:10 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 562 with data: {"gotCharacter": "Wate", "lotrCharacter": "Faramir"}
+2025-06-04 09:48:10 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 564 with data: {"gotCharacter": "Stannis Seaworth", "lotrCharacter": "Shadowfax"}
+2025-06-04 09:48:10 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 563 with data: {"gotCharacter": "Tristifer Botley", "lotrCharacter": "Galadriel"}
+2025-06-04 09:48:10 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [566] with data {"gotCharacter":"Wex Pyke","lotrCharacter":"Elrond"}
+2025-06-04 09:48:12 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [567] with data {"gotCharacter":"Lomas Estermont","lotrCharacter":"Quickbeam"}
+2025-06-04 09:48:13 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:48:13 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:48:14 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [568] with data {"gotCharacter":"Renfred Rykker","lotrCharacter":"Gimli"}
+2025-06-04 09:48:16 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [569] with data {"gotCharacter":"Wenda","lotrCharacter":"Boromir"}
+2025-06-04 09:48:18 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:48:18 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:48:18 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:48:18 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [569]
+2025-06-04 09:48:18 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 569 with data: {"gotCharacter": "Wenda", "lotrCharacter": "Boromir"}
+2025-06-04 09:48:18 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [566, 567, 568]
+2025-06-04 09:48:18 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 566 with data: {"gotCharacter": "Wex Pyke", "lotrCharacter": "Elrond"}
+2025-06-04 09:48:18 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 568 with data: {"gotCharacter": "Renfred Rykker", "lotrCharacter": "Gimli"}
+2025-06-04 09:48:18 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 567 with data: {"gotCharacter": "Lomas Estermont", "lotrCharacter": "Quickbeam"}
+2025-06-04 09:48:18 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [570] with data {"gotCharacter":"Rhae Targaryen","lotrCharacter":"Glorfindel"}
+2025-06-04 09:48:20 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [571] with data {"gotCharacter":"Baela Targaryen","lotrCharacter":"Faramir"}
+2025-06-04 09:48:21 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:48:21 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:48:22 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [572] with data {"gotCharacter":"Wylis Manderly","lotrCharacter":"Gandalf the Grey"}
+2025-06-04 09:48:24 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [573] with data {"gotCharacter":"Aemon Estermont","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:48:26 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:48:26 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:48:26 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:48:26 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [573]
+2025-06-04 09:48:26 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 573 with data: {"gotCharacter": "Aemon Estermont", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:48:26 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [570, 571, 572]
+2025-06-04 09:48:26 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 570 with data: {"gotCharacter": "Rhae Targaryen", "lotrCharacter": "Glorfindel"}
+2025-06-04 09:48:26 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 571 with data: {"gotCharacter": "Baela Targaryen", "lotrCharacter": "Faramir"}
+2025-06-04 09:48:26 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 572 with data: {"gotCharacter": "Wylis Manderly", "lotrCharacter": "Gandalf the Grey"}
+2025-06-04 09:48:26 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [574] with data {"gotCharacter":"Thistle","lotrCharacter":"Treebeard"}
+2025-06-04 09:48:28 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [575] with data {"gotCharacter":"Symon Silver Tongue","lotrCharacter":"Sauron"}
+2025-06-04 09:48:29 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:48:29 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:48:30 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [576] with data {"gotCharacter":"Harren Botley","lotrCharacter":"Shelob"}
+2025-06-04 09:48:32 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [577] with data {"gotCharacter":"Alys Frey","lotrCharacter":"Treebeard"}
+2025-06-04 09:48:34 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:48:34 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:48:34 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:48:34 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [577]
+2025-06-04 09:48:34 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 577 with data: {"gotCharacter": "Alys Frey", "lotrCharacter": "Treebeard"}
+2025-06-04 09:48:34 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [574, 575, 576]
+2025-06-04 09:48:34 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 574 with data: {"gotCharacter": "Thistle", "lotrCharacter": "Treebeard"}
+2025-06-04 09:48:34 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 575 with data: {"gotCharacter": "Symon Silver Tongue", "lotrCharacter": "Sauron"}
+2025-06-04 09:48:34 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 576 with data: {"gotCharacter": "Harren Botley", "lotrCharacter": "Shelob"}
+2025-06-04 09:48:34 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [578] with data {"gotCharacter":"Husband","lotrCharacter":"Samwise Gamgee"}
+2025-06-04 09:48:36 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [579] with data {"gotCharacter":"Eldred Codd","lotrCharacter":"Faramir"}
+2025-06-04 09:48:37 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:48:37 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:48:39 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [580] with data {"gotCharacter":"Raymund Tyrell","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:48:41 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [581] with data {"gotCharacter":"Kraznys mo Nakloz","lotrCharacter":"Aragorn"}
+2025-06-04 09:48:42 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:48:42 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:48:42 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:48:42 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [581]
+2025-06-04 09:48:42 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 581 with data: {"gotCharacter": "Kraznys mo Nakloz", "lotrCharacter": "Aragorn"}
+2025-06-04 09:48:42 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [578, 579, 580]
+2025-06-04 09:48:42 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 578 with data: {"gotCharacter": "Husband", "lotrCharacter": "Samwise Gamgee"}
+2025-06-04 09:48:42 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 580 with data: {"gotCharacter": "Raymund Tyrell", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:48:42 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 579 with data: {"gotCharacter": "Eldred Codd", "lotrCharacter": "Faramir"}
+2025-06-04 09:48:43 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [582] with data {"gotCharacter":"Qhorin Halfhand","lotrCharacter":"Denethor"}
+2025-06-04 09:48:45 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [583] with data {"gotCharacter":"Tytos Brax","lotrCharacter":"Éomer"}
+2025-06-04 09:48:45 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:48:45 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:48:47 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [584] with data {"gotCharacter":"Lenn","lotrCharacter":"Barliman Butterbur"}
+2025-06-04 09:48:49 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [585] with data {"gotCharacter":"Gormon Tyrell","lotrCharacter":"Tom Bombadil"}
+2025-06-04 09:48:50 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:48:50 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:48:50 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:48:50 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 1 messages [582]
+2025-06-04 09:48:50 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 582 with data: {"gotCharacter": "Qhorin Halfhand", "lotrCharacter": "Denethor"}
+2025-06-04 09:48:50 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [583, 584, 585]
+2025-06-04 09:48:50 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 583 with data: {"gotCharacter": "Tytos Brax", "lotrCharacter": "Éomer"}
+2025-06-04 09:48:50 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 584 with data: {"gotCharacter": "Lenn", "lotrCharacter": "Barliman Butterbur"}
+2025-06-04 09:48:50 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 585 with data: {"gotCharacter": "Gormon Tyrell", "lotrCharacter": "Tom Bombadil"}
+2025-06-04 09:48:51 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [586] with data {"gotCharacter":"Brusco","lotrCharacter":"Glorfindel"}
+2025-06-04 09:48:53 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [587] with data {"gotCharacter":"Patrek Mallister","lotrCharacter":"Denethor"}
+2025-06-04 09:48:53 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:48:53 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:48:55 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [588] with data {"gotCharacter":"Maelor Targaryen","lotrCharacter":"Galadriel"}
+2025-06-04 09:48:57 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [589] with data {"gotCharacter":"Tytos Brax","lotrCharacter":"Legolas"}
+2025-06-04 09:48:58 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:48:58 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:48:58 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:48:58 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [586, 587, 588]
+2025-06-04 09:48:58 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 586 with data: {"gotCharacter": "Brusco", "lotrCharacter": "Glorfindel"}
+2025-06-04 09:48:58 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 587 with data: {"gotCharacter": "Patrek Mallister", "lotrCharacter": "Denethor"}
+2025-06-04 09:48:58 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 588 with data: {"gotCharacter": "Maelor Targaryen", "lotrCharacter": "Galadriel"}
+2025-06-04 09:48:58 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [589]
+2025-06-04 09:48:58 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 589 with data: {"gotCharacter": "Tytos Brax", "lotrCharacter": "Legolas"}
+2025-06-04 09:48:59 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [590] with data {"gotCharacter":"Arwyn Frey","lotrCharacter":"Gollum"}
+2025-06-04 09:49:01 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:49:01 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:49:01 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [591] with data {"gotCharacter":"Lann the Clever","lotrCharacter":"Shelob"}
+2025-06-04 09:49:03 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [592] with data {"gotCharacter":"Edric Storm","lotrCharacter":"Arwen Evenstar"}
+2025-06-04 09:49:05 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [593] with data {"gotCharacter":"Waymar Royce","lotrCharacter":"Beregond"}
+2025-06-04 09:49:06 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:49:06 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:49:06 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:49:06 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [593]
+2025-06-04 09:49:06 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 593 with data: {"gotCharacter": "Waymar Royce", "lotrCharacter": "Beregond"}
+2025-06-04 09:49:06 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [590, 591, 592]
+2025-06-04 09:49:06 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 590 with data: {"gotCharacter": "Arwyn Frey", "lotrCharacter": "Gollum"}
+2025-06-04 09:49:06 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 591 with data: {"gotCharacter": "Lann the Clever", "lotrCharacter": "Shelob"}
+2025-06-04 09:49:06 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 592 with data: {"gotCharacter": "Edric Storm", "lotrCharacter": "Arwen Evenstar"}
+2025-06-04 09:49:07 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [594] with data {"gotCharacter":"Victor Tyrell","lotrCharacter":"Treebeard"}
+2025-06-04 09:49:09 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:49:09 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:49:09 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [595] with data {"gotCharacter":"Jeyne","lotrCharacter":"Boromir"}
+2025-06-04 09:49:11 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [596] with data {"gotCharacter":"Elyas Willum","lotrCharacter":"Elrond"}
+2025-06-04 09:49:13 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [597] with data {"gotCharacter":"Arya Stark","lotrCharacter":"Frodo Baggins"}
+2025-06-04 09:49:14 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:49:14 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:49:14 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:49:14 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [597]
+2025-06-04 09:49:14 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 597 with data: {"gotCharacter": "Arya Stark", "lotrCharacter": "Frodo Baggins"}
+2025-06-04 09:49:14 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [594, 595, 596]
+2025-06-04 09:49:14 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 594 with data: {"gotCharacter": "Victor Tyrell", "lotrCharacter": "Treebeard"}
+2025-06-04 09:49:14 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 595 with data: {"gotCharacter": "Jeyne", "lotrCharacter": "Boromir"}
+2025-06-04 09:49:14 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 596 with data: {"gotCharacter": "Elyas Willum", "lotrCharacter": "Elrond"}
+2025-06-04 09:49:15 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [598] with data {"gotCharacter":"Jeyne Goodbrook","lotrCharacter":"Galadriel"}
+2025-06-04 09:49:17 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:49:17 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:49:17 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [599] with data {"gotCharacter":"Harwyn Hoare","lotrCharacter":"Samwise Gamgee"}
+2025-06-04 09:49:19 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [600] with data {"gotCharacter":"Horas Redwyne","lotrCharacter":"Sauron"}
+2025-06-04 09:49:21 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [601] with data {"gotCharacter":"Walton","lotrCharacter":"Legolas"}
+2025-06-04 09:49:22 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:49:22 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 09:49:22 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:49:22 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [598]
+2025-06-04 09:49:22 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 598 with data: {"gotCharacter": "Jeyne Goodbrook", "lotrCharacter": "Galadriel"}
+2025-06-04 09:49:22 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [599, 600, 601]
+2025-06-04 09:49:22 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 599 with data: {"gotCharacter": "Harwyn Hoare", "lotrCharacter": "Samwise Gamgee"}
+2025-06-04 09:49:22 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 600 with data: {"gotCharacter": "Horas Redwyne", "lotrCharacter": "Sauron"}
+2025-06-04 09:49:22 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 601 with data: {"gotCharacter": "Walton", "lotrCharacter": "Legolas"}
+2025-06-04 09:49:23 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [602] with data {"gotCharacter":"Beqqo","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:49:25 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:49:25 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:49:25 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [603] with data {"gotCharacter":"Ulwyck Uller","lotrCharacter":"Quickbeam"}
+2025-06-04 09:49:27 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [604] with data {"gotCharacter":"Hubard Rambton","lotrCharacter":"Denethor"}
+2025-06-04 09:49:29 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [605] with data {"gotCharacter":"Tim Tangletongue","lotrCharacter":"Quickbeam"}
+2025-06-04 09:49:30 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:49:30 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [602, 603, 604]
+2025-06-04 09:49:30 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 602 with data: {"gotCharacter": "Beqqo", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:49:30 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 603 with data: {"gotCharacter": "Ulwyck Uller", "lotrCharacter": "Quickbeam"}
+2025-06-04 09:49:30 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:49:30 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 604 with data: {"gotCharacter": "Hubard Rambton", "lotrCharacter": "Denethor"}
+2025-06-04 09:49:30 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:49:30 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [605]
+2025-06-04 09:49:30 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 605 with data: {"gotCharacter": "Tim Tangletongue", "lotrCharacter": "Quickbeam"}
+2025-06-04 09:49:31 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [606] with data {"gotCharacter":"Robert Flowers","lotrCharacter":"Gimli"}
+2025-06-04 09:49:33 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:49:33 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:49:33 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [607] with data {"gotCharacter":"Eldred Codd","lotrCharacter":"Samwise Gamgee"}
+2025-06-04 09:49:35 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [608] with data {"gotCharacter":"Grey King","lotrCharacter":"Gimli"}
+2025-06-04 09:49:38 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [609] with data {"gotCharacter":"Stygg","lotrCharacter":"Quickbeam"}
+2025-06-04 09:49:38 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:49:38 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [606, 607, 608]
+2025-06-04 09:49:38 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 606 with data: {"gotCharacter": "Robert Flowers", "lotrCharacter": "Gimli"}
+2025-06-04 09:49:38 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 607 with data: {"gotCharacter": "Eldred Codd", "lotrCharacter": "Samwise Gamgee"}
+2025-06-04 09:49:38 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:49:38 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 608 with data: {"gotCharacter": "Grey King", "lotrCharacter": "Gimli"}
+2025-06-04 09:49:38 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:49:38 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [609]
+2025-06-04 09:49:38 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 609 with data: {"gotCharacter": "Stygg", "lotrCharacter": "Quickbeam"}
+2025-06-04 09:49:40 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [610] with data {"gotCharacter":"Domeric Bolton","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:49:41 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:49:41 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:49:42 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [611] with data {"gotCharacter":"Lucas Roote","lotrCharacter":"Shelob"}
+2025-06-04 09:49:44 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [612] with data {"gotCharacter":"Caleotte","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:49:46 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [613] with data {"gotCharacter":"Draqaz","lotrCharacter":"Meriadoc Brandybuck"}
+2025-06-04 09:49:46 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:49:46 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [610, 611, 612]
+2025-06-04 09:49:46 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 09:49:46 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 610 with data: {"gotCharacter": "Domeric Bolton", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:49:46 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 611 with data: {"gotCharacter": "Lucas Roote", "lotrCharacter": "Shelob"}
+2025-06-04 09:49:46 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:49:46 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 612 with data: {"gotCharacter": "Caleotte", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:49:46 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [613]
+2025-06-04 09:49:46 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 613 with data: {"gotCharacter": "Draqaz", "lotrCharacter": "Meriadoc Brandybuck"}
+2025-06-04 09:49:48 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [614] with data {"gotCharacter":"Bradamar Frey","lotrCharacter":"Samwise Gamgee"}
+2025-06-04 09:49:49 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:49:49 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:49:50 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [615] with data {"gotCharacter":"Maslyn","lotrCharacter":"Shadowfax"}
+2025-06-04 09:49:52 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [616] with data {"gotCharacter":"Red Lamb","lotrCharacter":"Gandalf the Grey"}
+2025-06-04 09:49:54 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [617] with data {"gotCharacter":"Rhaego","lotrCharacter":"Peregrin Took"}
+2025-06-04 09:49:54 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:49:54 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:49:54 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:49:54 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [614, 615, 616]
+2025-06-04 09:49:54 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 616 with data: {"gotCharacter": "Red Lamb", "lotrCharacter": "Gandalf the Grey"}
+2025-06-04 09:49:54 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 615 with data: {"gotCharacter": "Maslyn", "lotrCharacter": "Shadowfax"}
+2025-06-04 09:49:54 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 614 with data: {"gotCharacter": "Bradamar Frey", "lotrCharacter": "Samwise Gamgee"}
+2025-06-04 09:49:54 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [617]
+2025-06-04 09:49:54 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 617 with data: {"gotCharacter": "Rhaego", "lotrCharacter": "Peregrin Took"}
+2025-06-04 09:49:56 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [618] with data {"gotCharacter":"Wilbert","lotrCharacter":"Saruman the White"}
+2025-06-04 09:49:57 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:49:57 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:49:58 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [619] with data {"gotCharacter":"Uthor Tollett","lotrCharacter":"Frodo Baggins"}
+2025-06-04 09:50:00 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [620] with data {"gotCharacter":"Temmo","lotrCharacter":"Glorfindel"}
+2025-06-04 09:50:02 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:50:02 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 09:50:02 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:50:02 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:50:02 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:50:02 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [618, 619, 620]
+2025-06-04 09:50:02 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 618 with data: {"gotCharacter": "Wilbert", "lotrCharacter": "Saruman the White"}
+2025-06-04 09:50:02 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 619 with data: {"gotCharacter": "Uthor Tollett", "lotrCharacter": "Frodo Baggins"}
+2025-06-04 09:50:02 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 620 with data: {"gotCharacter": "Temmo", "lotrCharacter": "Glorfindel"}
+2025-06-04 09:50:02 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [621] with data {"gotCharacter":"Rodrik Ryswell","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:50:04 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [622] with data {"gotCharacter":"Mirri Maz Duur","lotrCharacter":"Denethor"}
+2025-06-04 09:50:05 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:50:06 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [623] with data {"gotCharacter":"Haldon","lotrCharacter":"Arwen Evenstar"}
+2025-06-04 09:50:08 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [624] with data {"gotCharacter":"Eldred Codd","lotrCharacter":"Shadowfax"}
+2025-06-04 09:50:10 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:50:10 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:50:10 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:50:10 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 1 messages [622]
+2025-06-04 09:50:10 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 622 with data: {"gotCharacter": "Mirri Maz Duur", "lotrCharacter": "Denethor"}
+2025-06-04 09:50:10 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [621, 623, 624]
+2025-06-04 09:50:10 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 621 with data: {"gotCharacter": "Rodrik Ryswell", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:50:10 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 623 with data: {"gotCharacter": "Haldon", "lotrCharacter": "Arwen Evenstar"}
+2025-06-04 09:50:10 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 624 with data: {"gotCharacter": "Eldred Codd", "lotrCharacter": "Shadowfax"}
+2025-06-04 09:50:10 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [625] with data {"gotCharacter":"Lorent Tyrell","lotrCharacter":"Aragorn"}
+2025-06-04 09:50:12 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [626] with data {"gotCharacter":"Frynne","lotrCharacter":"Gimli"}
+2025-06-04 09:50:13 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:50:13 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:50:14 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [627] with data {"gotCharacter":"Grazdan zo Galare","lotrCharacter":"Gimli"}
+2025-06-04 09:50:16 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [628] with data {"gotCharacter":"Willam Stark","lotrCharacter":"Saruman the White"}
+2025-06-04 09:50:18 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:50:18 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 09:50:18 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:50:18 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [628]
+2025-06-04 09:50:18 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 628 with data: {"gotCharacter": "Willam Stark", "lotrCharacter": "Saruman the White"}
+2025-06-04 09:50:18 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [625, 626, 627]
+2025-06-04 09:50:18 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 625 with data: {"gotCharacter": "Lorent Tyrell", "lotrCharacter": "Aragorn"}
+2025-06-04 09:50:18 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 627 with data: {"gotCharacter": "Grazdan zo Galare", "lotrCharacter": "Gimli"}
+2025-06-04 09:50:18 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 626 with data: {"gotCharacter": "Frynne", "lotrCharacter": "Gimli"}
+2025-06-04 09:50:18 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [629] with data {"gotCharacter":"Bran the Builder","lotrCharacter":"Gimli"}
+2025-06-04 09:50:20 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [630] with data {"gotCharacter":"Steffon Frey","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:50:21 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:50:21 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:50:22 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [631] with data {"gotCharacter":"Zekko","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:50:24 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [632] with data {"gotCharacter":"Crawn","lotrCharacter":"Gandalf the Grey"}
+2025-06-04 09:50:26 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:50:26 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:50:26 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:50:26 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [632]
+2025-06-04 09:50:26 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 632 with data: {"gotCharacter": "Crawn", "lotrCharacter": "Gandalf the Grey"}
+2025-06-04 09:50:26 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [629, 630, 631]
+2025-06-04 09:50:26 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 629 with data: {"gotCharacter": "Bran the Builder", "lotrCharacter": "Gimli"}
+2025-06-04 09:50:26 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 631 with data: {"gotCharacter": "Zekko", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:50:26 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 630 with data: {"gotCharacter": "Steffon Frey", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:50:26 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [633] with data {"gotCharacter":"Alyx Frey","lotrCharacter":"Sauron"}
+2025-06-04 09:50:28 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [634] with data {"gotCharacter":"Arnell","lotrCharacter":"Galadriel"}
+2025-06-04 09:50:29 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:50:29 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:50:31 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [635] with data {"gotCharacter":"William Mooton","lotrCharacter":"Gollum"}
+2025-06-04 09:50:33 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [636] with data {"gotCharacter":"Watty","lotrCharacter":"Barliman Butterbur"}
+2025-06-04 09:50:34 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:50:34 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:50:34 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:50:34 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 2 messages [635, 636]
+2025-06-04 09:50:34 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 635 with data: {"gotCharacter": "William Mooton", "lotrCharacter": "Gollum"}
+2025-06-04 09:50:34 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 636 with data: {"gotCharacter": "Watty", "lotrCharacter": "Barliman Butterbur"}
+2025-06-04 09:50:34 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 2 messages [633, 634]
+2025-06-04 09:50:34 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 633 with data: {"gotCharacter": "Alyx Frey", "lotrCharacter": "Sauron"}
+2025-06-04 09:50:34 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 634 with data: {"gotCharacter": "Arnell", "lotrCharacter": "Galadriel"}
+2025-06-04 09:50:35 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [637] with data {"gotCharacter":"Quellon Botley","lotrCharacter":"Barliman Butterbur"}
+2025-06-04 09:50:37 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [638] with data {"gotCharacter":"Aurane Waters","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:50:37 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:50:37 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:50:39 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [639] with data {"gotCharacter":"Gunthor Hightower","lotrCharacter":"Faramir"}
+2025-06-04 09:50:41 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [640] with data {"gotCharacter":"Donnel Waynwood","lotrCharacter":"Peregrin Took"}
+2025-06-04 09:50:42 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:50:42 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:50:42 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:50:42 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [637, 638, 639]
+2025-06-04 09:50:42 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 637 with data: {"gotCharacter": "Quellon Botley", "lotrCharacter": "Barliman Butterbur"}
+2025-06-04 09:50:42 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 638 with data: {"gotCharacter": "Aurane Waters", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:50:42 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 639 with data: {"gotCharacter": "Gunthor Hightower", "lotrCharacter": "Faramir"}
+2025-06-04 09:50:42 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [640]
+2025-06-04 09:50:42 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 640 with data: {"gotCharacter": "Donnel Waynwood", "lotrCharacter": "Peregrin Took"}
+2025-06-04 09:50:43 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [641] with data {"gotCharacter":"Morya Frey","lotrCharacter":"Éomer"}
+2025-06-04 09:50:45 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [642] with data {"gotCharacter":"Belis","lotrCharacter":"Éowyn"}
+2025-06-04 09:50:45 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:50:45 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:50:47 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [643] with data {"gotCharacter":"Dyah","lotrCharacter":"Gandalf the Grey"}
+2025-06-04 09:50:49 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [644] with data {"gotCharacter":"Doreah","lotrCharacter":"Shadowfax"}
+2025-06-04 09:50:50 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:50:50 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:50:50 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:50:50 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 1 messages [644]
+2025-06-04 09:50:50 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 644 with data: {"gotCharacter": "Doreah", "lotrCharacter": "Shadowfax"}
+2025-06-04 09:50:50 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [641, 642, 643]
+2025-06-04 09:50:50 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 641 with data: {"gotCharacter": "Morya Frey", "lotrCharacter": "Éomer"}
+2025-06-04 09:50:50 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 642 with data: {"gotCharacter": "Belis", "lotrCharacter": "Éowyn"}
+2025-06-04 09:50:50 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 643 with data: {"gotCharacter": "Dyah", "lotrCharacter": "Gandalf the Grey"}
+2025-06-04 09:50:51 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [645] with data {"gotCharacter":"Rickard Thorne","lotrCharacter":"Gimli"}
+2025-06-04 09:50:53 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:50:53 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:50:53 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [646] with data {"gotCharacter":"Willis Fell","lotrCharacter":"Boromir"}
+2025-06-04 09:50:55 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [647] with data {"gotCharacter":"Aron Santagar","lotrCharacter":"Galadriel"}
+2025-06-04 09:50:57 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [648] with data {"gotCharacter":"Tim Stone","lotrCharacter":"Sauron"}
+2025-06-04 09:50:58 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:50:58 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 09:50:58 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:50:58 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 1 messages [648]
+2025-06-04 09:50:58 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 648 with data: {"gotCharacter": "Tim Stone", "lotrCharacter": "Sauron"}
+2025-06-04 09:50:58 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [645, 646, 647]
+2025-06-04 09:50:58 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 645 with data: {"gotCharacter": "Rickard Thorne", "lotrCharacter": "Gimli"}
+2025-06-04 09:50:58 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 646 with data: {"gotCharacter": "Willis Fell", "lotrCharacter": "Boromir"}
+2025-06-04 09:50:58 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 647 with data: {"gotCharacter": "Aron Santagar", "lotrCharacter": "Galadriel"}
+2025-06-04 09:50:59 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [649] with data {"gotCharacter":"Galladon of Tarth","lotrCharacter":"Barliman Butterbur"}
+2025-06-04 09:51:01 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:51:01 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:51:01 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [650] with data {"gotCharacter":"Rob","lotrCharacter":"Barliman Butterbur"}
+2025-06-04 09:51:03 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [651] with data {"gotCharacter":"Skinner","lotrCharacter":"Denethor"}
+2025-06-04 09:51:05 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [652] with data {"gotCharacter":"Emphyria Vance","lotrCharacter":"Glorfindel"}
+2025-06-04 09:51:06 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:51:06 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:51:06 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:51:06 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [652]
+2025-06-04 09:51:06 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 652 with data: {"gotCharacter": "Emphyria Vance", "lotrCharacter": "Glorfindel"}
+2025-06-04 09:51:06 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [649, 650, 651]
+2025-06-04 09:51:06 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 649 with data: {"gotCharacter": "Galladon of Tarth", "lotrCharacter": "Barliman Butterbur"}
+2025-06-04 09:51:06 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 650 with data: {"gotCharacter": "Rob", "lotrCharacter": "Barliman Butterbur"}
+2025-06-04 09:51:06 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 651 with data: {"gotCharacter": "Skinner", "lotrCharacter": "Denethor"}
+2025-06-04 09:51:07 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [653] with data {"gotCharacter":"Jate","lotrCharacter":"Frodo Baggins"}
+2025-06-04 09:51:09 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:51:09 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:51:09 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [654] with data {"gotCharacter":"Shiera Crakehall","lotrCharacter":"Quickbeam"}
+2025-06-04 09:51:11 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [655] with data {"gotCharacter":"Hilmar Drumm","lotrCharacter":"Legolas"}
+2025-06-04 09:51:13 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [656] with data {"gotCharacter":"Rosey","lotrCharacter":"Grìma Wormtongue"}
+2025-06-04 09:51:14 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:51:14 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:51:14 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:51:14 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [656]
+2025-06-04 09:51:14 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 656 with data: {"gotCharacter": "Rosey", "lotrCharacter": "Grìma Wormtongue"}
+2025-06-04 09:51:14 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [653, 654, 655]
+2025-06-04 09:51:14 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 653 with data: {"gotCharacter": "Jate", "lotrCharacter": "Frodo Baggins"}
+2025-06-04 09:51:14 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 655 with data: {"gotCharacter": "Hilmar Drumm", "lotrCharacter": "Legolas"}
+2025-06-04 09:51:14 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 654 with data: {"gotCharacter": "Shiera Crakehall", "lotrCharacter": "Quickbeam"}
+2025-06-04 09:51:15 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [657] with data {"gotCharacter":"Bonifer Hasty","lotrCharacter":"Tom Bombadil"}
+2025-06-04 09:51:17 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:51:17 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:51:17 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [658] with data {"gotCharacter":"Munciter","lotrCharacter":"Peregrin Took"}
+2025-06-04 09:51:19 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [659] with data {"gotCharacter":"Rhaegel Targaryen","lotrCharacter":"Peregrin Took"}
+2025-06-04 09:51:21 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [660] with data {"gotCharacter":"Kaeth","lotrCharacter":"Elrond"}
+2025-06-04 09:51:22 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:51:22 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [657, 658, 659]
+2025-06-04 09:51:22 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:51:22 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 657 with data: {"gotCharacter": "Bonifer Hasty", "lotrCharacter": "Tom Bombadil"}
+2025-06-04 09:51:22 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 658 with data: {"gotCharacter": "Munciter", "lotrCharacter": "Peregrin Took"}
+2025-06-04 09:51:22 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:51:22 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 659 with data: {"gotCharacter": "Rhaegel Targaryen", "lotrCharacter": "Peregrin Took"}
+2025-06-04 09:51:22 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [660]
+2025-06-04 09:51:22 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 660 with data: {"gotCharacter": "Kaeth", "lotrCharacter": "Elrond"}
+2025-06-04 09:51:23 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [661] with data {"gotCharacter":"Lucias Vypren","lotrCharacter":"Bilbo Baggins"}
+2025-06-04 09:51:25 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:51:25 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:51:26 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [662] with data {"gotCharacter":"Belgrave","lotrCharacter":"Sauron"}
+2025-06-04 09:51:28 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [663] with data {"gotCharacter":"Lyle Crakehall","lotrCharacter":"Glorfindel"}
+2025-06-04 09:51:30 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [664] with data {"gotCharacter":"Quhuru Mo","lotrCharacter":"Sauron"}
+2025-06-04 09:51:30 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:51:30 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [661, 662, 663]
+2025-06-04 09:51:30 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 09:51:30 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:51:30 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 661 with data: {"gotCharacter": "Lucias Vypren", "lotrCharacter": "Bilbo Baggins"}
+2025-06-04 09:51:30 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 663 with data: {"gotCharacter": "Lyle Crakehall", "lotrCharacter": "Glorfindel"}
+2025-06-04 09:51:30 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 662 with data: {"gotCharacter": "Belgrave", "lotrCharacter": "Sauron"}
+2025-06-04 09:51:30 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [664]
+2025-06-04 09:51:30 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 664 with data: {"gotCharacter": "Quhuru Mo", "lotrCharacter": "Sauron"}
+2025-06-04 09:51:32 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [665] with data {"gotCharacter":"Sybelle Glover","lotrCharacter":"Shadowfax"}
+2025-06-04 09:51:33 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:51:33 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:51:34 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [666] with data {"gotCharacter":"Eddard Karstark","lotrCharacter":"Gandalf the Grey"}
+2025-06-04 09:51:36 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [667] with data {"gotCharacter":"Danwell Frey","lotrCharacter":"Gandalf the Grey"}
+2025-06-04 09:51:38 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [668] with data {"gotCharacter":"Roger of Pennytree","lotrCharacter":"Glorfindel"}
+2025-06-04 09:51:38 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:51:38 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 09:51:38 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [665, 666, 667]
+2025-06-04 09:51:38 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:51:38 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 665 with data: {"gotCharacter": "Sybelle Glover", "lotrCharacter": "Shadowfax"}
+2025-06-04 09:51:38 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 666 with data: {"gotCharacter": "Eddard Karstark", "lotrCharacter": "Gandalf the Grey"}
+2025-06-04 09:51:38 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 667 with data: {"gotCharacter": "Danwell Frey", "lotrCharacter": "Gandalf the Grey"}
+2025-06-04 09:51:38 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [668]
+2025-06-04 09:51:38 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 668 with data: {"gotCharacter": "Roger of Pennytree", "lotrCharacter": "Glorfindel"}
+2025-06-04 09:51:40 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [669] with data {"gotCharacter":"Grazdan","lotrCharacter":"Barliman Butterbur"}
+2025-06-04 09:51:41 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:51:41 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:51:42 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [670] with data {"gotCharacter":"Lanna Lannister","lotrCharacter":"Gollum"}
+2025-06-04 09:51:44 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [671] with data {"gotCharacter":"Perriane Frey","lotrCharacter":"Legolas"}
+2025-06-04 09:51:46 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [672] with data {"gotCharacter":"Ellyn Tarbeck","lotrCharacter":"Boromir"}
+2025-06-04 09:51:46 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:51:46 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [669, 670, 671]
+2025-06-04 09:51:46 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 669 with data: {"gotCharacter": "Grazdan", "lotrCharacter": "Barliman Butterbur"}
+2025-06-04 09:51:46 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 670 with data: {"gotCharacter": "Lanna Lannister", "lotrCharacter": "Gollum"}
+2025-06-04 09:51:46 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 671 with data: {"gotCharacter": "Perriane Frey", "lotrCharacter": "Legolas"}
+2025-06-04 09:51:46 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:51:46 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:51:46 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [672]
+2025-06-04 09:51:46 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 672 with data: {"gotCharacter": "Ellyn Tarbeck", "lotrCharacter": "Boromir"}
+2025-06-04 09:51:48 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [673] with data {"gotCharacter":"Ben","lotrCharacter":"Théoden"}
+2025-06-04 09:51:49 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:51:49 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:51:50 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [674] with data {"gotCharacter":"Steffon Varner","lotrCharacter":"Meriadoc Brandybuck"}
+2025-06-04 09:51:52 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [675] with data {"gotCharacter":"Bors","lotrCharacter":"Glorfindel"}
+2025-06-04 09:51:54 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:51:54 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:51:54 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:51:54 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:51:54 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:51:54 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [673, 674, 675]
+2025-06-04 09:51:54 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 673 with data: {"gotCharacter": "Ben", "lotrCharacter": "Théoden"}
+2025-06-04 09:51:54 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 675 with data: {"gotCharacter": "Bors", "lotrCharacter": "Glorfindel"}
+2025-06-04 09:51:54 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 674 with data: {"gotCharacter": "Steffon Varner", "lotrCharacter": "Meriadoc Brandybuck"}
+2025-06-04 09:51:54 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [676] with data {"gotCharacter":"Walys Flowers","lotrCharacter":"Arwen Evenstar"}
+2025-06-04 09:51:56 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [677] with data {"gotCharacter":"Cuger","lotrCharacter":"Peregrin Took"}
+2025-06-04 09:51:57 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:51:58 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [678] with data {"gotCharacter":"Galtry the Green","lotrCharacter":"Beregond"}
+2025-06-04 09:52:00 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [679] with data {"gotCharacter":"Osmund Kettleblack","lotrCharacter":"Théoden"}
+2025-06-04 09:52:02 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:52:02 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 09:52:02 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:52:02 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [679]
+2025-06-04 09:52:02 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 679 with data: {"gotCharacter": "Osmund Kettleblack", "lotrCharacter": "Théoden"}
+2025-06-04 09:52:02 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [676, 677, 678]
+2025-06-04 09:52:02 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 676 with data: {"gotCharacter": "Walys Flowers", "lotrCharacter": "Arwen Evenstar"}
+2025-06-04 09:52:02 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 677 with data: {"gotCharacter": "Cuger", "lotrCharacter": "Peregrin Took"}
+2025-06-04 09:52:02 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 678 with data: {"gotCharacter": "Galtry the Green", "lotrCharacter": "Beregond"}
+2025-06-04 09:52:02 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [680] with data {"gotCharacter":"Garse Flowers","lotrCharacter":"Gimli"}
+2025-06-04 09:52:04 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [681] with data {"gotCharacter":"Gariss","lotrCharacter":"Gandalf the Grey"}
+2025-06-04 09:52:05 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:52:05 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:52:06 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [682] with data {"gotCharacter":"Cossomo","lotrCharacter":"Sauron"}
+2025-06-04 09:52:08 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [683] with data {"gotCharacter":"Gretchel","lotrCharacter":"Saruman the White"}
+2025-06-04 09:52:10 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:52:10 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 09:52:10 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 09:52:10 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [683]
+2025-06-04 09:52:10 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 683 with data: {"gotCharacter": "Gretchel", "lotrCharacter": "Saruman the White"}
+2025-06-04 09:52:10 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [680, 681, 682]
+2025-06-04 09:52:10 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 680 with data: {"gotCharacter": "Garse Flowers", "lotrCharacter": "Gimli"}
+2025-06-04 09:52:10 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 682 with data: {"gotCharacter": "Cossomo", "lotrCharacter": "Sauron"}
+2025-06-04 09:52:10 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 681 with data: {"gotCharacter": "Gariss", "lotrCharacter": "Gandalf the Grey"}
+2025-06-04 09:52:10 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [684] with data {"gotCharacter":"Roger Ryswell","lotrCharacter":"Gimli"}
+2025-06-04 09:52:12 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [685] with data {"gotCharacter":"Loras Tyrell","lotrCharacter":"Beregond"}
+2025-06-04 09:52:13 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:52:13 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 09:52:14 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [686] with data {"gotCharacter":"Smiling Knight","lotrCharacter":"Beregond"}
+2025-06-04 09:52:16 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [687] with data {"gotCharacter":"Theomore","lotrCharacter":"Galadriel"}
+2025-06-04 09:52:18 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 09:52:18 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 09:52:18 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 09:52:18 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 1 messages [687]
+2025-06-04 09:52:18 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 687 with data: {"gotCharacter": "Theomore", "lotrCharacter": "Galadriel"}
+2025-06-04 09:52:18 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [684, 685, 686]
+2025-06-04 09:52:18 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 684 with data: {"gotCharacter": "Roger Ryswell", "lotrCharacter": "Gimli"}
+2025-06-04 09:52:18 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 685 with data: {"gotCharacter": "Loras Tyrell", "lotrCharacter": "Beregond"}
+2025-06-04 09:52:18 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 686 with data: {"gotCharacter": "Smiling Knight", "lotrCharacter": "Beregond"}
+2025-06-04 09:52:18 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [688] with data {"gotCharacter":"Morros Slynt","lotrCharacter":"Denethor"}
+2025-06-04 09:52:20 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-04 09:52:20 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-04 09:52:20 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04 09:52:20 [SpringApplicationShutdownHook] WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2025-06-04 09:52:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-04 09:52:20 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-04 11:51:14 [restartedMain] INFO  jon.db.queue.Application - Starting Application using Java 22.0.2 with PID 22964 (C:\Users\buble\OneDrive\Escritorio\DB Queue\target\classes started by buble in C:\Users\buble\OneDrive\Escritorio\DB Queue)
+2025-06-04 11:51:14 [restartedMain] INFO  jon.db.queue.Application - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 11:51:14 [restartedMain] INFO  o.s.b.d.c.l.DockerComposeLifecycleManager - Using Docker Compose file C:\Users\buble\OneDrive\Escritorio\DB Queue\compose.yaml
+2025-06-04 11:51:17 [restartedMain] INFO  o.s.b.d.c.l.DockerComposeLifecycleManager - There are already Docker Compose services running, skipping startup
+2025-06-04 11:51:17 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-04 11:51:17 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-04 11:51:19 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-04 11:51:19 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 79 ms. Found 1 JPA repository interface.
+2025-06-04 11:51:20 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-04 11:51:20 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-04 11:51:20 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 11:51:20 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-04 11:51:20 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 11:51:20 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2662 ms
+2025-06-04 11:51:20 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-04 11:51:20 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-04 11:51:20 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-04 11:51:21 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-04 11:51:21 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-04 11:51:21 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@137cd488
+2025-06-04 11:51:21 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-04 11:51:22 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-04 11:51:23 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-04 11:51:23 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2025-06-04 11:51:23 [restartedMain] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - constraint "ukdcojmqsfuqvjimphlcsraryr" of relation "queue_message" does not exist, skipping
+2025-06-04 11:51:23 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04 11:51:24 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-04 11:51:24 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-04 11:51:25 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-04 11:51:25 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-04 11:51:25 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-04 11:51:25 [restartedMain] INFO  jon.db.queue.Application - Started Application in 11.599 seconds (process running for 13.487)
+2025-06-04 11:51:25 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [689] with data {"GOT":"Morrec","LOTR":"Éomer"}
+2025-06-04 11:51:25 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:51:25 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 11:51:25 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 11:51:25 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:51:25 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 11:51:25 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 2 messages [688, 689]
+2025-06-04 11:51:25 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 688 with data: {"gotCharacter": "Morros Slynt", "lotrCharacter": "Denethor"}
+2025-06-04 11:51:25 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 689 with data: {"GOT": "Morrec", "LOTR": "Éomer"}
+2025-06-04 11:51:27 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [690] with data {"GOT":"Dorren Stark","LOTR":"Meriadoc Brandybuck"}
+2025-06-04 11:51:29 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [691] with data {"GOT":"Kemmett Pyke","LOTR":"Galadriel"}
+2025-06-04 11:51:31 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [692] with data {"GOT":"Benedar Belmore","LOTR":"Shadowfax"}
+2025-06-04 11:51:33 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:51:33 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 11:51:33 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:51:33 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [690, 691, 692]
+2025-06-04 11:51:33 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 690 with data: {"GOT": "Dorren Stark", "LOTR": "Meriadoc Brandybuck"}
+2025-06-04 11:51:33 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 691 with data: {"GOT": "Kemmett Pyke", "LOTR": "Galadriel"}
+2025-06-04 11:51:33 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 692 with data: {"GOT": "Benedar Belmore", "LOTR": "Shadowfax"}
+2025-06-04 11:51:33 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 0 messages []
+2025-06-04 11:51:33 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:51:33 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [693] with data {"GOT":"Gwynesse Harlaw","LOTR":"Treebeard"}
+2025-06-04 11:51:35 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [694] with data {"GOT":"Jorah Mormont","LOTR":"Tom Bombadil"}
+2025-06-04 11:51:37 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [695] with data {"GOT":"Lark","LOTR":"Quickbeam"}
+2025-06-04 11:51:39 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [696] with data {"GOT":"Shella Whent","LOTR":"Denethor"}
+2025-06-04 11:51:41 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:51:41 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [693, 694, 695]
+2025-06-04 11:51:41 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [697] with data {"GOT":"Lomas Estermont","LOTR":"Treebeard"}
+2025-06-04 11:51:44 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [698] with data {"GOT":"Harry Strickland","LOTR":"Legolas"}
+2025-06-04 11:51:46 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [699] with data {"GOT":"Gorold Goodbrother","LOTR":"Sauron"}
+2025-06-04 11:51:48 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [700] with data {"GOT":"Jon Pox","LOTR":"Gimli"}
+2025-06-04 11:51:49 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:51:50 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [701] with data {"GOT":"Unella","LOTR":"Aragorn"}
+2025-06-04 11:51:52 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [702] with data {"GOT":"Theo Wull","LOTR":"Éowyn"}
+2025-06-04 11:51:54 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [703] with data {"GOT":"Robert Ashford","LOTR":"Saruman the White"}
+2025-06-04 11:51:56 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [704] with data {"GOT":"Donnel Drumm","LOTR":"Éowyn"}
+2025-06-04 11:51:57 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:51:58 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [705] with data {"GOT":"Alvyn Sharp","LOTR":"Gimli"}
+2025-06-04 11:52:00 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [706] with data {"GOT":"Torren Liddle","LOTR":"Shelob"}
+2025-06-04 11:52:02 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [707] with data {"GOT":"Jeyne Westerling","LOTR":"Saruman the White"}
+2025-06-04 11:52:04 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [708] with data {"GOT":"Alesander Frey","LOTR":"Galadriel"}
+2025-06-04 11:52:05 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:52:06 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [709] with data {"GOT":"Buu","LOTR":"Saruman the White"}
+2025-06-04 11:52:08 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [710] with data {"GOT":"Jyzene","LOTR":"Grìma Wormtongue"}
+2025-06-04 11:52:10 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [711] with data {"GOT":"Randa","LOTR":"Grìma Wormtongue"}
+2025-06-04 11:52:12 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [712] with data {"GOT":"Meha","LOTR":"Barliman Butterbur"}
+2025-06-04 11:52:13 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-04 11:52:13 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-04 11:52:13 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04 11:52:13 [SpringApplicationShutdownHook] WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2025-06-04 11:52:13 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-04 11:52:13 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-06-04 11:54:02 [restartedMain] INFO  jon.db.queue.Application - Starting Application using Java 22.0.2 with PID 9352 (C:\Users\buble\OneDrive\Escritorio\DB Queue\target\classes started by buble in C:\Users\buble\OneDrive\Escritorio\DB Queue)
+2025-06-04 11:54:02 [restartedMain] INFO  jon.db.queue.Application - No active profile set, falling back to 1 default profile: "default"
+2025-06-04 11:54:03 [restartedMain] INFO  o.s.b.d.c.l.DockerComposeLifecycleManager - Using Docker Compose file C:\Users\buble\OneDrive\Escritorio\DB Queue\compose.yaml
+2025-06-04 11:54:04 [restartedMain] INFO  o.s.b.d.c.l.DockerComposeLifecycleManager - There are already Docker Compose services running, skipping startup
+2025-06-04 11:54:04 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-06-04 11:54:04 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-06-04 11:54:05 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-04 11:54:05 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 104 ms. Found 1 JPA repository interface.
+2025-06-04 11:54:06 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-06-04 11:54:06 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-06-04 11:54:06 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-04 11:54:06 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-06-04 11:54:07 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-04 11:54:07 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2476 ms
+2025-06-04 11:54:07 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-06-04 11:54:07 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-06-04 11:54:07 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-06-04 11:54:08 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-06-04 11:54:08 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-06-04 11:54:08 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6df227f3
+2025-06-04 11:54:08 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-04 11:54:08 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-06-04 11:54:10 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-06-04 11:54:10 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04 11:54:10 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-06-04 11:54:11 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-04 11:54:11 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-06-04 11:54:11 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-06-04 11:54:11 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-06-04 11:54:11 [restartedMain] INFO  jon.db.queue.Application - Started Application in 10.201 seconds (process running for 11.255)
+2025-06-04 11:54:11 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:54:12 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [691, 692, 693]
+2025-06-04 11:54:12 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [688, 689, 690]
+2025-06-04 11:54:12 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [694, 695, 696]
+2025-06-04 11:54:12 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 694 with data: {"GOT": "Jorah Mormont", "LOTR": "Tom Bombadil"}
+2025-06-04 11:54:12 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 691 with data: {"GOT": "Kemmett Pyke", "LOTR": "Galadriel"}
+2025-06-04 11:54:12 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 688 with data: {"gotCharacter": "Morros Slynt", "lotrCharacter": "Denethor"}
+2025-06-04 11:54:12 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 695 with data: {"GOT": "Lark", "LOTR": "Quickbeam"}
+2025-06-04 11:54:12 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 692 with data: {"GOT": "Benedar Belmore", "LOTR": "Shadowfax"}
+2025-06-04 11:54:12 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [713] with data {"LOTR":"Faramir","GOT":"Denys Darklyn"}
+2025-06-04 11:54:14 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [714] with data {"LOTR":"Aragorn","GOT":"Bandy"}
+2025-06-04 11:54:15 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 689 with data: {"GOT": "Morrec", "LOTR": "Éomer"}
+2025-06-04 11:54:15 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 693 with data: {"GOT": "Gwynesse Harlaw", "LOTR": "Treebeard"}
+2025-06-04 11:54:15 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 690 with data: {"GOT": "Dorren Stark", "LOTR": "Meriadoc Brandybuck"}
+2025-06-04 11:54:15 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 696 with data: {"GOT": "Shella Whent", "LOTR": "Denethor"}
+2025-06-04 11:54:16 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [715] with data {"LOTR":"Barliman Butterbur","GOT":"Prendahl na Ghezn"}
+2025-06-04 11:54:18 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:54:18 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 11:54:18 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:54:18 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [716] with data {"LOTR":"Treebeard","GOT":"Knight of Ninestars"}
+2025-06-04 11:54:19 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:54:19 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [700, 701, 702]
+2025-06-04 11:54:19 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 700 with data: {"GOT": "Jon Pox", "LOTR": "Gimli"}
+2025-06-04 11:54:19 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 701 with data: {"GOT": "Unella", "LOTR": "Aragorn"}
+2025-06-04 11:54:19 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 702 with data: {"GOT": "Theo Wull", "LOTR": "Éowyn"}
+2025-06-04 11:54:19 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [697, 698, 699]
+2025-06-04 11:54:19 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [703, 704, 705]
+2025-06-04 11:54:19 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 697 with data: {"GOT": "Lomas Estermont", "LOTR": "Treebeard"}
+2025-06-04 11:54:19 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 698 with data: {"GOT": "Harry Strickland", "LOTR": "Legolas"}
+2025-06-04 11:54:20 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [717] with data {"LOTR":"Glorfindel","GOT":"Tysha"}
+2025-06-04 11:54:22 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [718] with data {"LOTR":"Elrond","GOT":"Clement Piper"}
+2025-06-04 11:54:22 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 699 with data: {"GOT": "Gorold Goodbrother", "LOTR": "Sauron"}
+2025-06-04 11:54:22 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 11:54:22 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 703 with data: {"GOT": "Robert Ashford", "LOTR": "Saruman the White"}
+2025-06-04 11:54:22 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 705 with data: {"GOT": "Alvyn Sharp", "LOTR": "Gimli"}
+2025-06-04 11:54:22 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 704 with data: {"GOT": "Donnel Drumm", "LOTR": "Éowyn"}
+2025-06-04 11:54:24 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [719] with data {"LOTR":"Glorfindel","GOT":"Anvil Ryn"}
+2025-06-04 11:54:25 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:54:25 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:54:26 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [720] with data {"LOTR":"Meriadoc Brandybuck","GOT":"Ghael"}
+2025-06-04 11:54:27 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:54:27 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [709, 710, 711]
+2025-06-04 11:54:27 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 709 with data: {"GOT": "Buu", "LOTR": "Saruman the White"}
+2025-06-04 11:54:27 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 710 with data: {"GOT": "Jyzene", "LOTR": "Grìma Wormtongue"}
+2025-06-04 11:54:27 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 711 with data: {"GOT": "Randa", "LOTR": "Grìma Wormtongue"}
+2025-06-04 11:54:27 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [712, 713, 714]
+2025-06-04 11:54:27 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [706, 707, 708]
+2025-06-04 11:54:27 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 712 with data: {"GOT": "Meha", "LOTR": "Barliman Butterbur"}
+2025-06-04 11:54:27 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 706 with data: {"GOT": "Torren Liddle", "LOTR": "Shelob"}
+2025-06-04 11:54:28 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [721] with data {"LOTR":"Quickbeam","GOT":"Greydon Goodbrother"}
+2025-06-04 11:54:30 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [722] with data {"LOTR":"Éomer","GOT":"Selmond Stackspear"}
+2025-06-04 11:54:30 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 713 with data: {"GOT": "Denys Darklyn", "LOTR": "Faramir"}
+2025-06-04 11:54:30 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 714 with data: {"GOT": "Bandy", "LOTR": "Aragorn"}
+2025-06-04 11:54:30 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 707 with data: {"GOT": "Jeyne Westerling", "LOTR": "Saruman the White"}
+2025-06-04 11:54:30 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 708 with data: {"GOT": "Alesander Frey", "LOTR": "Galadriel"}
+2025-06-04 11:54:30 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:54:32 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [723] with data {"LOTR":"Faramir","GOT":"Cohollo"}
+2025-06-04 11:54:33 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 11:54:33 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:54:34 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [724] with data {"LOTR":"Peregrin Took","GOT":"Sarella Sand"}
+2025-06-04 11:54:35 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:54:35 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [715, 716, 717]
+2025-06-04 11:54:35 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 717 with data: {"GOT": "Tysha", "LOTR": "Glorfindel"}
+2025-06-04 11:54:35 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 715 with data: {"GOT": "Prendahl na Ghezn", "LOTR": "Barliman Butterbur"}
+2025-06-04 11:54:35 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 716 with data: {"GOT": "Knight of Ninestars", "LOTR": "Treebeard"}
+2025-06-04 11:54:35 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 3 messages [721, 722, 723]
+2025-06-04 11:54:35 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 721 with data: {"GOT": "Greydon Goodbrother", "LOTR": "Quickbeam"}
+2025-06-04 11:54:35 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 722 with data: {"GOT": "Selmond Stackspear", "LOTR": "Éomer"}
+2025-06-04 11:54:35 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [718, 719, 720]
+2025-06-04 11:54:36 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [725] with data {"LOTR":"Éowyn","GOT":"Red Lamb"}
+2025-06-04 11:54:38 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [726] with data {"LOTR":"Grìma Wormtongue","GOT":"Jaggot"}
+2025-06-04 11:54:38 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 723 with data: {"GOT": "Cohollo", "LOTR": "Faramir"}
+2025-06-04 11:54:38 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 718 with data: {"GOT": "Clement Piper", "LOTR": "Elrond"}
+2025-06-04 11:54:38 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 719 with data: {"GOT": "Anvil Ryn", "LOTR": "Glorfindel"}
+2025-06-04 11:54:38 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 720 with data: {"GOT": "Ghael", "LOTR": "Meriadoc Brandybuck"}
+2025-06-04 11:54:38 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 11:54:40 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [727] with data {"LOTR":"Legolas","GOT":"Dhazzar"}
+2025-06-04 11:54:41 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:54:41 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:54:42 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [728] with data {"LOTR":"Saruman the White","GOT":"Lord Commander Hoare"}
+2025-06-04 11:54:43 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:54:43 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 11:54:43 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:54:43 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [724, 725, 726]
+2025-06-04 11:54:43 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 724 with data: {"GOT": "Sarella Sand", "LOTR": "Peregrin Took"}
+2025-06-04 11:54:43 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 726 with data: {"GOT": "Jaggot", "LOTR": "Grìma Wormtongue"}
+2025-06-04 11:54:43 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 725 with data: {"GOT": "Red Lamb", "LOTR": "Éowyn"}
+2025-06-04 11:54:43 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 2 messages [727, 728]
+2025-06-04 11:54:43 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 727 with data: {"GOT": "Dhazzar", "LOTR": "Legolas"}
+2025-06-04 11:54:43 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 728 with data: {"GOT": "Lord Commander Hoare", "LOTR": "Saruman the White"}
+2025-06-04 11:54:44 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [729] with data {"LOTR":"Peregrin Took","GOT":"Lewis Lanster"}
+2025-06-04 11:54:46 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 11:54:46 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:54:46 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [730] with data {"LOTR":"Shadowfax","GOT":"Vayon Poole"}
+2025-06-04 11:54:48 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [731] with data {"LOTR":"Shadowfax","GOT":"Dale Drumm"}
+2025-06-04 11:54:50 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [732] with data {"LOTR":"Gimli","GOT":"Donella Hornwood"}
+2025-06-04 11:54:51 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:54:51 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 0 messages []
+2025-06-04 11:54:51 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 11:54:51 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 1 messages [732]
+2025-06-04 11:54:51 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-1] Processing message 732 with data: {"GOT": "Donella Hornwood", "LOTR": "Gimli"}
+2025-06-04 11:54:51 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 3 messages [729, 730, 731]
+2025-06-04 11:54:51 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 729 with data: {"GOT": "Lewis Lanster", "LOTR": "Peregrin Took"}
+2025-06-04 11:54:51 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 731 with data: {"GOT": "Dale Drumm", "LOTR": "Shadowfax"}
+2025-06-04 11:54:51 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 730 with data: {"GOT": "Vayon Poole", "LOTR": "Shadowfax"}
+2025-06-04 11:54:52 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [733] with data {"LOTR":"Peregrin Took","GOT":"Jarl"}
+2025-06-04 11:54:54 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:54:54 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:54:55 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [734] with data {"LOTR":"Frodo Baggins","GOT":"Lanna Lannister"}
+2025-06-04 11:54:57 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [735] with data {"LOTR":"Aragorn","GOT":"Ralf Stonehouse"}
+2025-06-04 11:54:59 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [736] with data {"LOTR":"Meriadoc Brandybuck","GOT":"Drennan"}
+2025-06-04 11:54:59 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:54:59 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 11:54:59 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:54:59 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 1 messages [736]
+2025-06-04 11:54:59 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 736 with data: {"GOT": "Drennan", "LOTR": "Meriadoc Brandybuck"}
+2025-06-04 11:54:59 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [733, 734, 735]
+2025-06-04 11:54:59 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 733 with data: {"GOT": "Jarl", "LOTR": "Peregrin Took"}
+2025-06-04 11:54:59 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 734 with data: {"GOT": "Lanna Lannister", "LOTR": "Frodo Baggins"}
+2025-06-04 11:54:59 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 735 with data: {"GOT": "Ralf Stonehouse", "LOTR": "Aragorn"}
+2025-06-04 11:55:01 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [737] with data {"LOTR":"Beregond","GOT":"Dirk"}
+2025-06-04 11:55:02 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:55:02 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 11:55:03 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [738] with data {"LOTR":"Gandalf the Grey","GOT":"Lomas Estermont"}
+2025-06-04 11:55:05 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [739] with data {"LOTR":"Legolas","GOT":"Merry Meg"}
+2025-06-04 11:55:07 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [740] with data {"LOTR":"Treebeard","GOT":"Robin Ryger"}
+2025-06-04 11:55:07 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:55:07 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 11:55:07 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:55:07 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 1 messages [737]
+2025-06-04 11:55:07 [pool-2-thread-2] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 737 with data: {"GOT": "Dirk", "LOTR": "Beregond"}
+2025-06-04 11:55:07 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [738, 739, 740]
+2025-06-04 11:55:07 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 739 with data: {"GOT": "Merry Meg", "LOTR": "Legolas"}
+2025-06-04 11:55:07 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 738 with data: {"GOT": "Lomas Estermont", "LOTR": "Gandalf the Grey"}
+2025-06-04 11:55:07 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 740 with data: {"GOT": "Robin Ryger", "LOTR": "Treebeard"}
+2025-06-04 11:55:09 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [741] with data {"LOTR":"Aragorn","GOT":"Myles Manwoody"}
+2025-06-04 11:55:10 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] All messages processed successfully
+2025-06-04 11:55:10 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] All messages processed successfully
+2025-06-04 11:55:11 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [742] with data {"LOTR":"Frodo Baggins","GOT":"Tion Frey"}
+2025-06-04 11:55:13 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [743] with data {"LOTR":"Gimli","GOT":"Knight of Ninestars"}
+2025-06-04 11:55:15 [scheduling-1] INFO  jon.db.queue.MessageQueueCreator - Created message [744] with data {"LOTR":"Sauron","GOT":"Clarence Crabb"}
+2025-06-04 11:55:15 [scheduling-1] INFO  jon.db.queue.MessageQueueScheduler - Polling message queue...
+2025-06-04 11:55:15 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] Processing 0 messages []
+2025-06-04 11:55:15 [pool-3-thread-1] INFO  jon.db.queue.MessageQueueWorker - [Worker-1] All messages processed successfully
+2025-06-04 11:55:15 [pool-3-thread-2] INFO  jon.db.queue.MessageQueueWorker - [Worker-3] Processing 1 messages [741]
+2025-06-04 11:55:15 [pool-2-thread-1] INFO  jon.db.queue.MessageProcessor - [Worker-3] Processing message 741 with data: {"GOT": "Myles Manwoody", "LOTR": "Aragorn"}
+2025-06-04 11:55:15 [pool-3-thread-3] INFO  jon.db.queue.MessageQueueWorker - [Worker-2] Processing 3 messages [742, 743, 744]
+2025-06-04 11:55:15 [pool-2-thread-5] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 742 with data: {"GOT": "Tion Frey", "LOTR": "Frodo Baggins"}
+2025-06-04 11:55:15 [pool-2-thread-4] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 744 with data: {"GOT": "Clarence Crabb", "LOTR": "Sauron"}
+2025-06-04 11:55:15 [pool-2-thread-3] INFO  jon.db.queue.MessageProcessor - [Worker-2] Processing message 743 with data: {"GOT": "Knight of Ninestars", "LOTR": "Gimli"}
+2025-06-04 11:55:17 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-06-04 11:55:17 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-06-04 11:55:17 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-06-04 11:55:17 [SpringApplicationShutdownHook] WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2025-06-04 11:55:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-06-04 11:55:17 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
