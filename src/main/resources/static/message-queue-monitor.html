@@ -10,11 +10,13 @@
         tr:nth-child(even) { background-color: #f9f9f9; }
         .processed { background-color: #dff0d8; }
         .failed { background-color: #f2dede; }
+        .deleted { background-color: #f8d7da; text-decoration: line-through; }
         #connection-status { margin-bottom: 10px; }
         .connected { color: green; }
         .disconnected { color: red; }
         .highlight { animation: highlight 2s; }
         .updated { animation: update-highlight 2s; }
+        .removing { animation: delete-fade 2s forwards; }
         @keyframes highlight {
             0% { background-color: #ffff99; }
             100% { background-color: transparent; }
@@ -23,11 +25,16 @@
             0% { background-color: #b3e6ff; }
             100% { background-color: transparent; }
         }
+        @keyframes delete-fade {
+            0% { opacity: 1; background-color: #ffcccc; }
+            100% { opacity: 0.5; background-color: #f8d7da; }
+        }
     </style>
 </head>
 <body>
     <h1>Queue Messages Real-time Monitor</h1>
     <div id="connection-status" class="disconnected">Disconnected</div>
+    <div id="message-count">Messages in memory: 0</div>
     <table>
         <thead>
             <tr>
@@ -48,13 +55,19 @@
         document.addEventListener('DOMContentLoaded', function() {
             const messagesTable = document.getElementById('messages-table');
             const connectionStatus = document.getElementById('connection-status');
+            const messageCountElement = document.getElementById('message-count');
             const messages = new Map();
             const MAX_MESSAGES = 20;
             let lastUpdatedId = null;
+            const deletedMessages = new Set();
 
             function updateConnectionStatus(connected) {
                 connectionStatus.textContent = connected ? 'Connected' : 'Disconnected';
                 connectionStatus.className = connected ? 'connected' : 'disconnected';
+            }
+            
+            function updateMessageCount() {
+                messageCountElement.textContent = `Messages in memory: ${messages.size} (${deletedMessages.size} deleted)`;
             }
 
             function limitMapSize() {
@@ -68,9 +81,26 @@
 
                     // Eliminar los mensajes más antiguos
                     for (let i = 0; i < deleteCount; i++) {
-                        messages.delete(sortedIds[i]);
+                        // No eliminar mensajes recién eliminados para mostrar la animación
+                        if (!deletedMessages.has(sortedIds[i])) {
+                            messages.delete(sortedIds[i]);
+                        }
                     }
+
                 }
+                updateMessageCount();
+            }
+
+            // Función para limpiar mensajes eliminados después de un tiempo
+            function cleanupDeletedMessages() {
+                deletedMessages.forEach(id => {
+                    if (messages.has(id)) {
+                        messages.delete(id);
+                    }
+                });
+                deletedMessages.clear();
+                updateMessageCount();
+                renderMessages();
             }
 
             function connectEventSource() {
@@ -87,6 +117,14 @@
                     try {
                         const message = JSON.parse(event.data);
                         console.log('Received message:', message);
+                        
+                        // Verificar si es una actualización
+                        const isUpdate = messages.has(message.internalId);
+                        if (isUpdate) {
+                            console.log(`This is an update to message ${message.internalId}`);
+                            lastUpdatedId = message.internalId;
+                        }
+                        
                         messages.set(message.internalId, message);
                         limitMapSize();
                         renderMessages();
@@ -99,29 +137,45 @@
                 eventSource.addEventListener('update', function(event) { //Update Event
                     try {
                         const message = JSON.parse(event.data);
-                        console.log('Actualización de mensaje recibida:', message);
+                        console.log('Update message received:', message);
 
-                        lastUpdatedId = message.id;
+                        lastUpdatedId = message.internalId;
 
-                         messages.set(message.id, message);
-                         limitMapSize();
-                         renderMessages();
-
-<!--                        if (messages.has(message.id)) {-->
-<!--                           -->
-<!--                        } else { //Old Message-->
-<!--                            if (messages.size < MAX_MESSAGES) {-->
-<!--                                messages.set(message.id, message);-->
-<!--                                renderMessages();-->
-<!--                            }-->
-<!--                        }-->
+                        messages.set(message.internalId, message);
+                        limitMapSize();
+                        renderMessages();
                     } catch (error) {
-                        console.error('Error al procesar actualización:', error);
-                        console.error('Datos de la actualización:', event.data);
+                        console.error('Error processing update:', error);
+                        console.error('Raw update data:', event.data);
+                    }
+                });
+
+                eventSource.addEventListener('delete', function(event) { //Delete Event
+                    try {
+                        const message = JSON.parse(event.data);
+                        console.log('Delete message received:', message);
+
+                        // Si el mensaje ya no está en nuestra memoria, no hacemos nada
+                        if (!messages.has(message.internalId)) {
+                            console.log(`Message ${message.internalId} not in memory, ignoring delete event`);
+                            return;
+                        }
+
+                        // Marcar el mensaje como eliminado pero mantenerlo para mostrar la animación
+                        deletedMessages.add(message.internalId);
+
+                        // Actualizar la UI para mostrar el mensaje eliminado
+                        renderMessages();
+
+                        // Programar limpieza después de 3 segundos (tiempo suficiente para la animación)
+                        setTimeout(cleanupDeletedMessages, 3000);
+                    } catch (error) {
+                        console.error('Error processing delete:', error);
+                        console.error('Raw delete data:', event.data);
                     }
                 });
                 
-                eventSource.onerror = function() {
+                eventSource.onerror = function(err) {
                     updateConnectionStatus(false);
                     console.error('SSE connection error:', err);
                     console.log('SSE connection error, reconnecting in 5 seconds...');
@@ -133,8 +187,7 @@
             function renderMessages() {
                 // Sort messages by ID (newest first)
                 const sortedMessages = Array.from(messages.values())
-                    .sort((a, b) => b.internalId - a.internalId)
-                    .slice(0, MAX_MESSAGES);
+                    .sort((a, b) => b.internalId - a.internalId);
                 
                 // Clear the table
                 messagesTable.innerHTML = '';
@@ -143,40 +196,70 @@
                 sortedMessages.forEach((message, index) => {
                     const row = document.createElement('tr');
 
-                    // Highlight first/updated message
-                    if (index === 0) {
+                    const isUpdated = message.internalId === lastUpdatedId && lastUpdatedId !== null;
+                    const isDeleted = deletedMessages.has(message.internalId);
+
+                    // Establecer clases base según el estado
+                    if (isDeleted) {
+                        row.classList.add('deleted', 'removing');
+                    } else if (message.processedAt) {
+                        row.classList.add('processed');
+                    } else if (message.nonTimeoutRetries > 0) {
+                        row.classList.add('failed');
+                    }
+                    
+                    // Añadir clases para destacar
+                    if (index === 0 && !isDeleted) {
                         row.classList.add('highlight');
-                    } else if (message.id === lastUpdatedId) {
+                    } else if (isUpdated && !isDeleted) {
                         row.classList.add('updated');
-                        // Reiniciar después de renderizar
-                        lastUpdatedId = null;
                     }
 
-                    // Set row class based on message status
-                    if (message.processedAt) {
-                        row.className = 'processed';
-                    } else if (message.nonTimeoutRetries > 0) {
-                        row.className = 'failed';
+                    // Determinar el estado para mostrar
+                    let status;
+                    if (isDeleted) {
+                        status = 'Moved to DLQ';
+                    } else if (message.processedAt) {
+                        status = `Processed: ${new Date(message.processedAt).toLocaleString()}`;
+                    } else {
+                        status = 'Pending';
                     }
                     
                     // Format the row content
                     row.innerHTML = `
                         <td>${message.internalId}</td>
-                        <td>${message.messageId}</td>
-                        <td>${JSON.stringify(JSON.parse(message.data))}</td>
+                        <td>${message.messageId || 'N/A'}</td>
+                        <td>${formatData(message.data)}</td>
                         <td>${new Date(message.arrivedAt).toLocaleString()}</td>
                         <td>${message.nonTimeoutRetries}</td>
-                        <td>${message.processedAt}</td>
+                        <td>${status}</td>
                     `;
                     
                     messagesTable.appendChild(row);
                 });
+                
+                // Reset lastUpdatedId after rendering
+                if (lastUpdatedId !== null) {
+                    lastUpdatedId = null;
+                }
+                
+                updateMessageCount();
+            }
+            
+            // Función segura para formatear datos JSON
+            function formatData(data) {
+                try {
+                    return JSON.stringify(JSON.parse(data));
+                } catch (e) {
+                    return data || 'N/A';
+                }
             }
             
             // Start the connection
             connectEventSource();
+            updateMessageCount();
 
-             console.log('JavaScript initialized, waiting for events...');
+            console.log('JavaScript initialized, waiting for events...');
         });
     </script>
 </body>

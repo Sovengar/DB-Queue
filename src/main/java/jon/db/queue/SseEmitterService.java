@@ -71,11 +71,6 @@ public class SseEmitterService {
     }
 
     public void sendMessageUpdate(QueueMessage msg) {
-//        SseEmitter.SseEventBuilder event = SseEmitter.event()
-//                .name("update")
-//                .data(msg)
-//                .id(String.valueOf(msg.getInternalId()));
-
         var sseEvent = SseEmitter.event()
                 .id(String.valueOf(msg.getInternalId()))
                 .name("update") //Specific event for updates
@@ -90,6 +85,20 @@ public class SseEmitterService {
         });
     }
 
+    public void sendMessageDelete(QueueMessage msg) {
+        var sseEvent = SseEmitter.event()
+                .id(String.valueOf(msg.getInternalId()))
+                .name("delete") //Specific event for deletes
+                .data(buildDataFromEntity(msg));
+
+        emitters.forEach((eventId, emitter) -> {
+            try {
+                emitter.send(sseEvent);
+            } catch (IOException e) {
+                //TODO
+            }
+        });
+    }
 
     public Map<String, Object> buildDataFromEntity(QueueMessage message){
         return Map.of(

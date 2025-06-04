@@ -34,6 +34,7 @@ class MessageQueueScheduler {
 
     private static final int NUMBER_OF_THREADS = 3;
     private final ExecutorService executor = Executors.newFixedThreadPool(NUMBER_OF_THREADS); // Workers for concurrency
+    private static final Random RANDOM = new Random();
 
     @Scheduled(fixedDelay = 10000)
     public void pollMessageQueue() {
@@ -55,7 +56,16 @@ class MessageQueueScheduler {
 
     @Scheduled(fixedDelay = 3000)
     public void simulateInfluxOfMessages() {
-        mqCreator.createWithRandomData();
+
+        var messageId = UUID.randomUUID();
+
+        if (RANDOM.nextInt(20) == 0) { // Probability of 1/20 (5%)
+            log.debug("Simulating duplication of messages with id {}", messageId);
+            mqCreator.createWithRandomData(messageId);
+            mqCreator.createWithRandomData(messageId);
+        } else {
+            mqCreator.createWithRandomData(messageId);
+        }
     }
 
     //TODO
@@ -112,6 +122,7 @@ class MessageQueueWorker {
         }
     }
 
+    @Transactional
     public void moveToDeadLetterQueue(){
         log.debug("Fetching messages to move to DLQ");
         var messages = messageProcessor.fetchPoisonedMessages();
@@ -152,7 +163,7 @@ class MessageProcessor {
             msg.markAsFailedToProcess();
 
             if(!msg.canRetry()){
-                log.warn("[{}] Message {} has reached the maximum number of retries ({}), moving to Dead Letter Queue", workerName, msg.getInternalId(), QueueMessage.MAX_RETRIES);
+                log.warn("[{}] Message {} with id {} has reached the maximum number of retries ({}), moving to Dead Letter Queue", workerName, msg.getInternalId(), msg.getMessageId(), QueueMessage.MAX_RETRIES);
                 moveToDLQ(List.of(msg));
             }
 
@@ -173,7 +184,7 @@ class MessageProcessor {
         //TODO, NO ES GENERICO, NO PUEDO LLAMAR CUALQUIER CODIGO, 1 TABLA-QUEUE POR TAREA?
 
         if(Math.random() < 0.5){
-            throw new RuntimeException("Random error");
+            throw new RuntimeException("Simulating Random error");
         }
 
         log.trace("Processing message {} with data: {}", msg.getInternalId(), msg.getData());
@@ -194,14 +205,14 @@ class MessageProcessor {
         }
     }
 
-    @Transactional
     public void moveToDLQ(final List<QueueMessage> messages) {
         messages.forEach(msg -> {
-            log.trace("Moving message {} to DLQ", msg.getInternalId());
+            log.trace("Moving message {} with id {} to DLQ", msg.getInternalId(), msg.getMessageId());
 
             var deadLetterQueue = DeadLetterQueue.Factory.create(msg.getMessageId(), msg.getData(), msg.getArrivedAt());
             deadLetterQueueService.create(deadLetterQueue);
 
+            sseEmitterService.sendMessageDelete(msg);
             repo.delete(msg);
         });
     }
@@ -227,12 +238,12 @@ class MessageQueueCreator {
         return internalId;
     }
 
-    public void createWithRandomData() {
+    public void createWithRandomData(UUID messageId) {
         var faker = new Faker();
         var gotCharacter = faker.gameOfThrones().character();
         var lotrCharacter = faker.lordOfTheRings().character();
 
         Map<String, Object> data = Map.of("GOT", gotCharacter, "LOTR", lotrCharacter);
-        createProvidingData(data, UUID.randomUUID());
+        createProvidingData(data, messageId);
     }
 }
