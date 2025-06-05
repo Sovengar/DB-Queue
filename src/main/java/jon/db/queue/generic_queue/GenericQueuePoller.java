@@ -2,8 +2,8 @@ package jon.db.queue.generic_queue;
 
 import jon.db.queue.dead_letter_queue.DeadLetterQueueHandler;
 import jon.db.queue.models.DeadLetterQueue;
-import jon.db.queue.models.QueueMessage;
-import jon.db.queue.store.MessageQueueRepo;
+import jon.db.queue.models.GenericQueue;
+import jon.db.queue.store.GenericQueueRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -82,9 +82,9 @@ class GenericQueueWorker {
     public void processMessagesInQueue(String workerName) {
         var queueMessages = genericQueueProcessor.fetchMessages(workerName);
 
-        log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(QueueMessage::getInternalId).toList());
+        log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(GenericQueue::getInternalId).toList());
 
-        for (QueueMessage msg : queueMessages) {
+        for (GenericQueue msg : queueMessages) {
             genericQueueProcessor.processMessageWithErrorHandling(workerName, msg);
         }
     }
@@ -93,11 +93,11 @@ class GenericQueueWorker {
     public void parallelProcessMessagesInQueue(String workerName) {
         var queueMessages = genericQueueProcessor.fetchMessages(workerName);
 
-        log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(QueueMessage::getInternalId).toList());
+        log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(GenericQueue::getInternalId).toList());
 
         // Parallel Processing every message
         List<CompletableFuture<Void>> futures = new ArrayList<>();
-        for (QueueMessage msg : queueMessages) {
+        for (GenericQueue msg : queueMessages) {
             CompletableFuture<Void> future = CompletableFuture.runAsync(() -> genericQueueProcessor.processMessageWithErrorHandling(workerName, msg), executorService);
             futures.add(future);
         }
@@ -126,7 +126,7 @@ class GenericQueueWorker {
             return;
         }
 
-        log.debug("Moving {} messages {} to DLQ", messages.size(), messages.stream().map(QueueMessage::getInternalId).toList());
+        log.debug("Moving {} messages {} to DLQ", messages.size(), messages.stream().map(GenericQueue::getInternalId).toList());
         genericQueueProcessor.moveToDLQ(messages);
     }
 }
@@ -135,20 +135,20 @@ class GenericQueueWorker {
 @Slf4j
 @RequiredArgsConstructor
 class GenericQueueProcessor {
-    private final MessageQueueRepo repo;
+    private final GenericQueueRepo repo;
     private final DeadLetterQueueHandler deadLetterQueueHandler;
     private final GenericQueueSseEmitter genericQueueSseEmitter;
 
-    List<QueueMessage> fetchMessages(final String workerName) {
+    List<GenericQueue> fetchMessages(final String workerName) {
         try {
-            return repo.lockNextMessages(3, QueueMessage.MAX_RETRIES);
+            return repo.lockNextMessages(GenericQueue.TABLE_NAME, 3, GenericQueue.MAX_RETRIES);
         } catch (Exception e) {
             log.error("[{}] Error retrieving queue messages from DB, abnormal: {}", workerName, e.getMessage());
             return List.of();
         }
     }
 
-    void processMessageWithErrorHandling(final String workerName, final QueueMessage msg) {
+    void processMessageWithErrorHandling(final String workerName, final GenericQueue msg) {
         try {
             log.debug("[{}] Processing message {} with data: {}", workerName, msg.getInternalId(), msg.getData());
             processMessage(msg);
@@ -157,7 +157,7 @@ class GenericQueueProcessor {
             msg.markAsFailedToProcess();
 
             if(!msg.canRetry()){
-                log.warn("[{}] Message {} with id {} has reached the maximum number of retries ({}), moving to Dead Letter Queue", workerName, msg.getInternalId(), msg.getMessageId(), QueueMessage.MAX_RETRIES);
+                log.warn("[{}] Message {} with id {} has reached the maximum number of retries ({}), moving to Dead Letter Queue", workerName, msg.getInternalId(), msg.getMessageId(), GenericQueue.MAX_RETRIES);
                 moveToDLQ(List.of(msg));
             }
 
@@ -165,16 +165,16 @@ class GenericQueueProcessor {
         }
     }
 
-    List<QueueMessage> fetchPoisonedMessages() {
+    List<GenericQueue> fetchPoisonedMessages() {
         try {
-            return repo.lockPoisonedMessages();
+            return repo.lockPoisonedMessages(GenericQueue.TABLE_NAME);
         } catch (Exception e) {
             log.error("Error retrieving queue messages from DB, abnormal: {}", e.getMessage());
             return List.of();
         }
     }
 
-    private void processMessage(final QueueMessage msg) {
+    private void processMessage(final GenericQueue msg) {
         if(Math.random() < 0.5){
             throw new RuntimeException("Simulating Random error");
         }
@@ -185,7 +185,7 @@ class GenericQueueProcessor {
         genericQueueSseEmitter.sendMessageUpdate(msg);
         repo.update(msg);
 
-        var variableExecutionTimeInSeconds = (int) (Math.random() * 10 * 2);
+        var variableExecutionTimeInSeconds = (int) (Math.random() * 10 * 1.5);
         sleep(variableExecutionTimeInSeconds * 1000); // Simulate a long-running job
     }
 
@@ -197,7 +197,7 @@ class GenericQueueProcessor {
         }
     }
 
-    public void moveToDLQ(final List<QueueMessage> messages) {
+    public void moveToDLQ(final List<GenericQueue> messages) {
         messages.forEach(msg -> {
             log.trace("Moving message {} with id {} to DLQ", msg.getInternalId(), msg.getMessageId());
 

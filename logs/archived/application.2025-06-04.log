@@ -1475,13 +1475,13 @@ FOR NO KEY UPDATE SKIP LOCKED
 2025-06-04 14:38:42 [pool-2-thread-5] INFO  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 12 with data: {"GOT": "Weasel", "LOTR": "Shadowfax"}
 2025-06-04 14:38:42 [pool-2-thread-2] INFO  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 6 with data: {"GOT": "Matthos Seaworth", "LOTR": "Peregrin Took"}
 2025-06-04 14:38:42 [pool-2-thread-1] INFO  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 9 with data: {"GOT": "Toregg the Tall", "LOTR": "Sauron"}
-2025-06-04 14:38:42 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 9: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#9]
-2025-06-04 14:38:42 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 6: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#6]
-2025-06-04 14:38:42 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 11: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#11]
-2025-06-04 14:38:42 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 12: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#12]
-2025-06-04 14:38:42 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#9]
-2025-06-04 14:38:42 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#6]
-2025-06-04 14:38:42 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#11]
+2025-06-04 14:38:42 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 9: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#9]
+2025-06-04 14:38:42 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 6: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#6]
+2025-06-04 14:38:42 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 11: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#11]
+2025-06-04 14:38:42 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 12: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#12]
+2025-06-04 14:38:42 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#9]
+2025-06-04 14:38:42 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#6]
+2025-06-04 14:38:42 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#11]
 2025-06-04 14:38:42 [scheduling-1] INFO  jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 14:38:42 [scheduling-1] INFO  jon.db.queue.generic_queue.GenericQueueWorker - Moving 0 messages [] to DLQ
 2025-06-04 14:38:43 [scheduling-1] INFO  jon.db.queue.generic_queue.GenericQueueCreator - Created message [14] with data {"GOT":"Senelle","LOTR":"Meriadoc Brandybuck"}
@@ -9768,7 +9768,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:40:10 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 17:40:10 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [593] with data {"GOT":"Leona Woolfield","LOTR":"Quickbeam"}
 2025-06-04 17:40:10 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 17:40:13 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#585]
+2025-06-04 17:40:13 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#585]
 2025-06-04 17:40:13 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 3 messages [589, 591, 592]
 2025-06-04 17:40:13 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 589 with data: {"GOT": "Gwayne Corbray", "LOTR": "Treebeard"}
 2025-06-04 17:40:13 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 591 with data: {"GOT": "Bryan of Oldtown", "LOTR": "Saruman the White"}
@@ -9801,7 +9801,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:40:19 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 17:40:22 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [597] with data {"GOT":"Walys Flowers","LOTR":"Shadowfax"}
 2025-06-04 17:40:22 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 17:40:23 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#591]
+2025-06-04 17:40:23 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#591]
 2025-06-04 17:40:23 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 2 messages [596, 597]
 2025-06-04 17:40:23 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 596 with data: {"GOT": "Timeon", "LOTR": "Beregond"}
 2025-06-04 17:40:23 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 597 with data: {"GOT": "Walys Flowers", "LOTR": "Shadowfax"}
@@ -9824,7 +9824,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:40:25 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 596: Random error
 2025-06-04 17:40:26 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 17:40:26 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
-2025-06-04 17:40:27 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#589]
+2025-06-04 17:40:27 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#589]
 2025-06-04 17:40:28 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [599] with data {"GOT":"Cassella Vaith","LOTR":"Legolas"}
 2025-06-04 17:40:28 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 17:40:31 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [600] with data {"GOT":"Addam Velaryon","LOTR":"Glorfindel"}
@@ -10578,7 +10578,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:50:09 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 623: Random error
 2025-06-04 17:50:09 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 622: Random error
 2025-06-04 17:50:09 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 622 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 17:50:09 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#622]
+2025-06-04 17:50:09 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#622]
 2025-06-04 17:50:12 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [624] with data {"GOT":"Gyleno Dothare","LOTR":"Legolas"}
 2025-06-04 17:50:12 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 1
 2025-06-04 17:50:12 [http-nio-8080-exec-3] INFO  jon.db.queue.generic_queue.GenericQueueSseEmitter - New SSE connection established with client: 2
@@ -10857,7 +10857,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:50:29 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 625: Random error
 2025-06-04 17:50:29 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 629: Random error
 2025-06-04 17:50:29 [pool-2-thread-2] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 625 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 17:50:30 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#625]
+2025-06-04 17:50:30 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#625]
 2025-06-04 17:50:30 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [630] with data {"GOT":"Boremund Harlaw","LOTR":"Meriadoc Brandybuck"}
 2025-06-04 17:50:30 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 17:50:33 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -11144,14 +11144,14 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:50:53 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 637 with data: {"GOT": "Brandon the Shipwright", "LOTR": "Grìma Wormtongue"}
 2025-06-04 17:50:53 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 636 with data: {"GOT": "Courtenay Greenhill", "LOTR": "Faramir"}
 2025-06-04 17:50:53 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 635: Random error
-2025-06-04 17:50:54 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#629]
+2025-06-04 17:50:54 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#629]
 2025-06-04 17:50:54 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 1 messages [635]
 2025-06-04 17:50:54 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 635 with data: {"GOT": "Eldon Estermont", "LOTR": "Bilbo Baggins"}
 2025-06-04 17:50:54 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 635: Random error
 2025-06-04 17:50:54 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] All messages processed successfully
 2025-06-04 17:50:54 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [638] with data {"GOT":"Goady","LOTR":"Meriadoc Brandybuck"}
 2025-06-04 17:50:54 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 3
-2025-06-04 17:50:56 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#630]
+2025-06-04 17:50:56 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#630]
 2025-06-04 17:50:57 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 17:50:57 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 17:50:57 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [639] with data {"GOT":"Edmure Tully","LOTR":"Frodo Baggins"}
@@ -11173,7 +11173,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:50:59 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 638 with data: {"GOT": "Goady", "LOTR": "Meriadoc Brandybuck"}
 2025-06-04 17:50:59 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 638: Random error
 2025-06-04 17:50:59 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 639 with data: {"GOT": "Edmure Tully", "LOTR": "Frodo Baggins"}
-2025-06-04 17:51:00 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#635]
+2025-06-04 17:51:00 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#635]
 2025-06-04 17:51:00 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [640] with data {"GOT":"Ryk","LOTR":"Gimli"}
 2025-06-04 17:51:00 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 3
 2025-06-04 17:51:03 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [641] with data {"GOT":"Kyle","LOTR":"Arwen Evenstar"}
@@ -11196,7 +11196,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:51:09 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 642 with data: {"GOT": "Xhondo", "LOTR": "Faramir"}
 2025-06-04 17:51:09 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 638: Random error
 2025-06-04 17:51:09 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 638 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 17:51:09 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#635]
+2025-06-04 17:51:09 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#635]
 2025-06-04 17:51:09 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 0 messages []
 2025-06-04 17:51:09 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] All messages processed successfully
 2025-06-04 17:51:09 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [643] with data {"GOT":"Jonothor Darry","LOTR":"Bilbo Baggins"}
@@ -11457,7 +11457,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:51:21 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 4
 2025-06-04 17:51:24 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [648] with data {"GOT":"Harle the Handsome","LOTR":"Galadriel"}
 2025-06-04 17:51:24 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 4
-2025-06-04 17:51:25 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#638]
+2025-06-04 17:51:25 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#638]
 2025-06-04 17:51:25 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [643, 647, 648]
 2025-06-04 17:51:25 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 643 with data: {"GOT": "Jonothor Darry", "LOTR": "Bilbo Baggins"}
 2025-06-04 17:51:25 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 647 with data: {"GOT": "Umar", "LOTR": "Galadriel"}
@@ -11733,7 +11733,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:51:39 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 652 with data: {"GOT": "Aenys I Targaryen", "LOTR": "Shelob"}
 2025-06-04 17:51:40 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [653] with data {"GOT":"Randa","LOTR":"Frodo Baggins"}
 2025-06-04 17:51:40 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
-2025-06-04 17:51:40 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#648]
+2025-06-04 17:51:40 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#648]
 2025-06-04 17:51:40 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 1 messages [653]
 2025-06-04 17:51:40 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 653 with data: {"GOT": "Randa", "LOTR": "Frodo Baggins"}
 2025-06-04 17:51:43 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [654] with data {"GOT":"Albar Royce","LOTR":"Gandalf the Grey"}
@@ -11785,7 +11785,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:51:59 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 658: Random error
 2025-06-04 17:51:59 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 659 with data: {"GOT": "Tregar", "LOTR": "Arwen Evenstar"}
 2025-06-04 17:51:59 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 659: Random error
-2025-06-04 17:51:59 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#656]
+2025-06-04 17:51:59 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#656]
 2025-06-04 17:52:01 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 17:52:01 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 17:52:01 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [660] with data {"GOT":"Elinor Tyrell","LOTR":"Elrond"}
@@ -11845,7 +11845,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:52:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 17:52:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [668] with data {"GOT":"Alyn Estermont","LOTR":"Samwise Gamgee"}
 2025-06-04 17:52:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
-2025-06-04 17:52:27 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#659]
+2025-06-04 17:52:27 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#659]
 2025-06-04 17:52:27 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [666, 667, 668]
 2025-06-04 17:52:27 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 666 with data: {"GOT": "Mathis Frey", "LOTR": "Shelob"}
 2025-06-04 17:52:27 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 668 with data: {"GOT": "Alyn Estermont", "LOTR": "Samwise Gamgee"}
@@ -11865,7 +11865,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:52:30 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 669: Random error
 2025-06-04 17:52:31 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [670] with data {"GOT":"Matrice","LOTR":"Éomer"}
 2025-06-04 17:52:31 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
-2025-06-04 17:52:32 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#666]
+2025-06-04 17:52:32 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#666]
 2025-06-04 17:52:32 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 2 messages [669, 670]
 2025-06-04 17:52:32 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 669 with data: {"GOT": "Mela", "LOTR": "Gandalf the Grey"}
 2025-06-04 17:52:32 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 670 with data: {"GOT": "Matrice", "LOTR": "Éomer"}
@@ -11977,7 +11977,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:53:11 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 682: Random error
 2025-06-04 17:53:11 [pool-2-thread-4] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 682 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 17:53:12 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] All messages processed successfully
-2025-06-04 17:53:13 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#682]
+2025-06-04 17:53:13 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#682]
 2025-06-04 17:53:13 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 17:53:13 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 17:53:14 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [684] with data {"GOT":"Harry Strickland","LOTR":"Meriadoc Brandybuck"}
@@ -12147,7 +12147,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:54:23 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
 2025-06-04 17:54:23 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [707] with data {"GOT":"Pycelle","LOTR":"Arwen Evenstar"}
 2025-06-04 17:54:23 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
-2025-06-04 17:54:24 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#705]
+2025-06-04 17:54:24 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#705]
 2025-06-04 17:54:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 17:54:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 17:54:26 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [708] with data {"GOT":"Bearded Ben","LOTR":"Tom Bombadil"}
@@ -12223,7 +12223,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:54:51 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
 2025-06-04 17:54:54 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [717] with data {"GOT":"Delp","LOTR":"Meriadoc Brandybuck"}
 2025-06-04 17:54:54 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
-2025-06-04 17:54:55 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#710]
+2025-06-04 17:54:55 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#710]
 2025-06-04 17:54:57 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [718] with data {"GOT":"Alysanne Targaryen","LOTR":"Sauron"}
 2025-06-04 17:54:57 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
 2025-06-04 17:54:57 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -12268,7 +12268,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:55:09 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 716: Random error
 2025-06-04 17:55:09 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 720: Random error
 2025-06-04 17:55:09 [pool-2-thread-5] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 716 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 17:55:09 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#716]
+2025-06-04 17:55:09 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#716]
 2025-06-04 17:55:09 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [722] with data {"GOT":"Lucan","LOTR":"Shadowfax"}
 2025-06-04 17:55:09 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
 2025-06-04 17:55:12 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [723] with data {"GOT":"Orbelo","LOTR":"Faramir"}
@@ -12305,7 +12305,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:55:25 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 726 with data: {"GOT": "Illifer", "LOTR": "Gimli"}
 2025-06-04 17:55:25 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 725: Random error
 2025-06-04 17:55:25 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 726: Random error
-2025-06-04 17:55:27 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#720]
+2025-06-04 17:55:27 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#720]
 2025-06-04 17:55:27 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [728] with data {"GOT":"Perwyn Frey","LOTR":"Treebeard"}
 2025-06-04 17:55:27 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
 2025-06-04 17:55:29 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueScheduler - Polling message queue...
@@ -12349,7 +12349,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:55:41 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Message 728 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 17:55:41 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 732 with data: {"GOT": "Munciter", "LOTR": "Legolas"}
 2025-06-04 17:55:41 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 732: Random error
-2025-06-04 17:55:41 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#728]
+2025-06-04 17:55:41 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#728]
 2025-06-04 17:55:41 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 2 messages [731, 732]
 2025-06-04 17:55:41 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 731 with data: {"GOT": "Crawn", "LOTR": "Legolas"}
 2025-06-04 17:55:41 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 732 with data: {"GOT": "Munciter", "LOTR": "Legolas"}
@@ -12363,7 +12363,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:55:44 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 733: Random error
 2025-06-04 17:55:44 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 731: Random error
 2025-06-04 17:55:44 [pool-2-thread-3] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 731 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 17:55:44 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#731]
+2025-06-04 17:55:44 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#731]
 2025-06-04 17:55:45 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [734] with data {"GOT":"Mebble","LOTR":"Aragorn"}
 2025-06-04 17:55:45 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
 2025-06-04 17:55:45 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -12441,7 +12441,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:56:13 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 743: Random error
 2025-06-04 17:56:16 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [744] with data {"GOT":"Sandor Frey","LOTR":"Samwise Gamgee"}
 2025-06-04 17:56:16 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
-2025-06-04 17:56:17 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#738]
+2025-06-04 17:56:17 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#738]
 2025-06-04 17:56:17 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 3 messages [742, 743, 744]
 2025-06-04 17:56:17 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 742 with data: {"GOT": "Daemon Targaryen", "LOTR": "Gimli"}
 2025-06-04 17:56:17 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 743 with data: {"GOT": "Bryan Fossoway", "LOTR": "Peregrin Took"}
@@ -12589,7 +12589,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:57:07 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
 2025-06-04 17:57:07 [http-nio-8080-exec-1] INFO  jon.db.queue.generic_queue.GenericQueueSseEmitter - New SSE connection established with client: 1
 2025-06-04 17:57:08 [http-nio-8080-exec-4] INFO  jon.db.queue.generic_queue.GenericQueueSseEmitter - New SSE connection established with client: 2
-2025-06-04 17:57:09 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#754]
+2025-06-04 17:57:09 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#754]
 2025-06-04 17:57:10 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [757] with data {"GOT":"Garrison Prester","LOTR":"Samwise Gamgee"}
 2025-06-04 17:57:10 [http-nio-8080-exec-5] ERROR jon.db.queue.generic_queue.GenericQueueSseEmitter - SSE error for client: 1
 java.io.IOException: Se ha anulado una conexión establecida por el software en su equipo host.
@@ -12886,7 +12886,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:57:37 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 760: Random error
 2025-06-04 17:57:37 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Message 757 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 17:57:37 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 761: Random error
-2025-06-04 17:57:37 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#757]
+2025-06-04 17:57:37 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#757]
 2025-06-04 17:57:37 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 3 messages [760, 761, 762]
 2025-06-04 17:57:37 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 760 with data: {"GOT": "Leobald Tallhart", "LOTR": "Samwise Gamgee"}
 2025-06-04 17:57:37 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 762 with data: {"GOT": "Harwood Stout", "LOTR": "Faramir"}
@@ -12896,7 +12896,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:57:37 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 762: Random error
 2025-06-04 17:57:37 [pool-2-thread-5] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 760 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 17:57:37 [pool-2-thread-4] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 761 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 17:57:37 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#760]
+2025-06-04 17:57:37 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#760]
 2025-06-04 17:57:37 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [762, 763, 764]
 2025-06-04 17:57:37 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 762 with data: {"GOT": "Harwood Stout", "LOTR": "Faramir"}
 2025-06-04 17:57:37 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 763 with data: {"GOT": "Aron Santagar", "LOTR": "Faramir"}
@@ -13183,7 +13183,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 17:57:57 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 765: Random error
 2025-06-04 17:57:57 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 766 with data: {"GOT": "Martyn Lannister", "LOTR": "Aragorn"}
 2025-06-04 17:57:57 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 766: Random error
-2025-06-04 17:57:57 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#764]
+2025-06-04 17:57:57 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#764]
 2025-06-04 17:57:57 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 3 messages [765, 766, 770]
 2025-06-04 17:57:57 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 766 with data: {"GOT": "Martyn Lannister", "LOTR": "Aragorn"}
 2025-06-04 17:57:57 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 765 with data: {"GOT": "Catelyn Bracken", "LOTR": "Elrond"}
@@ -13452,7 +13452,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 	at java.base/java.lang.Thread.run(Thread.java:1570)
-2025-06-04 17:58:14 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#765]
+2025-06-04 17:58:14 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#765]
 2025-06-04 17:58:14 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 3 messages [775, 776, 777]
 2025-06-04 17:58:14 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 775 with data: {"GOT": "Talea", "LOTR": "Gollum"}
 2025-06-04 17:58:14 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 776 with data: {"GOT": "Squint", "LOTR": "Grìma Wormtongue"}
@@ -13748,14 +13748,14 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:00:08 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 810 with data: {"GOT": "Harwood Fell", "LOTR": "Arwen Evenstar"}
 2025-06-04 18:00:08 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 811 with data: {"GOT": "Ballabar", "LOTR": "Quickbeam"}
 2025-06-04 18:00:08 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 811: Random error
-2025-06-04 18:00:08 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#809]
+2025-06-04 18:00:08 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#809]
 2025-06-04 18:00:08 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 3 messages [811, 812, 813]
 2025-06-04 18:00:08 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 811 with data: {"GOT": "Ballabar", "LOTR": "Quickbeam"}
 2025-06-04 18:00:08 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 812 with data: {"GOT": "Delp", "LOTR": "Théoden"}
 2025-06-04 18:00:08 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 813 with data: {"GOT": "Grazhar zo Galare", "LOTR": "Éomer"}
 2025-06-04 18:00:09 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [816] with data {"GOT":"Ryles","LOTR":"Gandalf the Grey"}
 2025-06-04 18:00:09 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 4
-2025-06-04 18:00:09 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#809]
+2025-06-04 18:00:09 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#809]
 2025-06-04 18:00:09 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [814, 815, 816]
 2025-06-04 18:00:09 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 814 with data: {"GOT": "Wallace Waynwood", "LOTR": "Bilbo Baggins"}
 2025-06-04 18:00:10 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 815 with data: {"GOT": "Vortimer Crane", "LOTR": "Éomer"}
@@ -14114,7 +14114,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:00:48 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [829] with data {"GOT":"Morgil","LOTR":"Beregond"}
 2025-06-04 18:00:48 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
 2025-06-04 18:00:50 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] All messages processed successfully
-2025-06-04 18:00:50 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#825]
+2025-06-04 18:00:50 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#825]
 2025-06-04 18:00:51 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [830] with data {"GOT":"Matarys Targaryen","LOTR":"Treebeard"}
 2025-06-04 18:00:51 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 5
 2025-06-04 18:00:51 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -14604,7 +14604,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:02:50 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 860: Random error
 2025-06-04 18:02:50 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 855: Random error
 2025-06-04 18:02:50 [pool-2-thread-4] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 855 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:02:50 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#855]
+2025-06-04 18:02:50 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#855]
 2025-06-04 18:02:50 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 2 messages [859, 860]
 2025-06-04 18:02:50 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 859 with data: {"GOT": "Sigfryd Harlaw", "LOTR": "Samwise Gamgee"}
 2025-06-04 18:02:50 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 860 with data: {"GOT": "Victaria Tyrell", "LOTR": "Aragorn"}
@@ -14649,7 +14649,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:03:03 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 863 with data: {"GOT": "Shadrick", "LOTR": "Aragorn"}
 2025-06-04 18:03:03 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 864 with data: {"GOT": "Lucas Corbray", "LOTR": "Galadriel"}
 2025-06-04 18:03:03 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 863: Random error
-2025-06-04 18:03:03 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#859]
+2025-06-04 18:03:03 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#859]
 2025-06-04 18:03:03 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 2 messages [863, 864]
 2025-06-04 18:03:03 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 863 with data: {"GOT": "Shadrick", "LOTR": "Aragorn"}
 2025-06-04 18:03:03 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 864 with data: {"GOT": "Lucas Corbray", "LOTR": "Galadriel"}
@@ -14677,12 +14677,12 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:03:13 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 863: Random error
 2025-06-04 18:03:13 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 865: Random error
 2025-06-04 18:03:13 [pool-2-thread-5] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Message 863 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:03:13 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#863]
+2025-06-04 18:03:13 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#863]
 2025-06-04 18:03:13 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 2 messages [865, 867]
 2025-06-04 18:03:13 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 867 with data: {"GOT": "Pyat Pree", "LOTR": "Bilbo Baggins"}
 2025-06-04 18:03:13 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 865 with data: {"GOT": "Kyle", "LOTR": "Gandalf the Grey"}
 2025-06-04 18:03:13 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 867: Random error
-2025-06-04 18:03:13 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#861]
+2025-06-04 18:03:13 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#861]
 2025-06-04 18:03:13 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 1 messages [867]
 2025-06-04 18:03:13 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 867 with data: {"GOT": "Pyat Pree", "LOTR": "Bilbo Baggins"}
 2025-06-04 18:03:13 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 867: Random error
@@ -14715,7 +14715,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:03:23 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 870 with data: {"GOT": "Zei", "LOTR": "Elrond"}
 2025-06-04 18:03:23 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 870: Random error
 2025-06-04 18:03:23 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] All messages processed successfully
-2025-06-04 18:03:23 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#867]
+2025-06-04 18:03:23 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#867]
 2025-06-04 18:03:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:03:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 18:03:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [872] with data {"GOT":"Gerald Gower","LOTR":"Arwen Evenstar"}
@@ -14796,7 +14796,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:03:58 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 875 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 18:03:58 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 882 with data: {"GOT": "Jared Frey", "LOTR": "Gimli"}
 2025-06-04 18:03:58 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 882: Random error
-2025-06-04 18:03:58 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#875]
+2025-06-04 18:03:58 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#875]
 2025-06-04 18:03:59 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
 2025-06-04 18:03:59 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [883] with data {"GOT":"Meralyn","LOTR":"Saruman the White"}
 2025-06-04 18:03:59 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
@@ -14813,14 +14813,14 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:04:03 [pool-2-thread-4] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 878 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 18:04:03 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Processing 1 messages [884]
 2025-06-04 18:04:03 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 884 with data: {"GOT": "Cerenna Lannister", "LOTR": "Samwise Gamgee"}
-2025-06-04 18:04:03 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#878]
+2025-06-04 18:04:03 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#878]
 2025-06-04 18:04:03 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 2 messages [882, 883]
 2025-06-04 18:04:03 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 882 with data: {"GOT": "Jared Frey", "LOTR": "Gimli"}
 2025-06-04 18:04:03 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 883 with data: {"GOT": "Meralyn", "LOTR": "Saruman the White"}
 2025-06-04 18:04:03 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 882: Random error
 2025-06-04 18:04:03 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 883: Random error
 2025-06-04 18:04:03 [pool-2-thread-3] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 882 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:04:03 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#882]
+2025-06-04 18:04:03 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#882]
 2025-06-04 18:04:05 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] All messages processed successfully
 2025-06-04 18:04:05 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [885] with data {"GOT":"Muttering Bill","LOTR":"Denethor"}
 2025-06-04 18:04:05 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
@@ -14871,7 +14871,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:04:23 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:04:26 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [892] with data {"GOT":"Mazdhan zo Loraq","LOTR":"Tom Bombadil"}
 2025-06-04 18:04:26 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:04:28 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#883]
+2025-06-04 18:04:28 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#883]
 2025-06-04 18:04:29 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:04:29 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 18:04:29 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [893] with data {"GOT":"Walder Goodbrook","LOTR":"Gimli"}
@@ -14979,7 +14979,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:05:06 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 903: Random error
 2025-06-04 18:05:06 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 904 with data: {"GOT": "Aemond Targaryen", "LOTR": "Galadriel"}
 2025-06-04 18:05:06 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 904: Random error
-2025-06-04 18:05:07 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#897]
+2025-06-04 18:05:07 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#897]
 2025-06-04 18:05:07 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [903, 904, 905]
 2025-06-04 18:05:07 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 903 with data: {"GOT": "Jon Snow", "LOTR": "Faramir"}
 2025-06-04 18:05:07 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 904 with data: {"GOT": "Aemond Targaryen", "LOTR": "Galadriel"}
@@ -15018,8 +15018,8 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:05:17 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 18:05:17 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [909] with data {"GOT":"Pypar","LOTR":"Saruman the White"}
 2025-06-04 18:05:17 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:05:18 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#903]
-2025-06-04 18:05:20 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#907]
+2025-06-04 18:05:18 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#903]
+2025-06-04 18:05:20 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#907]
 2025-06-04 18:05:20 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [910] with data {"GOT":"Bayard Norcross","LOTR":"Sauron"}
 2025-06-04 18:05:20 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:05:23 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueScheduler - Polling message queue...
@@ -15096,7 +15096,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:05:49 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 18:05:51 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [920] with data {"GOT":"Balon Greyjoy","LOTR":"Saruman the White"}
 2025-06-04 18:05:51 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:05:52 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#910]
+2025-06-04 18:05:52 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#910]
 2025-06-04 18:05:53 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueScheduler - Polling message queue...
 2025-06-04 18:05:53 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 0 messages []
 2025-06-04 18:05:53 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
@@ -15321,7 +15321,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:07:13 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 947 with data: {"GOT": "Ronald Vance", "LOTR": "Galadriel"}
 2025-06-04 18:07:16 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [948] with data {"GOT":"Alysanne Hightower","LOTR":"Théoden"}
 2025-06-04 18:07:16 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:07:16 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#944]
+2025-06-04 18:07:16 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#944]
 2025-06-04 18:07:17 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] All messages processed successfully
 2025-06-04 18:07:17 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:07:17 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
@@ -15329,7 +15329,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:07:19 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:07:22 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [950] with data {"GOT":"Alester Norcross","LOTR":"Éowyn"}
 2025-06-04 18:07:22 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:07:22 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#944]
+2025-06-04 18:07:22 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#944]
 2025-06-04 18:07:23 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueScheduler - Polling message queue...
 2025-06-04 18:07:23 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Processing 0 messages []
 2025-06-04 18:07:23 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] All messages processed successfully
@@ -15377,7 +15377,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:07:35 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
 2025-06-04 18:07:37 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [955] with data {"GOT":"Rickard Karstark","LOTR":"Arwen Evenstar"}
 2025-06-04 18:07:37 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:07:37 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#949]
+2025-06-04 18:07:37 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#949]
 2025-06-04 18:07:40 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [956] with data {"GOT":"Reysen","LOTR":"Meriadoc Brandybuck"}
 2025-06-04 18:07:40 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:07:41 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -15453,9 +15453,9 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:08:03 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 956 with data: {"GOT": "Reysen", "LOTR": "Meriadoc Brandybuck"}
 2025-06-04 18:08:03 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 956: Random error
 2025-06-04 18:08:03 [pool-2-thread-5] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 956 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:08:03 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 954: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#954]
+2025-06-04 18:08:03 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 954: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#954]
 2025-06-04 18:08:03 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 958 with data: {"GOT": "Denys Mallister", "LOTR": "Éomer"}
-2025-06-04 18:08:03 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#954]
+2025-06-04 18:08:03 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#954]
 2025-06-04 18:08:03 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 954 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 18:08:03 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [958, 959, 960]
 2025-06-04 18:08:03 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 958 with data: {"GOT": "Denys Mallister", "LOTR": "Éomer"}
@@ -15481,7 +15481,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:08:13 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 18:08:16 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [968] with data {"GOT":"Tristifer Botley","LOTR":"Meriadoc Brandybuck"}
 2025-06-04 18:08:16 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:08:18 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#954]
+2025-06-04 18:08:18 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#954]
 2025-06-04 18:08:18 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 3 messages [964, 965, 966]
 2025-06-04 18:08:18 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 964 with data: {"GOT": "Grisella", "LOTR": "Shadowfax"}
 2025-06-04 18:08:18 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 964: Random error
@@ -15528,7 +15528,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:08:28 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 969: Random error
 2025-06-04 18:08:28 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [972] with data {"GOT":"Pudding","LOTR":"Bilbo Baggins"}
 2025-06-04 18:08:28 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:08:29 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#965]
+2025-06-04 18:08:29 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#965]
 2025-06-04 18:08:29 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:08:29 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 18:08:31 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
@@ -15548,13 +15548,13 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:08:33 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 972 with data: {"GOT": "Pudding", "LOTR": "Bilbo Baggins"}
 2025-06-04 18:08:33 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [969, 971, 972]
 2025-06-04 18:08:33 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 969 with data: {"GOT": "Lorren", "LOTR": "Treebeard"}
-2025-06-04 18:08:33 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 969: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#969]
+2025-06-04 18:08:33 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 969: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#969]
 2025-06-04 18:08:33 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 969 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 18:08:33 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 971 with data: {"GOT": "Jhiqui", "LOTR": "Gandalf the Grey"}
 2025-06-04 18:08:33 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 971: Random error
 2025-06-04 18:08:33 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 972 with data: {"GOT": "Pudding", "LOTR": "Bilbo Baggins"}
 2025-06-04 18:08:33 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 972: Random error
-2025-06-04 18:08:33 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#969]
+2025-06-04 18:08:33 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#969]
 2025-06-04 18:08:34 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [974] with data {"GOT":"Leana Frey","LOTR":"Théoden"}
 2025-06-04 18:08:34 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:08:37 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [975] with data {"GOT":"Grunt","LOTR":"Peregrin Took"}
@@ -15583,7 +15583,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:08:49 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [979] with data {"GOT":"Clement Piper","LOTR":"Aragorn"}
 2025-06-04 18:08:49 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:08:51 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 976 with data: {"GOT": "Spotted Cat", "LOTR": "Frodo Baggins"}
-2025-06-04 18:08:52 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#969]
+2025-06-04 18:08:52 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#969]
 2025-06-04 18:08:52 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [977, 978, 979]
 2025-06-04 18:08:52 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 978 with data: {"GOT": "Utt", "LOTR": "Gandalf the Grey"}
 2025-06-04 18:08:52 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 977 with data: {"GOT": "Endrew Tarth", "LOTR": "Tom Bombadil"}
@@ -15598,7 +15598,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:08:56 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:08:59 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [982] with data {"GOT":"Bowen Marsh","LOTR":"Boromir"}
 2025-06-04 18:08:59 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:09:00 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#971]
+2025-06-04 18:09:00 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#971]
 2025-06-04 18:09:00 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Processing 3 messages [977, 980, 981]
 2025-06-04 18:09:00 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 977 with data: {"GOT": "Endrew Tarth", "LOTR": "Tom Bombadil"}
 2025-06-04 18:09:00 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 980 with data: {"GOT": "Rob", "LOTR": "Arwen Evenstar"}
@@ -15618,7 +15618,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:09:02 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [983] with data {"GOT":"Uthor Tollett","LOTR":"Boromir"}
 2025-06-04 18:09:02 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:09:03 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueScheduler - Polling message queue...
-2025-06-04 18:09:04 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#977]
+2025-06-04 18:09:04 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#977]
 2025-06-04 18:09:04 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 2 messages [982, 983]
 2025-06-04 18:09:04 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 982 with data: {"GOT": "Bowen Marsh", "LOTR": "Boromir"}
 2025-06-04 18:09:04 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 983 with data: {"GOT": "Uthor Tollett", "LOTR": "Boromir"}
@@ -15638,7 +15638,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:09:05 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 982: Random error
 2025-06-04 18:09:05 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 982 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 18:09:05 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 984: Random error
-2025-06-04 18:09:05 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#982]
+2025-06-04 18:09:05 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#982]
 2025-06-04 18:09:05 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 1 messages [984]
 2025-06-04 18:09:05 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 984 with data: {"GOT": "Black Bernarr", "LOTR": "Galadriel"}
 2025-06-04 18:09:08 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [985] with data {"GOT":"Joseran","LOTR":"Barliman Butterbur"}
@@ -15704,7 +15704,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:09:33 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 991: Random error
 2025-06-04 18:09:33 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 989: Random error
 2025-06-04 18:09:33 [pool-2-thread-2] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Message 989 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:09:33 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#989]
+2025-06-04 18:09:33 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#989]
 2025-06-04 18:09:33 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 3 messages [991, 992, 993]
 2025-06-04 18:09:33 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 991 with data: {"GOT": "Gyles III Gardener", "LOTR": "Arwen Evenstar"}
 2025-06-04 18:09:33 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 992 with data: {"GOT": "Eddison Tollett", "LOTR": "Éomer"}
@@ -15805,7 +15805,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:10:05 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:10:06 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:10:06 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
-2025-06-04 18:10:06 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#997]
+2025-06-04 18:10:06 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#997]
 2025-06-04 18:10:08 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1005] with data {"GOT":"Black Bernarr","LOTR":"Shadowfax"}
 2025-06-04 18:10:08 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:10:09 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
@@ -15860,7 +15860,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:10:26 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1011] with data {"GOT":"Moryn Tyrell","LOTR":"Frodo Baggins"}
 2025-06-04 18:10:26 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:10:27 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
-2025-06-04 18:10:29 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1002]
+2025-06-04 18:10:29 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1002]
 2025-06-04 18:10:29 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1012] with data {"GOT":"Owen Inchfield","LOTR":"Elrond"}
 2025-06-04 18:10:29 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:10:30 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -15893,7 +15893,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:10:42 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1016] with data {"GOT":"Rafford","LOTR":"Gollum"}
 2025-06-04 18:10:42 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:10:43 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueScheduler - Polling message queue...
-2025-06-04 18:10:44 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1008]
+2025-06-04 18:10:44 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1008]
 2025-06-04 18:10:44 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Processing 1 messages [1016]
 2025-06-04 18:10:44 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 1016 with data: {"GOT": "Rafford", "LOTR": "Gollum"}
 2025-06-04 18:10:44 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 1016: Random error
@@ -15949,7 +15949,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:11:04 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 1020: Random error
 2025-06-04 18:11:04 [pool-2-thread-4] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Message 1017 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 18:11:04 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 1021: Random error
-2025-06-04 18:11:04 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1017]
+2025-06-04 18:11:04 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1017]
 2025-06-04 18:11:04 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 3 messages [1020, 1021, 1022]
 2025-06-04 18:11:04 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1020 with data: {"GOT": "Brynden Tully", "LOTR": "Bilbo Baggins"}
 2025-06-04 18:11:04 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1021 with data: {"GOT": "Elys Waynwood", "LOTR": "Elrond"}
@@ -15972,7 +15972,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:11:09 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:11:10 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:11:10 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
-2025-06-04 18:11:11 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1020]
+2025-06-04 18:11:11 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1020]
 2025-06-04 18:11:12 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1026] with data {"GOT":"Harwood Stout","LOTR":"Elrond"}
 2025-06-04 18:11:12 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:11:12 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
@@ -16052,7 +16052,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:11:39 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] All messages processed successfully
 2025-06-04 18:11:39 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1035] with data {"GOT":"Alester Oakheart","LOTR":"Gandalf the Grey"}
 2025-06-04 18:11:39 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:11:39 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1028]
+2025-06-04 18:11:39 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1028]
 2025-06-04 18:11:42 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:11:42 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 18:11:42 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1036] with data {"GOT":"Fearless Ithoke","LOTR":"Shadowfax"}
@@ -16073,7 +16073,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:11:43 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1036: Random error
 2025-06-04 18:11:45 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1037] with data {"GOT":"Lymond Lychester","LOTR":"Aragorn"}
 2025-06-04 18:11:45 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:11:48 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1030]
+2025-06-04 18:11:48 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1030]
 2025-06-04 18:11:48 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [1033, 1034, 1036]
 2025-06-04 18:11:48 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1034 with data: {"GOT": "Harlan Grandison", "LOTR": "Elrond"}
 2025-06-04 18:11:48 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1033 with data: {"GOT": "The Great Walrus", "LOTR": "Denethor"}
@@ -16084,7 +16084,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:11:50 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:11:50 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
 2025-06-04 18:11:50 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
-2025-06-04 18:11:51 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1024]
+2025-06-04 18:11:51 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1024]
 2025-06-04 18:11:51 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1039] with data {"GOT":"Leslyn Haigh","LOTR":"Shelob"}
 2025-06-04 18:11:51 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:11:53 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueScheduler - Polling message queue...
@@ -16188,7 +16188,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:12:23 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1047: Random error
 2025-06-04 18:12:23 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1046: Random error
 2025-06-04 18:12:23 [pool-2-thread-3] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 1046 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:12:23 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1045]
+2025-06-04 18:12:23 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1045]
 2025-06-04 18:12:23 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [1047, 1048, 1049]
 2025-06-04 18:12:23 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1047 with data: {"GOT": "Ulf the Ill", "LOTR": "Gollum"}
 2025-06-04 18:12:23 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1049 with data: {"GOT": "Urswyck", "LOTR": "Éowyn"}
@@ -16198,9 +16198,9 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:12:23 [pool-2-thread-4] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 1047 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 18:12:24 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1050] with data {"GOT":"Franklyn Fowler","LOTR":"Éomer"}
 2025-06-04 18:12:24 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:12:25 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1040]
+2025-06-04 18:12:25 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1040]
 2025-06-04 18:12:26 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] All messages processed successfully
-2025-06-04 18:12:26 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1047]
+2025-06-04 18:12:26 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1047]
 2025-06-04 18:12:28 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1051] with data {"GOT":"Toefinger","LOTR":"Tom Bombadil"}
 2025-06-04 18:12:28 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:12:30 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -16284,7 +16284,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:13:04 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1063] with data {"GOT":"Qarro Volentin","LOTR":"Glorfindel"}
 2025-06-04 18:13:04 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:13:04 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1060 with data: {"GOT": "Hali", "LOTR": "Gandalf the Grey"}
-2025-06-04 18:13:05 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1051]
+2025-06-04 18:13:05 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1051]
 2025-06-04 18:13:05 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [1061, 1062, 1063]
 2025-06-04 18:13:05 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1061 with data: {"GOT": "Ilyn Payne", "LOTR": "Aragorn"}
 2025-06-04 18:13:05 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1062 with data: {"GOT": "Meryn Trant", "LOTR": "Denethor"}
@@ -16320,7 +16320,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:13:16 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:13:18 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:13:18 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
-2025-06-04 18:13:18 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1055]
+2025-06-04 18:13:18 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1055]
 2025-06-04 18:13:18 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Processing 2 messages [1064, 1067]
 2025-06-04 18:13:18 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 1064 with data: {"GOT": "Randyll Tarly", "LOTR": "Treebeard"}
 2025-06-04 18:13:18 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 1067 with data: {"GOT": "Mohor", "LOTR": "Gandalf the Grey"}
@@ -16422,7 +16422,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:13:54 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1079 with data: {"GOT": "Todder", "LOTR": "Beregond"}
 2025-06-04 18:13:55 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1080] with data {"GOT":"Rolley","LOTR":"Gandalf the Grey"}
 2025-06-04 18:13:55 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:13:57 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1073]
+2025-06-04 18:13:57 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1073]
 2025-06-04 18:13:57 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 1 messages [1080]
 2025-06-04 18:13:57 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1080 with data: {"GOT": "Rolley", "LOTR": "Gandalf the Grey"}
 2025-06-04 18:13:57 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 1080: Random error
@@ -16543,7 +16543,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:14:43 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1094 with data: {"GOT": "Petyr Baelish", "LOTR": "Denethor"}
 2025-06-04 18:14:44 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1096] with data {"GOT":"Beric Dondarrion","LOTR":"Legolas"}
 2025-06-04 18:14:44 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:14:45 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1088]
+2025-06-04 18:14:45 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1088]
 2025-06-04 18:14:45 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Processing 2 messages [1095, 1096]
 2025-06-04 18:14:45 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 1095 with data: {"GOT": "Selyse Florent", "LOTR": "Elrond"}
 2025-06-04 18:14:46 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -16614,7 +16614,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:15:10 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1104: Random error
 2025-06-04 18:15:11 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1105] with data {"GOT":"Gormon Tyrell","LOTR":"Denethor"}
 2025-06-04 18:15:11 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:15:12 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1099]
+2025-06-04 18:15:12 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1099]
 2025-06-04 18:15:12 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 2 messages [1104, 1105]
 2025-06-04 18:15:12 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1104 with data: {"GOT": "Rolland Darklyn", "LOTR": "Denethor"}
 2025-06-04 18:15:12 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1105 with data: {"GOT": "Gormon Tyrell", "LOTR": "Denethor"}
@@ -16625,7 +16625,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:15:13 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 1104 with data: {"GOT": "Rolland Darklyn", "LOTR": "Denethor"}
 2025-06-04 18:15:13 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 1104: Random error
 2025-06-04 18:15:13 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Message 1104 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:15:13 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1104]
+2025-06-04 18:15:13 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1104]
 2025-06-04 18:15:13 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 0 messages []
 2025-06-04 18:15:13 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
 2025-06-04 18:15:13 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 0 messages []
@@ -16688,7 +16688,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:15:35 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:15:38 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1114] with data {"GOT":"Omer Florent","LOTR":"Boromir"}
 2025-06-04 18:15:38 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:15:41 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1107]
+2025-06-04 18:15:41 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1107]
 2025-06-04 18:15:41 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1115] with data {"GOT":"Ambrose Butterwell","LOTR":"Éomer"}
 2025-06-04 18:15:41 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:15:42 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -17042,7 +17042,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:16:23 [pool-2-thread-5] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 1117 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 18:16:23 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 1118: Random error
 2025-06-04 18:16:23 [pool-2-thread-3] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 1118 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:16:24 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1117]
+2025-06-04 18:16:24 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1117]
 2025-06-04 18:16:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1123] with data {"GOT":"Myles Manwoody","LOTR":"Shelob"}
 2025-06-04 18:16:25 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:16:27 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -17094,7 +17094,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:16:43 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 1129 with data: {"GOT": "Martyn Rivers", "LOTR": "Gandalf the Grey"}
 2025-06-04 18:16:43 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:16:43 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
-2025-06-04 18:16:45 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1120]
+2025-06-04 18:16:45 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1120]
 2025-06-04 18:16:46 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1130] with data {"GOT":"Nissa Nissa","LOTR":"Elrond"}
 2025-06-04 18:16:46 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:16:49 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1131] with data {"GOT":"Quentin Tyrell","LOTR":"Quickbeam"}
@@ -17180,7 +17180,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:17:17 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1137: Random error
 2025-06-04 18:17:17 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1138: Random error
 2025-06-04 18:17:17 [pool-2-thread-4] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 1137 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:17:17 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1136]
+2025-06-04 18:17:17 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1136]
 2025-06-04 18:17:17 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [1138, 1139, 1140]
 2025-06-04 18:17:17 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1138 with data: {"GOT": "Gowen Baratheon", "LOTR": "Saruman the White"}
 2025-06-04 18:17:17 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1139 with data: {"GOT": "Robar Royce", "LOTR": "Bilbo Baggins"}
@@ -17260,7 +17260,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:17:44 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 1148: Random error
 2025-06-04 18:17:44 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Error processing message 1149: Random error
 2025-06-04 18:17:44 [pool-2-thread-2] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Message 1148 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:17:44 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1148]
+2025-06-04 18:17:44 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1148]
 2025-06-04 18:17:47 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1150] with data {"GOT":"Osbert Serry","LOTR":"Galadriel"}
 2025-06-04 18:17:47 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:17:47 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
@@ -17331,14 +17331,14 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:18:13 [pool-2-thread-5] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Message 1156 has reached the maximum number of retries (3), moving to Dead Letter Queue
 2025-06-04 18:18:13 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 1157 with data: {"GOT": "Delonne Allyrion", "LOTR": "Meriadoc Brandybuck"}
 2025-06-04 18:18:13 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 1157: Random error
-2025-06-04 18:18:13 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1155]
+2025-06-04 18:18:13 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1155]
 2025-06-04 18:18:13 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 2 messages [1157, 1158]
 2025-06-04 18:18:13 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1157 with data: {"GOT": "Delonne Allyrion", "LOTR": "Meriadoc Brandybuck"}
 2025-06-04 18:18:13 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1158 with data: {"GOT": "Ghost of High Heart", "LOTR": "Galadriel"}
 2025-06-04 18:18:13 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1157: Random error
 2025-06-04 18:18:13 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1158: Random error
 2025-06-04 18:18:13 [pool-2-thread-5] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 1157 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:18:13 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1157]
+2025-06-04 18:18:13 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1157]
 2025-06-04 18:18:13 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 1 messages [1158]
 2025-06-04 18:18:13 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1158 with data: {"GOT": "Ghost of High Heart", "LOTR": "Galadriel"}
 2025-06-04 18:18:13 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] All messages processed successfully
@@ -17430,7 +17430,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:18:53 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1169 with data: {"GOT": "Quellon Greyjoy", "LOTR": "Barliman Butterbur"}
 2025-06-04 18:18:54 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1172] with data {"GOT":"Ryam","LOTR":"Glorfindel"}
 2025-06-04 18:18:54 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:18:54 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1164]
+2025-06-04 18:18:54 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1164]
 2025-06-04 18:18:54 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [1168, 1170, 1172]
 2025-06-04 18:18:54 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1168 with data: {"GOT": "Conwy", "LOTR": "Saruman the White"}
 2025-06-04 18:18:54 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1172 with data: {"GOT": "Ryam", "LOTR": "Glorfindel"}
@@ -17556,7 +17556,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:19:43 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 1187 with data: {"GOT": "Gawen Swann", "LOTR": "Barliman Butterbur"}
 2025-06-04 18:19:43 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Processing message 1188 with data: {"GOT": "Notch", "LOTR": "Aragorn"}
 2025-06-04 18:19:43 [pool-2-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 1188: Random error
-2025-06-04 18:19:44 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1185]
+2025-06-04 18:19:44 [pool-3-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1185]
 2025-06-04 18:19:44 [pool-3-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 1 messages [1188]
 2025-06-04 18:19:44 [pool-2-thread-4] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1188 with data: {"GOT": "Notch", "LOTR": "Aragorn"}
 2025-06-04 18:19:44 [pool-2-thread-4] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1188: Random error
@@ -17618,7 +17618,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:20:07 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1196 with data: {"GOT": "Raymund Frey", "LOTR": "Gandalf the Grey"}
 2025-06-04 18:20:10 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1197] with data {"GOT":"Cohollo","LOTR":"Denethor"}
 2025-06-04 18:20:10 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:20:11 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1191]
+2025-06-04 18:20:11 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1191]
 2025-06-04 18:20:11 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 2 messages [1194, 1197]
 2025-06-04 18:20:11 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1194 with data: {"GOT": "Drogo", "LOTR": "Shelob"}
 2025-06-04 18:20:11 [pool-2-thread-5] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1197 with data: {"GOT": "Cohollo", "LOTR": "Denethor"}
@@ -17729,7 +17729,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:20:53 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueScheduler - Polling message queue...
 2025-06-04 18:20:55 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1212] with data {"GOT":"Alerie Hightower","LOTR":"Grìma Wormtongue"}
 2025-06-04 18:20:55 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:20:57 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1203]
+2025-06-04 18:20:57 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1203]
 2025-06-04 18:20:57 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 3 messages [1208, 1211, 1212]
 2025-06-04 18:20:57 [pool-2-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1208 with data: {"GOT": "Cleos Frey", "LOTR": "Sauron"}
 2025-06-04 18:20:57 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-3] Processing message 1211 with data: {"GOT": "Melwyn Sarsfield", "LOTR": "Gandalf the Grey"}
@@ -17773,12 +17773,12 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:21:13 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 1214: Random error
 2025-06-04 18:21:13 [pool-2-thread-5] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Error processing message 1217: Random error
 2025-06-04 18:21:13 [pool-2-thread-3] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-1] Message 1214 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:21:13 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1214]
+2025-06-04 18:21:13 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1214]
 2025-06-04 18:21:13 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Processing 1 messages [1217]
 2025-06-04 18:21:13 [pool-2-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1217 with data: {"GOT": "Harren Botley", "LOTR": "Éowyn"}
 2025-06-04 18:21:13 [pool-2-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1217: Random error
 2025-06-04 18:21:13 [pool-2-thread-1] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 1217 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:21:13 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1217]
+2025-06-04 18:21:13 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1217]
 2025-06-04 18:21:13 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 0 messages []
 2025-06-04 18:21:13 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] All messages processed successfully
 2025-06-04 18:21:13 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1218] with data {"GOT":"Tyta Frey","LOTR":"Théoden"}
@@ -17905,7 +17905,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:22:05 [pool-2-thread-3] DEBUG jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Processing message 1232 with data: {"GOT": "Richard Lonmouth", "LOTR": "Peregrin Took"}
 2025-06-04 18:22:05 [pool-2-thread-3] ERROR jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Error processing message 1232: Random error
 2025-06-04 18:22:05 [pool-2-thread-3] WARN  jon.db.queue.generic_queue.GenericQueueProcessor - [Worker-2] Message 1232 has reached the maximum number of retries (3), moving to Dead Letter Queue
-2025-06-04 18:22:05 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1232]
+2025-06-04 18:22:05 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1232]
 2025-06-04 18:22:05 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] Processing 0 messages []
 2025-06-04 18:22:05 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-3] All messages processed successfully
 2025-06-04 18:22:05 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1235] with data {"GOT":"Richard Lonmouth","LOTR":"Faramir"}
@@ -18013,7 +18013,7 @@ java.io.IOException: Se ha anulado una conexión establecida por el software en 
 2025-06-04 18:22:47 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:22:50 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1250] with data {"GOT":"Mina Tyrell","LOTR":"Barliman Butterbur"}
 2025-06-04 18:22:50 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
-2025-06-04 18:22:51 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1240]
+2025-06-04 18:22:51 [pool-3-thread-1] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1240]
 2025-06-04 18:22:52 [pool-3-thread-2] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] All messages processed successfully
 2025-06-04 18:22:52 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - Fetching messages to move to DLQ
 2025-06-04 18:22:52 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - No messages to move to DLQ
@@ -18451,7 +18451,7 @@ org.springframework.dao.DataIntegrityViolationException: could not execute state
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy4/jdk.proxy4.$Proxy130.save(Unknown Source)
-	at jon.db.queue.store.MessageMessageQueuePosgreSQLRepo.create(MessageQueueRepo.java:100)
+	at jon.db.queue.store.GenericQueuePosgreSQLRepo.create(MessageQueueRepo.java:100)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
@@ -18463,7 +18463,7 @@ org.springframework.dao.DataIntegrityViolationException: could not execute state
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
-	at jon.db.queue.store.MessageMessageQueuePosgreSQLRepo$$SpringCGLIB$$0.create(<generated>)
+	at jon.db.queue.store.GenericQueuePosgreSQLRepo$$SpringCGLIB$$0.create(<generated>)
 	at jon.db.queue.generic_queue.GenericQueueCreator.createProvidingData(MessageQueuePoller.java:233)
 	at jon.db.queue.generic_queue.GenericQueueCreator.createWithRandomData(MessageQueuePoller.java:247)
 	at jon.db.queue.generic_queue.GenericQueueScheduler.simulateInfluxOfMessages(MessageQueuePoller.java:65)
@@ -18636,7 +18636,7 @@ Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violate
 2025-06-04 18:24:57 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1280] with data {"LOTR":"Gollum","GOT":"Willem Frey"}
 2025-06-04 18:24:57 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:24:59 [pool-3-thread-1] DEBUG jon.db.queue.generic_queue.GenericQueueWorker - [Worker-2] All messages processed successfully
-2025-06-04 18:25:00 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.QueueMessage#1275]
+2025-06-04 18:25:00 [pool-3-thread-2] ERROR jon.db.queue.generic_queue.GenericQueueWorker - [Worker-1] Error occurred during parallel processing: Row was updated or deleted by another transaction (or unsaved-value mapping was incorrect): [jon.db.queue.models.GenericQueue#1275]
 2025-06-04 18:25:00 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1281] with data {"LOTR":"Barliman Butterbur","GOT":"Lucantine Woodwright"}
 2025-06-04 18:25:00 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueSseEmitter - Message sent to client: 2
 2025-06-04 18:25:04 [scheduling-1] DEBUG jon.db.queue.generic_queue.GenericQueueCreator - Created message [1282] with data {"LOTR":"Sauron","GOT":"Ronald Connington"}
@@ -18726,7 +18726,7 @@ org.springframework.dao.DataIntegrityViolationException: could not execute state
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy4/jdk.proxy4.$Proxy130.save(Unknown Source)
-	at jon.db.queue.store.MessageMessageQueuePosgreSQLRepo.create(MessageQueueRepo.java:100)
+	at jon.db.queue.store.GenericQueuePosgreSQLRepo.create(MessageQueueRepo.java:100)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
@@ -18738,7 +18738,7 @@ org.springframework.dao.DataIntegrityViolationException: could not execute state
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
-	at jon.db.queue.store.MessageMessageQueuePosgreSQLRepo$$SpringCGLIB$$0.create(<generated>)
+	at jon.db.queue.store.GenericQueuePosgreSQLRepo$$SpringCGLIB$$0.create(<generated>)
 	at jon.db.queue.generic_queue.GenericQueueCreator.createProvidingData(MessageQueuePoller.java:233)
 	at jon.db.queue.generic_queue.GenericQueueCreator.createWithRandomData(MessageQueuePoller.java:247)
 	at jon.db.queue.generic_queue.GenericQueueScheduler.simulateInfluxOfMessages(MessageQueuePoller.java:65)
@@ -18882,7 +18882,7 @@ org.springframework.dao.DataIntegrityViolationException: could not execute state
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223)
 	at jdk.proxy4/jdk.proxy4.$Proxy130.save(Unknown Source)
-	at jon.db.queue.store.MessageMessageQueuePosgreSQLRepo.create(MessageQueueRepo.java:100)
+	at jon.db.queue.store.GenericQueuePosgreSQLRepo.create(MessageQueueRepo.java:100)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
@@ -18894,7 +18894,7 @@ org.springframework.dao.DataIntegrityViolationException: could not execute state
 	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:728)
-	at jon.db.queue.store.MessageMessageQueuePosgreSQLRepo$$SpringCGLIB$$0.create(<generated>)
+	at jon.db.queue.store.GenericQueuePosgreSQLRepo$$SpringCGLIB$$0.create(<generated>)
 	at jon.db.queue.generic_queue.GenericQueueCreator.createProvidingData(MessageQueuePoller.java:233)
 	at jon.db.queue.generic_queue.GenericQueueCreator.createWithRandomData(MessageQueuePoller.java:247)
 	at jon.db.queue.generic_queue.GenericQueueScheduler.simulateInfluxOfMessages(MessageQueuePoller.java:65)

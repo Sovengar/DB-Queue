@@ -1,8 +1,8 @@
 package jon.db.queue.generic_queue.application;
 
 import jon.db.queue.generic_queue.GenericQueueSseEmitter;
-import jon.db.queue.models.QueueMessage;
-import jon.db.queue.store.MessageQueueSpringJpaRepo;
+import jon.db.queue.models.GenericQueue;
+import jon.db.queue.store.GenericQueueSpringJpaRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 class StreamLast20Msgs {
     private final GenericQueueSseEmitter genericQueueSseEmitter;
-    private final MessageQueueSpringJpaRepo jpaRepo;
+    private final GenericQueueSpringJpaRepo jpaRepo;
 
     /**
      * SSE Endpoint to retrieve messages in real time
@@ -30,7 +30,7 @@ class StreamLast20Msgs {
         try {
             var messages = findLast20Msgs();
 
-            for (QueueMessage message : messages) {
+            for (GenericQueue message : messages) {
                 var data = genericQueueSseEmitter.buildDataFromEntity(message);
                 var sseEvent = SseEmitter.event().id(String.valueOf(message.getInternalId())).name("message").data(data);
                 emitter.send(sseEvent);
@@ -42,7 +42,7 @@ class StreamLast20Msgs {
         return emitter;
     }
 
-    public List<QueueMessage> findLast20Msgs() {
+    public List<GenericQueue> findLast20Msgs() {
         return jpaRepo.findTop20ByOrderByInternalIdDesc();
     }
 }

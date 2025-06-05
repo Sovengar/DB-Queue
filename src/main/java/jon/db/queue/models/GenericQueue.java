@@ -17,12 +17,13 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "queue_message")
+@Table(name = "generic_queue")
 @Getter
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class QueueMessage {
+public class GenericQueue {
     public static final int MAX_RETRIES = 3;
+    public static final String TABLE_NAME = "generic_queue";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,12 +53,12 @@ public class QueueMessage {
 
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Factory {
-        public static QueueMessage create(UUID messageId, String data) {
+        public static GenericQueue create(UUID messageId, String data) {
             Long id = null;
             var arrivedAt = LocalDateTime.now();
             var nonTimeoutRetries = 0;
             LocalDateTime processedAt = null;
-            return new QueueMessage(id, messageId, data, arrivedAt, nonTimeoutRetries, processedAt);
+            return new GenericQueue(id, messageId, data, arrivedAt, nonTimeoutRetries, processedAt);
         }
     }
 }

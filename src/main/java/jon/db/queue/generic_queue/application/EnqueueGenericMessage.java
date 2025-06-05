@@ -2,7 +2,7 @@ package jon.db.queue.generic_queue.application;
 
 import jon.db.queue.generic_queue.GenericQueueCreator;
 import jon.db.queue.generic_queue.GenericQueueSseEmitter;
-import jon.db.queue.store.MessageQueueRepo;
+import jon.db.queue.store.GenericQueueRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +17,7 @@ import java.util.UUID;
 @RequestMapping("/generic-queue")
 @RequiredArgsConstructor
 class EnqueueGenericMessage {
-    private final MessageQueueRepo repo;
+    private final GenericQueueRepo repo;
     private final GenericQueueCreator mqCreator;
     private final GenericQueueSseEmitter genericQueueSseEmitter;
 

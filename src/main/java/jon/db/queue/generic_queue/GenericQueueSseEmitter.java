@@ -1,6 +1,6 @@
 package jon.db.queue.generic_queue;
 
-import jon.db.queue.models.QueueMessage;
+import jon.db.queue.models.GenericQueue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -47,7 +47,7 @@ public class GenericQueueSseEmitter {
         return emitter;
     }
 
-    public void sendMessageToAllClients(QueueMessage message) {
+    public void sendMessageToAllClients(GenericQueue message) {
         List<String> deadEmitters = new CopyOnWriteArrayList<>();
 
         emitters.forEach((id, emitter) -> {
@@ -69,7 +69,7 @@ public class GenericQueueSseEmitter {
         deadEmitters.forEach(emitters::remove);
     }
 
-    public void sendMessageUpdate(QueueMessage msg) {
+    public void sendMessageUpdate(GenericQueue msg) {
         var sseEvent = SseEmitter.event()
                 .id(String.valueOf(msg.getInternalId()))
                 .name("update") //Specific event for updates
@@ -84,7 +84,7 @@ public class GenericQueueSseEmitter {
         });
     }
 
-    public void sendMessageDelete(QueueMessage msg) {
+    public void sendMessageDelete(GenericQueue msg) {
         var sseEvent = SseEmitter.event()
                 .id(String.valueOf(msg.getInternalId()))
                 .name("delete") //Specific event for deletes
@@ -99,7 +99,7 @@ public class GenericQueueSseEmitter {
         });
     }
 
-    public Map<String, Object> buildDataFromEntity(QueueMessage message){
+    public Map<String, Object> buildDataFromEntity(GenericQueue message){
         return Map.of(
                 "internalId", message.getInternalId(),
                 "messageId", message.getMessageId(),
@@ -110,7 +110,7 @@ public class GenericQueueSseEmitter {
         );
     }
 
-    public void sendEventsToAllClients(List<QueueMessage> messages) {
+    public void sendEventsToAllClients(List<GenericQueue> messages) {
         messages.forEach(this::sendMessageToAllClients);
     }
 
