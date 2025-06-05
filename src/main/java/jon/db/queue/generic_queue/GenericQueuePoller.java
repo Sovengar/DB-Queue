@@ -1,12 +1,10 @@
-package jon.db.queue;
+package jon.db.queue.generic_queue;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.javafaker.Faker;
+import jon.db.queue.dead_letter_queue.DeadLetterQueueHandler;
 import jon.db.queue.models.DeadLetterQueue;
 import jon.db.queue.models.QueueMessage;
 import jon.db.queue.store.MessageQueueRepo;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -15,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -28,9 +25,9 @@ import java.util.concurrent.TimeoutException;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-class MessageQueueScheduler {
-    private final MessageQueueWorker mqProcessor;
-    private final MessageQueueCreator mqCreator;
+class GenericQueueScheduler {
+    private final GenericQueueWorker mqProcessor;
+    private final GenericQueueCreator mqCreator;
 
     private static final int NUMBER_OF_THREADS = 3;
     private final ExecutorService executor = Executors.newFixedThreadPool(NUMBER_OF_THREADS); // Workers for concurrency
@@ -68,43 +65,40 @@ class MessageQueueScheduler {
         }
     }
 
-    //TODO
     @Scheduled(fixedDelay = 15000)
     public void sendEmailIfNoAccesToQueue() {
-
         //TODO SendEmail
-
     }
 }
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
-class MessageQueueWorker {
-    private final MessageProcessor messageProcessor;
+class GenericQueueWorker {
+    private final GenericQueueProcessor genericQueueProcessor;
     private final ExecutorService executorService = Executors.newFixedThreadPool(5);
 
     @Transactional //Transactional has to be here because we are fetching with SKIP LOCKED here
     public void processMessagesInQueue(String workerName) {
-        var queueMessages = messageProcessor.fetchMessages(workerName);
+        var queueMessages = genericQueueProcessor.fetchMessages(workerName);
 
         log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(QueueMessage::getInternalId).toList());
 
         for (QueueMessage msg : queueMessages) {
-            messageProcessor.processMessageWithErrorHandling(workerName, msg);
+            genericQueueProcessor.processMessageWithErrorHandling(workerName, msg);
         }
     }
 
     //No need for transactional
     public void parallelProcessMessagesInQueue(String workerName) {
-        var queueMessages = messageProcessor.fetchMessages(workerName);
+        var queueMessages = genericQueueProcessor.fetchMessages(workerName);
 
         log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(QueueMessage::getInternalId).toList());
 
         // Parallel Processing every message
         List<CompletableFuture<Void>> futures = new ArrayList<>();
         for (QueueMessage msg : queueMessages) {
-            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> messageProcessor.processMessageWithErrorHandling(workerName, msg), executorService);
+            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> genericQueueProcessor.processMessageWithErrorHandling(workerName, msg), executorService);
             futures.add(future);
         }
 
@@ -125,7 +119,7 @@ class MessageQueueWorker {
     @Transactional
     public void moveToDeadLetterQueue(){
         log.debug("Fetching messages to move to DLQ");
-        var messages = messageProcessor.fetchPoisonedMessages();
+        var messages = genericQueueProcessor.fetchPoisonedMessages();
 
         if(messages.isEmpty()){
             log.debug("No messages to move to DLQ");
@@ -133,17 +127,17 @@ class MessageQueueWorker {
         }
 
         log.debug("Moving {} messages {} to DLQ", messages.size(), messages.stream().map(QueueMessage::getInternalId).toList());
-        messageProcessor.moveToDLQ(messages);
+        genericQueueProcessor.moveToDLQ(messages);
     }
 }
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
-class MessageProcessor {
+class GenericQueueProcessor {
     private final MessageQueueRepo repo;
-    private final DeadLetterQueueService deadLetterQueueService;
-    private final SseEmitterService sseEmitterService;
+    private final DeadLetterQueueHandler deadLetterQueueHandler;
+    private final GenericQueueSseEmitter genericQueueSseEmitter;
 
     List<QueueMessage> fetchMessages(final String workerName) {
         try {
@@ -181,8 +175,6 @@ class MessageProcessor {
     }
 
     private void processMessage(final QueueMessage msg) {
-        //TODO, NO ES GENERICO, NO PUEDO LLAMAR CUALQUIER CODIGO, 1 TABLA-QUEUE POR TAREA?
-
         if(Math.random() < 0.5){
             throw new RuntimeException("Simulating Random error");
         }
@@ -190,7 +182,7 @@ class MessageProcessor {
         log.trace("Processing message {} with data: {}", msg.getInternalId(), msg.getData());
 
         msg.markAsProcessed();
-        sseEmitterService.sendMessageUpdate(msg);
+        genericQueueSseEmitter.sendMessageUpdate(msg);
         repo.update(msg);
 
         var variableExecutionTimeInSeconds = (int) (Math.random() * 10 * 2);
@@ -210,40 +202,11 @@ class MessageProcessor {
             log.trace("Moving message {} with id {} to DLQ", msg.getInternalId(), msg.getMessageId());
 
             var deadLetterQueue = DeadLetterQueue.Factory.create(msg.getMessageId(), msg.getData(), msg.getArrivedAt());
-            deadLetterQueueService.create(deadLetterQueue);
+            deadLetterQueueHandler.create(deadLetterQueue);
 
-            sseEmitterService.sendMessageDelete(msg);
+            genericQueueSseEmitter.sendMessageDelete(msg);
             repo.delete(msg);
         });
     }
 }
 
-@Service
-@RequiredArgsConstructor
-@Slf4j
-class MessageQueueCreator {
-    private final ObjectMapper objectMapper;
-    private final MessageQueueRepo repo;
-    private final SseEmitterService sseEmitterService;
-
-    @SneakyThrows
-    public Long createProvidingData(Map<String, Object> data, UUID messageId) {
-        var jsonData = objectMapper.writeValueAsString(data);
-        var queueMessage = QueueMessage.Factory.create(messageId == null ? UUID.randomUUID() : messageId, jsonData);
-        var internalId = repo.create(queueMessage);
-        log.debug("Created message [{}] with data {}", internalId, jsonData);
-
-        sseEmitterService.sendMessageToAllClients(queueMessage);
-
-        return internalId;
-    }
-
-    public void createWithRandomData(UUID messageId) {
-        var faker = new Faker();
-        var gotCharacter = faker.gameOfThrones().character();
-        var lotrCharacter = faker.lordOfTheRings().character();
-
-        Map<String, Object> data = Map.of("GOT", gotCharacter, "LOTR", lotrCharacter);
-        createProvidingData(data, messageId);
-    }
-}

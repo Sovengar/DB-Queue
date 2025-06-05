@@ -106,7 +106,7 @@
             function connectEventSource() {
                 updateConnectionStatus(false);
                 
-                const eventSource = new EventSource('/msg-queue/stream');
+                const eventSource = new EventSource('/generic-queue/stream');
 
                 eventSource.onopen = function() {
                     updateConnectionStatus(true);
