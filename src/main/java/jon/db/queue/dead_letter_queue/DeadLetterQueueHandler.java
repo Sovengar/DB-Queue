@@ -1,7 +1,7 @@
 package jon.db.queue.dead_letter_queue;
 
-import jon.db.queue.models.DeadLetterQueue;
-import jon.db.queue.store.DLQRepo;
+import jon.db.queue.api.DeadLetterQueue;
+import jon.db.queue.api.DLQRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

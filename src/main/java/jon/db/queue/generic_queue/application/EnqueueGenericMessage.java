@@ -1,8 +1,9 @@
 package jon.db.queue.generic_queue.application;
 
-import jon.db.queue.generic_queue.GenericQueueCreator;
+import jon.db.queue.api.QueueRepo;
+import jon.db.queue.generic_queue.GenericQueueProducer;
 import jon.db.queue.generic_queue.GenericQueueSseEmitter;
-import jon.db.queue.store.GenericQueueRepo;
+import jon.db.queue.models.GenericQueue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,14 +18,15 @@ import java.util.UUID;
 @RequestMapping("/generic-queue")
 @RequiredArgsConstructor
 class EnqueueGenericMessage {
-    private final GenericQueueRepo repo;
-    private final GenericQueueCreator mqCreator;
+    private final QueueRepo<GenericQueue, Long> repo;
+
+    private final GenericQueueProducer producer;
     private final GenericQueueSseEmitter genericQueueSseEmitter;
 
     @PostMapping
     public ResponseEntity<Void> enqueue(@RequestBody EnqueueRequest request) {
-        mqCreator.createProvidingData(request.data(), request.messageId());
-        var message = repo.findByMessageId(request.messageId());
+        producer.publish(request.messageId(), request.data());
+        var message = repo.findByMessageId(request.messageId()).orElseThrow();
         genericQueueSseEmitter.sendMessageToAllClients(message);
 
         return ResponseEntity.ok().build();

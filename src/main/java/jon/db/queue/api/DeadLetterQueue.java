@@ -1,4 +1,4 @@
-package jon.db.queue.models;
+package jon.db.queue.api;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

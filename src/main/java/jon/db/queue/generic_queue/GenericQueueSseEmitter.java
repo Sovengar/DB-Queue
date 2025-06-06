@@ -58,7 +58,7 @@ public class GenericQueueSseEmitter {
                         .data(buildDataFromEntity(message));
 
                 emitter.send(sseEvent);
-                log.debug("Message sent to client: {}", id);
+                log.trace("Message sent to client: {}", id);
             } catch (IOException e) {
                 log.warn("Failed to send message to client: {}", id, e);
                 deadEmitters.add(id);

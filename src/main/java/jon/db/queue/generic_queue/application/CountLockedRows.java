@@ -1,7 +1,7 @@
 package jon.db.queue.generic_queue.application;
 
+import jon.db.queue.api.QueueRepo;
 import jon.db.queue.models.GenericQueue;
-import jon.db.queue.store.GenericQueueRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/generic-queue")
 @RequiredArgsConstructor
 class CountLockedRows {
-    private final GenericQueueRepo repo;
+    private final QueueRepo<GenericQueue, Long> repo;
 
     @GetMapping("/locked-rows")
     public String countLockedRows() {

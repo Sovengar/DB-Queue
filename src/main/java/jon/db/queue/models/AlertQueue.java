@@ -18,13 +18,13 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "generic_queue")
+@Table(name = "alert_queue")
 @Getter
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class GenericQueue implements QueueEntity<Long> {
+public class AlertQueue implements QueueEntity<Long> {
     public static final int MAX_RETRIES = 3;
-    public static final String TABLE_NAME = "generic_queue";
+    public static final String TABLE_NAME = "alert_queue";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,12 +54,12 @@ public class GenericQueue implements QueueEntity<Long> {
 
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Factory {
-        public static GenericQueue create(UUID messageId, String data) {
+        public static AlertQueue create(UUID messageId, String data) {
             Long id = null;
             var arrivedAt = LocalDateTime.now();
             var nonTimeoutRetries = 0;
             LocalDateTime processedAt = null;
-            return new GenericQueue(id, messageId, data, arrivedAt, nonTimeoutRetries, processedAt);
+            return new AlertQueue(id, messageId, data, arrivedAt, nonTimeoutRetries, processedAt);
         }
     }
 }

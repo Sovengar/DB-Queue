@@ -1,9 +1,9 @@
 package jon.db.queue.generic_queue;
 
+import jon.db.queue.api.QueueRepo;
 import jon.db.queue.dead_letter_queue.DeadLetterQueueHandler;
-import jon.db.queue.models.DeadLetterQueue;
+import jon.db.queue.api.DeadLetterQueue;
 import jon.db.queue.models.GenericQueue;
-import jon.db.queue.store.GenericQueueRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -13,8 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -25,45 +23,29 @@ import java.util.concurrent.TimeoutException;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-class GenericQueueScheduler {
-    private final GenericQueueWorker mqProcessor;
-    private final GenericQueueCreator mqCreator;
+class GenericQueueScheduler { //GenericQueuePoller
+    private final GenericQueueWorker worker;
 
     private static final int NUMBER_OF_THREADS = 3;
     private final ExecutorService executor = Executors.newFixedThreadPool(NUMBER_OF_THREADS); // Workers for concurrency
-    private static final Random RANDOM = new Random();
 
+    //Increase the delay based on your needs, i.e., for backpressure
     @Scheduled(fixedDelay = 10000)
-    public void pollMessageQueue() {
+    public void pollQueue() {
         log.debug("Polling message queue...");
 
-        //Use the appropriate option, consider making a sleep here as backpressure
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             final String workerName = "Worker-" + (i + 1);
             //Change between parallel and not parallel based on your needs.
             //executor.submit(() -> mqProcessor.processMessagesInQueue(workerName));
-            executor.submit(() -> mqProcessor.parallelProcessMessagesInQueue(workerName));
+            executor.submit(() -> worker.processMessagesInParallel(workerName));
         }
     }
 
     @Scheduled(fixedDelay = 8000)
     public void moveToDLQ(){
-        mqProcessor.moveToDeadLetterQueue();
+        worker.moveToDLQ();
     } //If the server goes down, when is up will move all messages to DLQ !!!
-
-    @Scheduled(fixedDelay = 3000)
-    public void simulateInfluxOfMessages() {
-
-        var messageId = UUID.randomUUID();
-
-        if (RANDOM.nextInt(20) == 0) { // Probability of 1/20 (5%)
-            log.debug("Simulating duplication of messages with id {}", messageId);
-            mqCreator.createWithRandomData(messageId);
-            mqCreator.createWithRandomData(messageId);
-        } else {
-            mqCreator.createWithRandomData(messageId);
-        }
-    }
 
     @Scheduled(fixedDelay = 15000)
     public void sendEmailIfNoAccesToQueue() {
@@ -75,30 +57,30 @@ class GenericQueueScheduler {
 @Slf4j
 @RequiredArgsConstructor
 class GenericQueueWorker {
-    private final GenericQueueProcessor genericQueueProcessor;
+    private final GenericQueueProcessor processor;
     private final ExecutorService executorService = Executors.newFixedThreadPool(5);
 
     @Transactional //Transactional has to be here because we are fetching with SKIP LOCKED here
-    public void processMessagesInQueue(String workerName) {
-        var queueMessages = genericQueueProcessor.fetchMessages(workerName);
+    public void processMessages(String workerName) {
+        var queueMessages = processor.fetchMessages(workerName);
 
         log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(GenericQueue::getInternalId).toList());
 
         for (GenericQueue msg : queueMessages) {
-            genericQueueProcessor.processMessageWithErrorHandling(workerName, msg);
+            processor.processMessageWithErrorHandling(workerName, msg);
         }
     }
 
     //No need for transactional
-    public void parallelProcessMessagesInQueue(String workerName) {
-        var queueMessages = genericQueueProcessor.fetchMessages(workerName);
+    public void processMessagesInParallel(String workerName) {
+        var queueMessages = processor.fetchMessages(workerName);
 
         log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(GenericQueue::getInternalId).toList());
 
         // Parallel Processing every message
         List<CompletableFuture<Void>> futures = new ArrayList<>();
         for (GenericQueue msg : queueMessages) {
-            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> genericQueueProcessor.processMessageWithErrorHandling(workerName, msg), executorService);
+            CompletableFuture<Void> future = CompletableFuture.runAsync(() -> processor.processMessageWithErrorHandling(workerName, msg), executorService);
             futures.add(future);
         }
 
@@ -117,17 +99,17 @@ class GenericQueueWorker {
     }
 
     @Transactional
-    public void moveToDeadLetterQueue(){
-        log.debug("Fetching messages to move to DLQ");
-        var messages = genericQueueProcessor.fetchPoisonedMessages();
+    public void moveToDLQ(){
+        log.trace("Fetching messages to move to DLQ");
+        var messages = processor.fetchPoisonedMessages();
 
         if(messages.isEmpty()){
-            log.debug("No messages to move to DLQ");
+            log.trace("No messages to move to DLQ");
             return;
         }
 
         log.debug("Moving {} messages {} to DLQ", messages.size(), messages.stream().map(GenericQueue::getInternalId).toList());
-        genericQueueProcessor.moveToDLQ(messages);
+        processor.moveToDLQ(messages);
     }
 }
 
@@ -135,9 +117,10 @@ class GenericQueueWorker {
 @Slf4j
 @RequiredArgsConstructor
 class GenericQueueProcessor {
-    private final GenericQueueRepo repo;
+    private final QueueRepo<GenericQueue, Long> repo;
     private final DeadLetterQueueHandler deadLetterQueueHandler;
     private final GenericQueueSseEmitter genericQueueSseEmitter;
+    private final GenericQueueDomainService domainService;
 
     List<GenericQueue> fetchMessages(final String workerName) {
         try {
@@ -150,7 +133,7 @@ class GenericQueueProcessor {
 
     void processMessageWithErrorHandling(final String workerName, final GenericQueue msg) {
         try {
-            log.debug("[{}] Processing message {} with data: {}", workerName, msg.getInternalId(), msg.getData());
+            log.trace("[{}] Processing message {} with data: {}", workerName, msg.getInternalId(), msg.getData());
             processMessage(msg);
         } catch (Exception e) {
             log.error("[{}] Error processing message {}: {}", workerName, msg.getInternalId(), e.getMessage());
@@ -175,26 +158,10 @@ class GenericQueueProcessor {
     }
 
     private void processMessage(final GenericQueue msg) {
-        if(Math.random() < 0.5){
-            throw new RuntimeException("Simulating Random error");
-        }
-
-        log.trace("Processing message {} with data: {}", msg.getInternalId(), msg.getData());
-
+        domainService.handle(msg.getInternalId(), msg.getData());
         msg.markAsProcessed();
         genericQueueSseEmitter.sendMessageUpdate(msg);
         repo.update(msg);
-
-        var variableExecutionTimeInSeconds = (int) (Math.random() * 10 * 1.5);
-        sleep(variableExecutionTimeInSeconds * 1000); // Simulate a long-running job
-    }
-
-    private void sleep(long ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
     }
 
     public void moveToDLQ(final List<GenericQueue> messages) {

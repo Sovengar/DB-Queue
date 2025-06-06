@@ -1,6 +1,5 @@
-package jon.db.queue.store;
+package jon.db.queue.api;
 
-import jon.db.queue.models.DeadLetterQueue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -18,7 +17,7 @@ public interface DLQRepo {
 
 @Repository
 @RequiredArgsConstructor
-class DLQPosgreSQLRepo implements DLQRepo {
+class DLQPosgreRepo implements DLQRepo {
     private final DLQSpringJPARepo DLQSpringJPARepo;
 
     @Override
