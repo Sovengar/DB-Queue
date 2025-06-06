@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jon.db.queue.queues.api.queue.QueueEntity;
+import jon.db.queue.queues.Emitter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,21 +42,33 @@ public class GenericQueue implements QueueEntity<Long> {
     private Integer nonTimeoutRetries;
     private LocalDateTime processedAt;
 
-    public void markAsFailedToProcess() {
+    public void markAsFailedToProcess(Emitter emitAction) {
         this.nonTimeoutRetries++;
+        emitAction.emitUpdate(this);
     }
 
     public boolean canRetry() {
         return this.nonTimeoutRetries < MAX_RETRIES;
     }
 
-    public void markAsProcessed() {
+    //If DB didn't generate pk, then this would be called inside the create method
+    public void markAsPersisted(Long internalId, Emitter emitAction) {
+        this.internalId = internalId;
+        emitAction.emitCreation(this);
+    }
+
+    public void markAsProcessed(Emitter emitAction) {
         this.processedAt = LocalDateTime.now();
+        emitAction.emitUpdate(this);
+    }
+
+    public void markAsDeleted(Emitter emitAction) {
+        emitAction.emitDeletion(this);
     }
 
     public Map<String, Object> transformFieldsToMap(){
         return Map.of(
-                "internalId", getInternalId(),
+                "internalId", getInternalId() != null ? getInternalId() : "",
                 "messageId", getMessageId(),
                 "data", getData(),
                 "arrivedAt", getArrivedAt(),

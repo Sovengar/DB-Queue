@@ -1,9 +1,10 @@
-package jon.db.queue.queues.generic_queue;
+package jon.db.queue.queues.generic_queue.infra;
 
 import jon.db.queue.queues.api.queue.QueueRepo;
 import jon.db.queue.queues.api.dead_letter_queue.DeadLetterQueueHandler;
 import jon.db.queue.queues.api.dead_letter_queue.DeadLetterQueue;
-import jon.db.queue.queues.infra.HttpSseEmitter;
+import jon.db.queue.queues.Emitter;
+import jon.db.queue.queues.generic_queue.domain.UseCaseProcessor;
 import jon.db.queue.queues.models.GenericQueue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -120,8 +121,8 @@ class GenericQueueWorker {
 class GenericQueueProcessor {
     private final QueueRepo<GenericQueue, Long> repo;
     private final DeadLetterQueueHandler deadLetterQueueHandler;
-    private final HttpSseEmitter httpSseEmitter;
-    private final GenericQueueDomainService domainService;
+    private final Emitter emitter;
+    private final UseCaseProcessor domainService;
 
     List<GenericQueue> fetchMessages(final String workerName) {
         try {
@@ -138,7 +139,7 @@ class GenericQueueProcessor {
             processMessage(msg);
         } catch (Exception e) {
             log.error("[{}] Error processing message {}: {}", workerName, msg.getInternalId(), e.getMessage());
-            msg.markAsFailedToProcess();
+            msg.markAsFailedToProcess(emitter);
 
             if(!msg.canRetry()){
                 log.warn("[{}] Message {} with id {} has reached the maximum number of retries ({}), moving to Dead Letter Queue", workerName, msg.getInternalId(), msg.getMessageId(), GenericQueue.MAX_RETRIES);
@@ -160,8 +161,7 @@ class GenericQueueProcessor {
 
     private void processMessage(final GenericQueue msg) {
         domainService.handle(msg.getInternalId(), msg.getData());
-        msg.markAsProcessed();
-        httpSseEmitter.sendMessageUpdated(String.valueOf(msg.getInternalId()), msg.transformFieldsToMap());
+        msg.markAsProcessed(emitter);
         repo.update(msg);
     }
 
@@ -172,7 +172,7 @@ class GenericQueueProcessor {
             var deadLetterQueue = DeadLetterQueue.Factory.create(msg.getMessageId(), msg.getData(), msg.getArrivedAt());
             deadLetterQueueHandler.create(deadLetterQueue);
 
-            httpSseEmitter.sendMessageDeleted(String.valueOf(msg.getInternalId()), msg.transformFieldsToMap());
+            msg.markAsDeleted(emitter);
             repo.delete(msg);
         });
     }

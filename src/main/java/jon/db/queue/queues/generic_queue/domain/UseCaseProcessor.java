@@ -1,11 +1,11 @@
-package jon.db.queue.queues.generic_queue;
+package jon.db.queue.queues.generic_queue.domain;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-class GenericQueueDomainService {
+public class UseCaseProcessor {
     public void handle(Long internalId, String data){
         if(Math.random() < 0.5){
             throw new RuntimeException("Simulating Random error");
