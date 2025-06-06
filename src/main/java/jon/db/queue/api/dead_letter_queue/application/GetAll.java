@@ -1,7 +1,7 @@
-package jon.db.queue.dead_letter_queue.application;
+package jon.db.queue.api.dead_letter_queue.application;
 
-import jon.db.queue.api.DeadLetterQueue;
-import jon.db.queue.api.DLQRepo;
+import jon.db.queue.api.dead_letter_queue.DeadLetterQueue;
+import jon.db.queue.api.dead_letter_queue.DLQRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,15 +14,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/dead-letter-queue")
 @RequiredArgsConstructor
-class SearchDLQ {
+class GetAll {
     private final DLQRepo repo;
 
-    @GetMapping("/search")
-    public ResponseEntity<SearchResponse> getAllMessages() {
+    @GetMapping
+    public ResponseEntity<Response> getAllMessages() {
         var messages = repo.findAll();
-        return ResponseEntity.ok(new SearchResponse(messages, "1.0.0", LocalDateTime.now().toString()));
+        return ResponseEntity.ok(new Response(messages, "1.0.0", LocalDateTime.now().toString()));
     }
 
-    record SearchResponse(List<DeadLetterQueue> messageId, String version, String retrievedAt) {
+    record Response(List<DeadLetterQueue> messageId, String version, String retrievedAt) {
     }
 }

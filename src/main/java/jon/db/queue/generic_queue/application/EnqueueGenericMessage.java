@@ -1,6 +1,6 @@
 package jon.db.queue.generic_queue.application;
 
-import jon.db.queue.api.QueueRepo;
+import jon.db.queue.api.queue.QueueRepo;
 import jon.db.queue.generic_queue.GenericQueueProducer;
 import jon.db.queue.generic_queue.GenericQueueSseEmitter;
 import jon.db.queue.models.GenericQueue;

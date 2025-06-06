@@ -1,8 +1,8 @@
 package jon.db.queue.generic_queue;
 
-import jon.db.queue.api.QueueRepo;
-import jon.db.queue.dead_letter_queue.DeadLetterQueueHandler;
-import jon.db.queue.api.DeadLetterQueue;
+import jon.db.queue.api.queue.QueueRepo;
+import jon.db.queue.api.dead_letter_queue.DeadLetterQueueHandler;
+import jon.db.queue.api.dead_letter_queue.DeadLetterQueue;
 import jon.db.queue.models.GenericQueue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

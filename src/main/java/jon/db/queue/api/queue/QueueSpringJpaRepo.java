@@ -1,4 +1,4 @@
-package jon.db.queue.api;
+package jon.db.queue.api.queue;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

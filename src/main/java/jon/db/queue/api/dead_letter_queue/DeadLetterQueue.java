@@ -1,4 +1,4 @@
-package jon.db.queue.api;
+package jon.db.queue.api.dead_letter_queue;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

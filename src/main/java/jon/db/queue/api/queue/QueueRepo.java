@@ -1,4 +1,4 @@
-package jon.db.queue.api;
+package jon.db.queue.api.queue;
 
 import java.util.List;
 import java.util.Optional;

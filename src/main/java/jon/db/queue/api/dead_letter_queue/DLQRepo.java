@@ -1,4 +1,4 @@
-package jon.db.queue.api;
+package jon.db.queue.api.dead_letter_queue;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;

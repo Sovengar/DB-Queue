@@ -1,7 +1,7 @@
-package jon.db.queue.dead_letter_queue.application;
+package jon.db.queue.api.dead_letter_queue.application;
 
-import jon.db.queue.dead_letter_queue.DeadLetterQueueHandler;
-import jon.db.queue.api.DLQRepo;
+import jon.db.queue.api.dead_letter_queue.DeadLetterQueueHandler;
+import jon.db.queue.api.dead_letter_queue.DLQRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;

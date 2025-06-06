@@ -1,8 +1,8 @@
 package jon.db.queue;
 
 import jakarta.persistence.EntityManager;
-import jon.db.queue.api.QueuePostgreRepo;
-import jon.db.queue.api.QueueRepo;
+import jon.db.queue.api.queue.QueuePostgreRepo;
+import jon.db.queue.api.queue.QueueRepo;
 import jon.db.queue.models.AlertQueue;
 import jon.db.queue.models.GenericQueue;
 import jon.db.queue.store.AlertQueueSpringJpaRepo;

@@ -3,7 +3,7 @@ package jon.db.queue.generic_queue;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
-import jon.db.queue.api.QueueRepo;
+import jon.db.queue.api.queue.QueueRepo;
 import jon.db.queue.models.GenericQueue;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;

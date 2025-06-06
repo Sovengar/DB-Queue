@@ -1,6 +1,6 @@
 package jon.db.queue.store;
 
-import jon.db.queue.api.QueueSpringJpaRepo;
+import jon.db.queue.api.queue.QueueSpringJpaRepo;
 import jon.db.queue.models.GenericQueue;
 
 import java.util.List;
