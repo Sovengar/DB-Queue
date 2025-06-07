@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -39,9 +38,7 @@ class GenericQueueScheduler { //GenericQueuePoller
 
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             final String workerName = "Worker-" + (i + 1);
-            //Change between parallel and not parallel based on your needs.
             executor.submit(() -> worker.processMessages(workerName));
-            //executor.submit(() -> worker.processMessagesInParallel(workerName));
         }
     }
 
@@ -74,7 +71,12 @@ class GenericQueueWorker {
         }
     }
 
-    //No need for transactional
+    //Don't use, sadly, it doesn't work.
+    /**
+     * Can't use transactional, because every CompletableFuture executes in a different thread.
+     * That means the CompletableFuture thread can't update the msg because it is outside the transaction.
+     * That also means that the lock on the original thread is never released. Deadlock.
+     */
     public void processMessagesInParallel(String workerName) {
         var queueMessages = processor.fetchMessagesWithLock(workerName);
 
