@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import jon.db.queue.queues.generic_queue.GenericQueue;
 import jon.db.queue.shared.Emitter;
+import jon.db.queue.shared.queue.MessageDuplicatedException;
 import jon.db.queue.shared.queue.abstract_queue.QueueRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -41,9 +42,12 @@ public class GenericQueueProducer {
     }
 
     void publishSameMsgTwoTimes(UUID messageId){
-        log.debug("Simulating duplication of messages with id {}", messageId);
-        genericMessageCreator.createWithRandomData(messageId);
-        genericMessageCreator.createWithRandomData(messageId);
+        try {
+            genericMessageCreator.createWithRandomData(messageId);
+            genericMessageCreator.createWithRandomData(messageId);
+        } catch (MessageDuplicatedException e) {
+            log.warn("Message with id {} already exists in the queue", messageId);
+        }
     }
 
     @Service
@@ -62,7 +66,8 @@ public class GenericQueueProducer {
             var internalId = repo.create(queueMessage);
             queueMessage.markAsPersisted(internalId, emitter);
 
-            log.debug("Created message [{}] with data {}", internalId, jsonData);
+            //TODO PASAR A DEBUG
+            log.trace("Created message [{}] with data {}", internalId, jsonData);
 
             return internalId;
         }

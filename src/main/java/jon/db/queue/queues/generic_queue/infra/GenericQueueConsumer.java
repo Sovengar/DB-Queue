@@ -63,7 +63,7 @@ class GenericQueueWorker {
     private final GenericQueueProcessor processor;
     private final ExecutorService executorService = Executors.newFixedThreadPool(5);
 
-    @Transactional //Transactional has to be here because we are fetching with SKIP LOCKED here
+    @Transactional //Has to be here because we are fetching with SKIP LOCKED here
     public void processMessages(String workerName) {
         var queueMessages = processor.fetchMessagesWithLock(workerName);
 
@@ -172,7 +172,7 @@ class GenericQueueErrorHandler {
     private final Emitter emitter;
     private final QueueRepo<GenericQueue, Long> repo;
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    //All has to happen on the same transaction @Transactional(propagation = Propagation.REQUIRES_NEW)
     void handle(final String workerName, final GenericQueue msg) {
         msg.markAsFailedToProcess(emitter);
 

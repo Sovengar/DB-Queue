@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class UseCaseProcessor {
     public void handle(Long internalId, String data){
-        if(Math.random() < 0.5){
+        if(Math.random() < 0.3){
             throw new RuntimeException("Simulating Random error");
         }
 
