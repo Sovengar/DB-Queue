@@ -1,4 +1,4 @@
-package jon.db.queue.queues.generic_queue;
+package jon.db.queue.characters.character_queue;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,13 +20,13 @@ import java.util.Map;
 import java.util.UUID;
 
 @Entity
-@Table(name = "generic_queue")
+@Table(name = "character_queue")
 @Getter
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class GenericQueue implements QueueEntity<Long> {
+public class CharacterQueue implements QueueEntity<Long> {
     public static final int MAX_RETRIES = 3;
-    public static final String TABLE_NAME = "generic_queue";
+    public static final String TABLE_NAME = "character_queue";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -79,12 +79,12 @@ public class GenericQueue implements QueueEntity<Long> {
 
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Factory {
-        public static GenericQueue create(UUID messageId, String data) {
+        public static CharacterQueue create(UUID messageId, String data) {
             Long id = null;
             var arrivedAt = LocalDateTime.now();
             var nonTimeoutRetries = 0;
             LocalDateTime processedAt = null;
-            return new GenericQueue(id, messageId, data, arrivedAt, nonTimeoutRetries, processedAt);
+            return new CharacterQueue(id, messageId, data, arrivedAt, nonTimeoutRetries, processedAt);
         }
     }
 }

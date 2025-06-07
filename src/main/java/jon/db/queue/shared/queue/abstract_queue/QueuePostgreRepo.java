@@ -67,6 +67,37 @@ public class QueuePostgreRepo<T extends QueueEntity<ID>, ID> implements QueueRep
                 .getResultList();
     }
 
+    @Override
+    public int deleteOldMessages(String tableName) {
+        validateTableNameForSQLInjection(tableName);
+
+        // 1. Select IDs to be deleted
+        String selectSql = "SELECT internal_id FROM " + tableName +
+                " WHERE processed_at IS NOT NULL " +
+                " AND arrived_at < :yesterday";
+        List<?> ids = entityManager.createNativeQuery(selectSql)
+                .setParameter("yesterday", LocalDateTime.now().toLocalDate().atStartOfDay())
+                .getResultList();
+
+        if (!ids.isEmpty()) {
+            log.debug("Deleting {} old messages from {}. IDs: {}", ids.size(), tableName, ids);
+        } else {
+            log.debug("No old messages to delete from {}", tableName);
+        }
+
+        // 2. Delete by IDs
+        String deleteSql = "DELETE FROM " + tableName + " WHERE internal_id IN :ids";
+        int deleted = 0;
+        if (!ids.isEmpty()) {
+            deleted = entityManager.createNativeQuery(deleteSql)
+                    .setParameter("ids", ids)
+                    .executeUpdate();
+        }
+
+        log.debug("Deleted {} old messages from {}. IDs: {}", deleted, tableName, ids);
+        return deleted;
+    }
+
     private void validateTableNameForSQLInjection(String tableName) {
         if (!tableName.matches("^[a-zA-Z0-9_]+$")) {
             throw new IllegalArgumentException("Nombre de tabla inválido: " + tableName);

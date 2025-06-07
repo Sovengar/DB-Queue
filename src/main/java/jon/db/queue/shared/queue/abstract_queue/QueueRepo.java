@@ -12,6 +12,8 @@ public interface QueueRepo<T extends QueueEntity<ID>, ID> {
 
     List<T> lockPoisonedMessages(String tableName);
 
+    int deleteOldMessages(String tableName);
+
     long countLockedRows(String tableName);
 
     ID create(T entity);

@@ -1,12 +1,15 @@
-package jon.db.queue.queues.generic_queue.infra;
+package jon.db.queue.characters.character_queue.infra;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jon.db.queue.characters.Character;
+import jon.db.queue.characters.character_queue.CharacterQueue;
 import jon.db.queue.shared.queue.abstract_queue.QueueRepo;
 import jon.db.queue.shared.queue.dead_letter_queue.DeadLetterQueueHandler;
 import jon.db.queue.shared.queue.dead_letter_queue.DeadLetterQueue;
 import jon.db.queue.shared.Emitter;
-import jon.db.queue.UseCaseProcessor;
-import jon.db.queue.queues.generic_queue.GenericQueue;
+import jon.db.queue.characters.CharacterProcessor;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -25,8 +28,27 @@ import java.util.concurrent.TimeoutException;
 @Component
 @Slf4j
 @RequiredArgsConstructor
-class GenericQueueScheduler { //GenericQueuePoller
-    private final GenericQueueWorker worker;
+class CharacterQueueScheduler {
+    private final CharacterQueueWorker worker;
+
+    @Scheduled(fixedDelay = 15000)
+    public void sendEmailIfNoAccessToQueue() {
+        if(!worker.hasAccessToQueue()){
+            log.info("Queue is unavailable, sending email to support team...");
+        }
+    }
+
+    @Scheduled(fixedDelay = 99999)
+    public void deleteOldMessages() {
+        worker.deleteOldMessages();
+    }
+}
+
+@Component
+@Slf4j
+@RequiredArgsConstructor
+class CharacterQueuePoller {
+    private final CharacterQueueWorker worker;
 
     private static final int NUMBER_OF_THREADS = 3;
     private final ExecutorService executor = Executors.newFixedThreadPool(NUMBER_OF_THREADS); // Workers for concurrency
@@ -46,27 +68,22 @@ class GenericQueueScheduler { //GenericQueuePoller
     public void sweepPoisonedMessages(){
         worker.processPoisonedMessages();
     } //If the server goes down, when is up will move all messages to DLQ !!!
-
-    @Scheduled(fixedDelay = 15000)
-    public void sendEmailIfNoAccessToQueue() {
-        // SendEmail, Alarming
-    }
 }
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
-class GenericQueueWorker {
-    private final GenericQueueProcessor processor;
+class CharacterQueueWorker {
+    private final QueueRepo<CharacterQueue, Long> repo;
+    private final CharacterQueueProcessor processor;
     private final ExecutorService executorService = Executors.newFixedThreadPool(5);
 
     @Transactional //Has to be here because we are fetching with SKIP LOCKED here
     public void processMessages(String workerName) {
-        var queueMessages = processor.fetchMessagesWithLock(workerName);
+        var queueMessages = fetchMessagesWithLock(workerName);
+        log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(CharacterQueue::getInternalId).toList());
 
-        log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(GenericQueue::getInternalId).toList());
-
-        for (GenericQueue msg : queueMessages) {
+        for (CharacterQueue msg : queueMessages) {
             processor.processMessageWithErrorHandling(workerName, msg);
         }
     }
@@ -78,13 +95,12 @@ class GenericQueueWorker {
      * That also means that the lock on the original thread is never released. Deadlock.
      */
     public void processMessagesInParallel(String workerName) {
-        var queueMessages = processor.fetchMessagesWithLock(workerName);
-
-        log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(GenericQueue::getInternalId).toList());
+        var queueMessages = fetchMessagesWithLock(workerName);
+        log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(CharacterQueue::getInternalId).toList());
 
         // Parallel Processing every message
         List<CompletableFuture<Void>> futures = new ArrayList<>();
-        for (GenericQueue msg : queueMessages) {
+        for (CharacterQueue msg : queueMessages) {
             CompletableFuture<Void> future = CompletableFuture.runAsync(() -> processor.processMessageWithErrorHandling(workerName, msg), executorService);
             futures.add(future);
         }
@@ -105,29 +121,60 @@ class GenericQueueWorker {
 
     @Transactional
     public void processPoisonedMessages(){
-        processor.processPoisonedMessages();
+        log.trace("Fetching messages to move to DLQ");
+        var messages = fetchPoisonedMessages();
+
+        if(messages.isEmpty()){
+            log.trace("No messages to move to DLQ");
+            return;
+        }
+
+        processor.processPoisonedMessages(messages);
     }
-}
 
-@Service
-@Slf4j
-@RequiredArgsConstructor
-class GenericQueueProcessor {
-    private final QueueRepo<GenericQueue, Long> repo;
-    private final Emitter emitter;
-    private final UseCaseProcessor domainService;
-    private final GenericQueueErrorHandler errorHandler;
-
-    List<GenericQueue> fetchMessagesWithLock(final String workerName) {
+    private List<CharacterQueue> fetchPoisonedMessages() {
         try {
-            return repo.lockNextMessages(GenericQueue.TABLE_NAME, 3, GenericQueue.MAX_RETRIES);
+            return repo.lockPoisonedMessages(CharacterQueue.TABLE_NAME);
+        } catch (Exception e) {
+            log.error("Error retrieving queue messages from DB, abnormal: {}", e.getMessage());
+            return List.of();
+        }
+    }
+
+    List<CharacterQueue> fetchMessagesWithLock(final String workerName) {
+        try {
+            return repo.lockNextMessages(CharacterQueue.TABLE_NAME, 3, CharacterQueue.MAX_RETRIES);
         } catch (Exception e) {
             log.error("[{}] Error retrieving queue messages from DB, abnormal: {}", workerName, e.getMessage());
             return List.of();
         }
     }
 
-    void processMessageWithErrorHandling(final String workerName, final GenericQueue msg) {
+    boolean hasAccessToQueue() {
+        try {
+            repo.lockNextMessages(CharacterQueue.TABLE_NAME, 3, CharacterQueue.MAX_RETRIES);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    void deleteOldMessages() {
+        repo.deleteOldMessages(CharacterQueue.TABLE_NAME);
+    }
+}
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
+class CharacterQueueProcessor {
+    private final QueueRepo<CharacterQueue, Long> repo;
+    private final Emitter emitter;
+    private final CharacterProcessor domainService;
+    private final CharacterQueueErrorHandler errorHandler;
+    private final ObjectMapper objectMapper;
+
+    void processMessageWithErrorHandling(final String workerName, final CharacterQueue msg) {
         try {
             log.trace("[{}] Processing message {} with data: {}", workerName, msg.getInternalId(), msg.getData());
             processMessage(msg);
@@ -137,60 +184,49 @@ class GenericQueueProcessor {
         }
     }
 
-    private void processMessage(final GenericQueue msg) {
-        domainService.handle(msg.getInternalId(), msg.getData());
+    @SneakyThrows
+    private void processMessage(final CharacterQueue msg) {
+        var character = objectMapper.readValue(msg.getData(), Character.class);
+
+        log.trace("Processing message {} with data: {}", msg.getInternalId(), character);
+        domainService.handle(character);
         msg.markAsProcessed(emitter);
+        log.trace("Processed message {}", msg.getInternalId());
+
         repo.update(msg);
     }
 
-    void processPoisonedMessages(){
-        log.trace("Fetching messages to move to DLQ");
-        var messages = fetchPoisonedMessages();
-
-        if(messages.isEmpty()){
-            log.trace("No messages to move to DLQ");
-            return;
-        }
-
-        log.debug("Moving {} messages {} to DLQ", messages.size(), messages.stream().map(GenericQueue::getInternalId).toList());
+    void processPoisonedMessages(List<CharacterQueue> messages){
+        log.debug("Moving {} messages {} to DLQ", messages.size(), messages.stream().map(CharacterQueue::getInternalId).toList());
         errorHandler.moveToDLQ(messages);
-    }
-
-    private List<GenericQueue> fetchPoisonedMessages() {
-        try {
-            return repo.lockPoisonedMessages(GenericQueue.TABLE_NAME);
-        } catch (Exception e) {
-            log.error("Error retrieving queue messages from DB, abnormal: {}", e.getMessage());
-            return List.of();
-        }
     }
 }
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-class GenericQueueErrorHandler {
+class CharacterQueueErrorHandler {
     private final DeadLetterQueueHandler deadLetterQueueHandler;
     private final Emitter emitter;
-    private final QueueRepo<GenericQueue, Long> repo;
+    private final QueueRepo<CharacterQueue, Long> repo;
 
     //All has to happen on the same transaction @Transactional(propagation = Propagation.REQUIRES_NEW)
-    void handle(final String workerName, final GenericQueue msg) {
+    void handle(final String workerName, final CharacterQueue msg) {
         msg.markAsFailedToProcess(emitter);
 
         if(!msg.canRetry()){
-            log.warn("[{}] Message {} with id {} has reached the maximum number of retries ({}), moving to Dead Letter Queue", workerName, msg.getInternalId(), msg.getMessageId(), GenericQueue.MAX_RETRIES);
+            log.warn("[{}] Message {} with id {} has reached the maximum number of retries ({}), moving to Dead Letter Queue", workerName, msg.getInternalId(), msg.getMessageId(), CharacterQueue.MAX_RETRIES);
             moveToDLQ(List.of(msg));
         } else {
             repo.update(msg);
         }
     }
 
-    public void moveToDLQ(final List<GenericQueue> messages) {
+    public void moveToDLQ(final List<CharacterQueue> messages) {
         messages.forEach(msg -> {
             log.trace("Moving message {} with id {} to DLQ", msg.getInternalId(), msg.getMessageId());
 
-            var deadLetterQueue = DeadLetterQueue.Factory.create(msg.getMessageId(), msg.getData(), msg.getArrivedAt(), GenericQueue.TABLE_NAME);
+            var deadLetterQueue = DeadLetterQueue.Factory.create(msg.getMessageId(), msg.getData(), msg.getArrivedAt(), CharacterQueue.TABLE_NAME);
             deadLetterQueueHandler.create(deadLetterQueue);
 
             msg.markAsDeleted(emitter);

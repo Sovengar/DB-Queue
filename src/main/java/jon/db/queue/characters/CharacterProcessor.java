@@ -1,19 +1,23 @@
-package jon.db.queue;
+package jon.db.queue.characters;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class UseCaseProcessor {
-    public void handle(Long internalId, String data){
+@RequiredArgsConstructor
+public class CharacterProcessor {
+
+    public void handle(Character character){
         if(Math.random() < 0.3){
             throw new RuntimeException("Simulating Random error");
         }
 
-        log.trace("Processing message {} with data: {}", internalId, data);
+        //BIZ LOGIC, USE CASE, HERE
 
-        var variableExecutionTimeInSeconds = (int) (Math.random() * 10 * 1.5);
+        var variableExecutionTimeInSeconds = (int) (Math.random() * 10 * 1.2);
         sleep(variableExecutionTimeInSeconds * 1000); // Simulate a long-running job
     }
 

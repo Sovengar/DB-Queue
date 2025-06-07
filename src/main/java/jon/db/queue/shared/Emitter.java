@@ -1,10 +1,10 @@
 package jon.db.queue.shared;
 
-import jon.db.queue.queues.generic_queue.GenericQueue;
+import jon.db.queue.characters.character_queue.CharacterQueue;
 
 //Used for applying Double Dispatch in the model
 public interface Emitter {
-    void emitUpdate(GenericQueue genericQueue);
-    void emitCreation(GenericQueue genericQueue);
-    void emitDeletion(GenericQueue genericQueue);
+    void emitUpdate(CharacterQueue characterQueue);
+    void emitCreation(CharacterQueue characterQueue);
+    void emitDeletion(CharacterQueue characterQueue);
 }
