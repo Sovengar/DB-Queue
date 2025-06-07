@@ -1,4 +1,4 @@
-package jon.db.queue.queues.api;
+package jon.db.queue.shared.queue;
 
 import lombok.Getter;
 

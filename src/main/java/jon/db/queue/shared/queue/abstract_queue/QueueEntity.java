@@ -1,4 +1,4 @@
-package jon.db.queue.queues.api.queue;
+package jon.db.queue.shared.queue.abstract_queue;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

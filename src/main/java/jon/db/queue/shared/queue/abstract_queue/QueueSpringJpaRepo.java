@@ -1,4 +1,4 @@
-package jon.db.queue.queues.api.queue;
+package jon.db.queue.shared.queue.abstract_queue;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

@@ -1,4 +1,4 @@
-package jon.db.queue.queues.models;
+package jon.db.queue.queues.product_queue;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jon.db.queue.queues.api.queue.QueueEntity;
+import jon.db.queue.shared.queue.abstract_queue.QueueEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,13 +18,13 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "alert_queue")
+@Table(name = "product_queue")
 @Getter
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
-public class AlertQueue implements QueueEntity<Long> {
+public class ProductQueue implements QueueEntity<Long> {
     public static final int MAX_RETRIES = 3;
-    public static final String TABLE_NAME = "alert_queue";
+    public static final String TABLE_NAME = "product_queue";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,12 +54,12 @@ public class AlertQueue implements QueueEntity<Long> {
 
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Factory {
-        public static AlertQueue create(UUID messageId, String data) {
+        public static ProductQueue create(UUID messageId, String data) {
             Long id = null;
             var arrivedAt = LocalDateTime.now();
             var nonTimeoutRetries = 0;
             LocalDateTime processedAt = null;
-            return new AlertQueue(id, messageId, data, arrivedAt, nonTimeoutRetries, processedAt);
+            return new ProductQueue(id, messageId, data, arrivedAt, nonTimeoutRetries, processedAt);
         }
     }
 }

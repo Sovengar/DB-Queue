@@ -1,8 +1,8 @@
 package jon.db.queue.queues.generic_queue.infra;
 
-import jon.db.queue.queues.Emitter;
-import jon.db.queue.queues.infra.HttpSseEmitter;
-import jon.db.queue.queues.models.GenericQueue;
+import jon.db.queue.shared.Emitter;
+import jon.db.queue.shared.HttpSseEmitter;
+import jon.db.queue.queues.generic_queue.GenericQueue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

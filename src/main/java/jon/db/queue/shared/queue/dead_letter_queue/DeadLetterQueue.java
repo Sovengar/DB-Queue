@@ -1,4 +1,4 @@
-package jon.db.queue.queues.api.dead_letter_queue;
+package jon.db.queue.shared.queue.dead_letter_queue;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

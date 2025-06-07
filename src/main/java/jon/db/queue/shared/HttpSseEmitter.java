@@ -1,4 +1,4 @@
-package jon.db.queue.queues.infra;
+package jon.db.queue.shared;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

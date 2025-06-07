@@ -1,11 +1,11 @@
 package jon.db.queue.queues.generic_queue.infra;
 
-import jon.db.queue.queues.api.queue.QueueRepo;
-import jon.db.queue.queues.api.dead_letter_queue.DeadLetterQueueHandler;
-import jon.db.queue.queues.api.dead_letter_queue.DeadLetterQueue;
-import jon.db.queue.queues.Emitter;
-import jon.db.queue.queues.generic_queue.domain.UseCaseProcessor;
-import jon.db.queue.queues.models.GenericQueue;
+import jon.db.queue.shared.queue.abstract_queue.QueueRepo;
+import jon.db.queue.shared.queue.dead_letter_queue.DeadLetterQueueHandler;
+import jon.db.queue.shared.queue.dead_letter_queue.DeadLetterQueue;
+import jon.db.queue.shared.Emitter;
+import jon.db.queue.UseCaseProcessor;
+import jon.db.queue.queues.generic_queue.GenericQueue;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -114,7 +114,7 @@ class GenericQueueProcessor {
     private final QueueRepo<GenericQueue, Long> repo;
     private final Emitter emitter;
     private final UseCaseProcessor domainService;
-    private final MessageErrorHandler errorHandler;
+    private final GenericQueueErrorHandler errorHandler;
 
     List<GenericQueue> fetchMessagesWithLock(final String workerName) {
         try {
@@ -167,7 +167,7 @@ class GenericQueueProcessor {
 @Service
 @RequiredArgsConstructor
 @Slf4j
-class MessageErrorHandler {
+class GenericQueueErrorHandler {
     private final DeadLetterQueueHandler deadLetterQueueHandler;
     private final Emitter emitter;
     private final QueueRepo<GenericQueue, Long> repo;

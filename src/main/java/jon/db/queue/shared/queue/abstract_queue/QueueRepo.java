@@ -1,4 +1,4 @@
-package jon.db.queue.queues.api.queue;
+package jon.db.queue.shared.queue.abstract_queue;
 
 import java.util.List;
 import java.util.Optional;

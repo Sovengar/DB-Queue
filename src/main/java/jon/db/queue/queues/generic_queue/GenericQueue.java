@@ -1,4 +1,4 @@
-package jon.db.queue.queues.models;
+package jon.db.queue.queues.generic_queue;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,8 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jon.db.queue.queues.api.queue.QueueEntity;
-import jon.db.queue.queues.Emitter;
+import jon.db.queue.shared.queue.abstract_queue.QueueEntity;
+import jon.db.queue.shared.Emitter;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,7 +1,7 @@
-package jon.db.queue.queues.api.dead_letter_queue.application;
+package jon.db.queue.shared.queue.dead_letter_queue.application;
 
-import jon.db.queue.queues.api.dead_letter_queue.DeadLetterQueue;
-import jon.db.queue.queues.api.dead_letter_queue.DLQRepo;
+import jon.db.queue.shared.queue.dead_letter_queue.DeadLetterQueue;
+import jon.db.queue.shared.queue.dead_letter_queue.DLQRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

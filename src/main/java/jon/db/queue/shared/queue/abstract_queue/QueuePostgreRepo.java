@@ -1,8 +1,8 @@
-package jon.db.queue.queues.api.queue;
+package jon.db.queue.shared.queue.abstract_queue;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jon.db.queue.queues.api.MessageDuplicatedException;
+import jon.db.queue.shared.queue.MessageDuplicatedException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;

@@ -1,7 +1,7 @@
 package jon.db.queue.queues.generic_queue.application;
 
-import jon.db.queue.queues.api.queue.QueueRepo;
-import jon.db.queue.queues.models.GenericQueue;
+import jon.db.queue.shared.queue.abstract_queue.QueueRepo;
+import jon.db.queue.queues.generic_queue.GenericQueue;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

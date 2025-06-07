@@ -1,6 +1,6 @@
 package jon.db.queue.queues.generic_queue.application;
 
-import jon.db.queue.queues.infra.HttpSseEmitter;
+import jon.db.queue.shared.HttpSseEmitter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

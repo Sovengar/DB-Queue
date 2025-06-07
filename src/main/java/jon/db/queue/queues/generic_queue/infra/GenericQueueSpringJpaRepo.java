@@ -1,7 +1,7 @@
-package jon.db.queue.queues.infra;
+package jon.db.queue.queues.generic_queue.infra;
 
-import jon.db.queue.queues.api.queue.QueueSpringJpaRepo;
-import jon.db.queue.queues.models.GenericQueue;
+import jon.db.queue.shared.queue.abstract_queue.QueueSpringJpaRepo;
+import jon.db.queue.queues.generic_queue.GenericQueue;
 
 import java.util.List;
 

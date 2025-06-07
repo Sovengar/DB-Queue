@@ -1,6 +1,6 @@
-package jon.db.queue.queues;
+package jon.db.queue.shared;
 
-import jon.db.queue.queues.models.GenericQueue;
+import jon.db.queue.queues.generic_queue.GenericQueue;
 
 //Used for applying Double Dispatch in the model
 public interface Emitter {
