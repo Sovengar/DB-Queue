@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -39,19 +40,19 @@ class GenericQueueScheduler { //GenericQueuePoller
         for (int i = 0; i < NUMBER_OF_THREADS; i++) {
             final String workerName = "Worker-" + (i + 1);
             //Change between parallel and not parallel based on your needs.
-            //executor.submit(() -> mqProcessor.processMessagesInQueue(workerName));
-            executor.submit(() -> worker.processMessagesInParallel(workerName));
+            executor.submit(() -> worker.processMessages(workerName));
+            //executor.submit(() -> worker.processMessagesInParallel(workerName));
         }
     }
 
     @Scheduled(fixedDelay = 8000)
-    public void moveToDLQ(){
-        worker.moveToDLQ();
+    public void sweepPoisonedMessages(){
+        worker.processPoisonedMessages();
     } //If the server goes down, when is up will move all messages to DLQ !!!
 
     @Scheduled(fixedDelay = 15000)
-    public void sendEmailIfNoAccesToQueue() {
-        //TODO SendEmail
+    public void sendEmailIfNoAccessToQueue() {
+        // SendEmail, Alarming
     }
 }
 
@@ -64,7 +65,7 @@ class GenericQueueWorker {
 
     @Transactional //Transactional has to be here because we are fetching with SKIP LOCKED here
     public void processMessages(String workerName) {
-        var queueMessages = processor.fetchMessages(workerName);
+        var queueMessages = processor.fetchMessagesWithLock(workerName);
 
         log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(GenericQueue::getInternalId).toList());
 
@@ -75,7 +76,7 @@ class GenericQueueWorker {
 
     //No need for transactional
     public void processMessagesInParallel(String workerName) {
-        var queueMessages = processor.fetchMessages(workerName);
+        var queueMessages = processor.fetchMessagesWithLock(workerName);
 
         log.debug("[{}] Processing {} messages {}", workerName, queueMessages.size(), queueMessages.stream().map(GenericQueue::getInternalId).toList());
 
@@ -101,17 +102,8 @@ class GenericQueueWorker {
     }
 
     @Transactional
-    public void moveToDLQ(){
-        log.trace("Fetching messages to move to DLQ");
-        var messages = processor.fetchPoisonedMessages();
-
-        if(messages.isEmpty()){
-            log.trace("No messages to move to DLQ");
-            return;
-        }
-
-        log.debug("Moving {} messages {} to DLQ", messages.size(), messages.stream().map(GenericQueue::getInternalId).toList());
-        processor.moveToDLQ(messages);
+    public void processPoisonedMessages(){
+        processor.processPoisonedMessages();
     }
 }
 
@@ -120,11 +112,11 @@ class GenericQueueWorker {
 @RequiredArgsConstructor
 class GenericQueueProcessor {
     private final QueueRepo<GenericQueue, Long> repo;
-    private final DeadLetterQueueHandler deadLetterQueueHandler;
     private final Emitter emitter;
     private final UseCaseProcessor domainService;
+    private final MessageErrorHandler errorHandler;
 
-    List<GenericQueue> fetchMessages(final String workerName) {
+    List<GenericQueue> fetchMessagesWithLock(final String workerName) {
         try {
             return repo.lockNextMessages(GenericQueue.TABLE_NAME, 3, GenericQueue.MAX_RETRIES);
         } catch (Exception e) {
@@ -139,23 +131,7 @@ class GenericQueueProcessor {
             processMessage(msg);
         } catch (Exception e) {
             log.error("[{}] Error processing message {}: {}", workerName, msg.getInternalId(), e.getMessage());
-            msg.markAsFailedToProcess(emitter);
-
-            if(!msg.canRetry()){
-                log.warn("[{}] Message {} with id {} has reached the maximum number of retries ({}), moving to Dead Letter Queue", workerName, msg.getInternalId(), msg.getMessageId(), GenericQueue.MAX_RETRIES);
-                moveToDLQ(List.of(msg));
-            }
-
-            repo.update(msg);
-        }
-    }
-
-    List<GenericQueue> fetchPoisonedMessages() {
-        try {
-            return repo.lockPoisonedMessages(GenericQueue.TABLE_NAME);
-        } catch (Exception e) {
-            log.error("Error retrieving queue messages from DB, abnormal: {}", e.getMessage());
-            return List.of();
+            errorHandler.handle(workerName, msg);
         }
     }
 
@@ -165,11 +141,54 @@ class GenericQueueProcessor {
         repo.update(msg);
     }
 
+    void processPoisonedMessages(){
+        log.trace("Fetching messages to move to DLQ");
+        var messages = fetchPoisonedMessages();
+
+        if(messages.isEmpty()){
+            log.trace("No messages to move to DLQ");
+            return;
+        }
+
+        log.debug("Moving {} messages {} to DLQ", messages.size(), messages.stream().map(GenericQueue::getInternalId).toList());
+        errorHandler.moveToDLQ(messages);
+    }
+
+    private List<GenericQueue> fetchPoisonedMessages() {
+        try {
+            return repo.lockPoisonedMessages(GenericQueue.TABLE_NAME);
+        } catch (Exception e) {
+            log.error("Error retrieving queue messages from DB, abnormal: {}", e.getMessage());
+            return List.of();
+        }
+    }
+}
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+class MessageErrorHandler {
+    private final DeadLetterQueueHandler deadLetterQueueHandler;
+    private final Emitter emitter;
+    private final QueueRepo<GenericQueue, Long> repo;
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    void handle(final String workerName, final GenericQueue msg) {
+        msg.markAsFailedToProcess(emitter);
+
+        if(!msg.canRetry()){
+            log.warn("[{}] Message {} with id {} has reached the maximum number of retries ({}), moving to Dead Letter Queue", workerName, msg.getInternalId(), msg.getMessageId(), GenericQueue.MAX_RETRIES);
+            moveToDLQ(List.of(msg));
+        } else {
+            repo.update(msg);
+        }
+    }
+
     public void moveToDLQ(final List<GenericQueue> messages) {
         messages.forEach(msg -> {
             log.trace("Moving message {} with id {} to DLQ", msg.getInternalId(), msg.getMessageId());
 
-            var deadLetterQueue = DeadLetterQueue.Factory.create(msg.getMessageId(), msg.getData(), msg.getArrivedAt());
+            var deadLetterQueue = DeadLetterQueue.Factory.create(msg.getMessageId(), msg.getData(), msg.getArrivedAt(), GenericQueue.TABLE_NAME);
             deadLetterQueueHandler.create(deadLetterQueue);
 
             msg.markAsDeleted(emitter);

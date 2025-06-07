@@ -73,6 +73,7 @@ public class QueuePostgreRepo<T extends QueueEntity<ID>, ID> implements QueueRep
         }
     }
 
+    //TODO NOT WORKING
     @Override
     public long countLockedRows(String tableName) {
         validateTableNameForSQLInjection(tableName);

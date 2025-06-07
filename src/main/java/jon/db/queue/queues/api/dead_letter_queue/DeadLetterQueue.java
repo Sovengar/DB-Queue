@@ -28,10 +28,12 @@ public class DeadLetterQueue {
     private String data;
     private LocalDateTime arrivedAt;
 
+    private String fromQueue;
+
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public static class Factory {
-        public static DeadLetterQueue create(UUID messageId, String data, LocalDateTime arrivedAt) {
-            return new DeadLetterQueue(messageId, data, arrivedAt);
+        public static DeadLetterQueue create(UUID messageId, String data, LocalDateTime arrivedAt, String fromQueue) {
+            return new DeadLetterQueue(messageId, data, arrivedAt, fromQueue);
         }
     }
 }
