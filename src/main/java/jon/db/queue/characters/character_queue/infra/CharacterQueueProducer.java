@@ -21,13 +21,13 @@ import java.util.UUID;
 @Slf4j
 @RequiredArgsConstructor
 public class CharacterQueueProducer {
-    private final GenericMessageCreator genericMessageCreator;
+    private final CharacterMessageCreator characterMessageCreator;
 
     private static final Random RANDOM = new Random();
 
     public void publish(final UUID messageId, final Character character){
-        genericMessageCreator.createProvidingData(messageId, character);
-        log.debug("Published message with id {}", messageId);
+        var internalId = characterMessageCreator.createProvidingData(messageId, character);
+        log.debug("Published message {} with id {}", internalId, messageId);
     }
 
     @Scheduled(fixedDelay = 3000)
@@ -37,14 +37,14 @@ public class CharacterQueueProducer {
         if (RANDOM.nextInt(20) == 0) { // Probability of 1/20 (5%)
             publishSameMsgTwoTimes(messageId);
         } else {
-            genericMessageCreator.createWithRandomData(messageId);
+            characterMessageCreator.createWithRandomData(messageId);
         }
     }
 
     void publishSameMsgTwoTimes(UUID messageId){
         try {
-            genericMessageCreator.createWithRandomData(messageId);
-            genericMessageCreator.createWithRandomData(messageId);
+            characterMessageCreator.createWithRandomData(messageId);
+            characterMessageCreator.createWithRandomData(messageId);
         } catch (MessageDuplicatedException e) {
             log.warn("Message with id {} already exists in the queue", messageId);
         }
@@ -53,7 +53,7 @@ public class CharacterQueueProducer {
     @Service
     @RequiredArgsConstructor
     @Slf4j
-    static class GenericMessageCreator {
+    static class CharacterMessageCreator {
         private final QueueRepo<CharacterQueue, Long> repo;
         private final Emitter emitter;
         private final ObjectMapper objectMapper;

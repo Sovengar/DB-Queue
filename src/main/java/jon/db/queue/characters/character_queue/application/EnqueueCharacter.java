@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/generic-queue")
+@RequestMapping("/character-queue")
 @RequiredArgsConstructor
 class EnqueueCharacter {
     private final CharacterQueueProducer producer;

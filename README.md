@@ -1,6 +1,6 @@
 Inicia el proceso con Docker encendido y pulsando play en Application.java
 
-Accede a http://localhost:8080/generic-queue-monitor.html para ver como se van procesando los mensajes
+Accede a http://localhost:8080/character-queue-monitor.html para ver como se van procesando los mensajes
 
 Puedes añadir mensajes manualmente y/o removerlos de la DLQ.
 

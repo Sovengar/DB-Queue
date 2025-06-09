@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Generic Queue Real-time Monitor</title>
+    <title>Character Queue Real-time Monitor</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
         table { width: 100%; border-collapse: collapse; }
@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-    <h1>Generic Queue Real-time Monitor</h1>
+    <h1>Character Queue Real-time Monitor</h1>
     <div id="connection-status" class="disconnected">Disconnected</div>
     <div id="message-count">Messages in memory: 0</div>
     <table>
@@ -106,7 +106,7 @@
             function connectEventSource() {
                 updateConnectionStatus(false);
                 
-                const eventSource = new EventSource('/generic-queue/stream');
+                const eventSource = new EventSource('/character-queue/stream');
 
                 eventSource.onopen = function() {
                     updateConnectionStatus(true);

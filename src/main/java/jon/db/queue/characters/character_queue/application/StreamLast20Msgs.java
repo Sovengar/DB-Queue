@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/generic-queue")
+@RequestMapping("/character-queue")
 @RequiredArgsConstructor
 class StreamLast20Msgs {
     private final HttpSseEmitter httpSseEmitter;

@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 class QueueRepoConfig {
     @Bean
-    public QueueRepo<CharacterQueue, Long> genericQueueRepository(EntityManager entityManager, CharacterQueueSpringJpaRepo genericQueueJpaRepo) {
-        return new QueuePostgreRepo<>(entityManager, genericQueueJpaRepo, CharacterQueue.class);
+    public QueueRepo<CharacterQueue, Long> characterQueueRepository(EntityManager entityManager, CharacterQueueSpringJpaRepo characterQueueJpaRepo) {
+        return new QueuePostgreRepo<>(entityManager, characterQueueJpaRepo, CharacterQueue.class);
     }
     
     @Bean
